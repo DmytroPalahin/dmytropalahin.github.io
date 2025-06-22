@@ -114,14 +114,16 @@
                         <!-- Modern Language Switch -->
                         <div class="language-selector">
                             <button class="language-toggle" id="language-toggle" type="button"
-                                aria-label="Language selector">
+                                aria-label="Change language">
                                 <svg class="language-icon" width="16" height="16"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path
-                                        d="m2 12c0 4.418 2.015 8.366 5.192 11.009 0.508-1.008 1.265-1.951 2.192-2.721 1.387-1.156 3.118-1.788 4.928-1.788s3.541 0.632 4.928 1.788c0.927 0.77 1.684 1.713 2.192 2.721 3.177-2.643 5.192-6.591 5.192-11.009z"></path>
+                                    <path d="m5 8 6 6"></path>
+                                    <path d="m4 14 6-6 2-3"></path>
+                                    <path d="M2 5h12"></path>
+                                    <path d="M7 2h1"></path>
+                                    <path d="m22 22-5-10-5 10"></path>
+                                    <path d="M14 18h6"></path>
                                 </svg>
                                 <span class="current-lang">
                                     <xsl:choose>
@@ -131,7 +133,7 @@
                                         <xsl:otherwise>EN</xsl:otherwise>
                                     </xsl:choose>
                                 </span>
-                                <svg class="chevron-down" width="16" height="16" viewBox="0 0 24 24"
+                                <svg class="chevron-down" width="12" height="12" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6,9 12,15 18,9"></polyline>
