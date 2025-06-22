@@ -1,22 +1,303 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
-.vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-file
-*.flf
-#Test results file
-TestResults.xml
+# local configuration
+conf/**/local/**
+!conf/**/local/.gitkeep
+
+# directories
+# data/**
+logs/**
+creds/**
+# except thiers subfolders
+!data/**/
+!logs/**/
+!creds/**/
+
+# keep git
+!.gitkeep
+# github
+.github/
+
+# IDE settings
+.idea/
+*.iml
+out/
+.idea_modules/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Trashes
+*.pem
+
+# windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+
+# linux
+*~
+
+# vim
+.*.swp
+.*.swo
+.*.swn
+
+# emacs
+.#*
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+/.emacs.d/
+/.emacs~
+/.emacs.bak
+/.emacs.autosave
+*.elc
+
+# pycharm
+.idea/
+*.iml
+*.ipr
+*.iws
+*.bak
+*.swp
+*.mtb
+*.db
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+
+# packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info
+.installed.cfg
+*.egg
+MANIFEST
+
+# pyinstaller
+*.manifest
+*.spec
+
+# installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+/coverage
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# translations
+*.mo
+*.pot
+
+# django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+.static_storage/
+.media/
+.media_storage/
+
+# flask
+instance/
+.webassets-cache
+
+# scrapy
+.scrapy
+
+# sphinx
+docs/_build/
+
+# pybuilder
+target/
+
+# jupyter notebook
+.ipynb_checkpoints
+
+# ipython
+profile_default/
+ipython_config.py
+.ipython/profile_default/history.sqlite
+.ipython/profile_default/startup/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# celery
+celerybeat-schedule
+
+# sageMath
+.sage-mathcloud/
+.sage.py
+
+# environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+ENV.bak/
+.conda
+.env*.local
+# !environment.yml
+
+# mkdocs
+/site
+
+# mypy
+.mypy_cache/
+.pytest_cache/
+mlruns/
+dataset/
+exploration/
+
+# kedro-viz
+stats.json
+.viz
+env*
+post_init_vars
+vars.json
+notebooks/**
+
+# pyre
+.pyre/
+
+# vscode
+.vscode
+.vscode-test
+*.code-workspace
+.vscode/extensions.json
+.vscode/settings.json
+
+# extensions & dependencies
+out
+dist
+node_modules
+.vscode-test*
+.node_modules*
+.nodejs
+*.node
+*.npm
+/.pnp
+.pnp.js
+*.yarn
+*.yarn-integrity
+*.yarnrc
+.yarn/install-state.gz
+*.qps-ploc.json
+l10n/bundle.l10n.json
+.nvmrc
+.npmrc
+.prettieignore
+# .prettierrc
+prettier.config.js
+pull_request_template.md
+# *.vsix
+# .eslintignore
+# .eslintrc.js
+# .vscodeignore
+
+# latex
+*.aux          
+*.bbl          
+*.blg          
+*.fdb_latexmk  
+*.fls          
+*.log          
+*.out          
+*.toc          
+*.gz           
+*.synctex.gz
+*.pdfsync
+*.glg
+*.glo
+*.gls
+*.ist
+*.lol
+
+# temp
+*.tmp       
+*.bak       
+*.swp
+*.tgz    
+
+# other
+screenlog*
+# instances
+labels
+predictions
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+.turbo
+
+# flex
+# lex.yy.c
+# lex.yy.h
+lex.yy.o
+
+# c extensions
+*.so
+*.dylib
+*.o
+
+# compiled files
+*.zip
+
+# ruff
+.ruff_cache
+
+# julia
+Manifest.toml
+Project.toml

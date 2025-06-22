@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Portfolio de Dmytro</title>
-</head>
-<body>
-    <h1>Bonjour, vous vous trouvez sur le portfolio de Dmytro Palahin ;)</h1>
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dmytro Palahin - Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="description" content="Portfolio of Dmytro Palahin - Full-Stack Developer" />
+        <meta name="keywords" content="developer, portfolio, javascript, typescript, react, vue" />
+    </head>
+    <body>
+        <div id="app">
+            <div class="loading-spinner">
+                <div style="text-align: center; padding: 4rem">
+                    <div
+                        style="
+                            animation: spin 1s linear infinite;
+                            width: 40px;
+                            height: 40px;
+                            border: 4px solid #e5e7eb;
+                            border-top: 4px solid #2563eb;
+                            border-radius: 50%;
+                            margin: 0 auto;
+                        "
+                    ></div>
+                    <p style="margin-top: 1rem; color: #6b7280">Loading portfolio...</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+        <script type="module" src="dist/bundle.js"></script>
+    </body>
 </html>

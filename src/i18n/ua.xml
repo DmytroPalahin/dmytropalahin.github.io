@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations lang="ua">
+    <nav>
+        <about>Про мене</about>
+        <skills>Навички</skills>
+        <projects>Проекти</projects>
+        <experience>Досвід</experience>
+        <education>Освіта</education>
+        <contact>Контакти</contact>
+    </nav>
+    <ui>
+        <theme-toggle>Змінити тему</theme-toggle>
+        <language>Мова</language>
+        <download-cv>Завантажити CV</download-cv>
+        <view-project>Переглянути проект</view-project>
+        <source-code>Вихідний код</source-code>
+    </ui>
+    <sections>
+        <about-title>Про мене</about-title>
+        <skills-title>Мої навички</skills-title>
+        <projects-title>Обрані проекти</projects-title>
+        <experience-title>Робочий досвід</experience-title>
+        <education-title>Освіта</education-title>
+        <contact-title>Зв'яжіться зі мною</contact-title>
+    </sections>
+</translations>
