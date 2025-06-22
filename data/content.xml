@@ -17,15 +17,27 @@
             </tuv>
         </tu>
 
-        <tu id="person.name">
+        <tu id="person.greeting">
             <tuv xml:lang="en">
-                <seg>Dmytro Palahin</seg>
+                <seg>Hi there!</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>Dmytro Palahin</seg>
+                <seg>Salut !</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Дмитро Палагин</seg>
+                <seg>Привет!</seg>
+            </tuv>
+        </tu>
+
+        <tu id="person.name">
+            <tuv xml:lang="en">
+                <seg>I'm Dmytro Palahin</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Je suis Dmytro Palahin</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Я Дмитро Палагин</seg>
             </tuv>
         </tu>
 

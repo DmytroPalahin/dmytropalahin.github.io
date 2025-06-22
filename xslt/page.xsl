@@ -147,6 +147,15 @@
                 <section id="home" class="hero-section">
                     <div class="hero-container">
                         <div class="hero-content">
+                            <div class="hero-greeting">
+                                <span class="greeting-text">
+                                    <xsl:value-of
+                                        select="//tu[@id='person.greeting']/tuv[@xml:lang=$uiLang]/seg" />
+                                </span>
+                                <img src="assets/img/animations/waving-hand.gif"
+                                    alt="Waving hand"
+                                    class="waving-hand" />
+                            </div>
                             <h1 class="hero-title" property="schema:name">
                                 <xsl:value-of
                                     select="//tu[@id='person.name']/tuv[@xml:lang=$uiLang]/seg" />
@@ -275,6 +284,19 @@
                 <!-- JavaScript -->
                 <script>
                 <![CDATA[
+                // Interactive waving hand
+                document.addEventListener('DOMContentLoaded', function() {
+                    const wavingHand = document.querySelector('.waving-hand');
+                    if (wavingHand) {
+                        wavingHand.addEventListener('click', function() {
+                            this.classList.add('active-wave');
+                            setTimeout(() => {
+                                this.classList.remove('active-wave');
+                            }, 600);
+                        });
+                    }
+                });
+
                 // Smooth scrolling navigation with hash preservation
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
