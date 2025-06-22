@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TMX-подобная структура для трёх языков -->
+<tmx version="1.4">
+    <header srclang="en" adminlang="en" />
+    <body>
+
+        <!-- —— глобальные строки —— -->
+        <tu id="site.title">
+            <tuv xml:lang="en">
+                <seg>Dmytro Palahin — Portfolio</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Portfolio de Dmytro Palahin</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Портфолио Дмитро Палагина</seg>
+            </tuv>
+        </tu>
+
+        <tu id="person.name">
+            <tuv xml:lang="en">
+                <seg>Dmytro Palahin</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Dmytro Palahin</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Дмитро Палагин</seg>
+            </tuv>
+        </tu>
+
+        <tu id="person.role">
+            <tuv xml:lang="en">
+                <seg>Full-Stack Developer | Data Engineer</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Développeur full-stack | Ingénieur Data</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Full-stack разработчик и инженер данных</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— навигация —— -->
+        <tu id="nav.home">
+            <tuv xml:lang="en">
+                <seg>Home</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Accueil</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Главная</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «О себе» —— -->
+        <tu id="about.title">
+            <tuv xml:lang="en">
+                <seg>About Me</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>À propos</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Обо мне</seg>
+            </tuv>
+        </tu>
+
+        <tu id="about.text">
+            <tuv xml:lang="en">
+                <seg>
+                    Computer-science engineering student at Sup Galilée (Paris) and Data Engineer
+                    apprentice at Société Générale Insurance.
+                    Passionate about ML, optimisation and clean code.
+                </seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>
+                    Étudiant en ingénierie informatique à Sup Galilée (Paris) et alternant Data
+                    Engineer chez Société Générale Assurance.
+                    Passionné par le ML, l’optimisation et le clean code.
+                </seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>
+                    Студент-инженер факультета информатики Sup Galilée (Париж) и Data
+                    Engineer-стажёр в Société Générale Insurance.
+                    Увлекаюсь ML, оптимизацией и чистым кодом.
+                </seg>
+            </tuv>
+        </tu>
+
+        <!-- —— кнопки CTA —— -->
+        <tu id="contact.cta">
+            <tuv xml:lang="en">
+                <seg>Get In Touch</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Me contacter</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Связаться</seg>
+            </tuv>
+        </tu>
+
+        <tu id="about.cta">
+            <tuv xml:lang="en">
+                <seg>Learn More</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>En savoir plus</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Узнать больше</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «Навыки» —— -->
+        <tu id="skills.title">
+            <tuv xml:lang="en">
+                <seg>Technical Skills</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Compétences techniques</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Технические навыки</seg>
+            </tuv>
+        </tu>
+
+        <tu id="skills.programming">
+            <tuv xml:lang="en">
+                <seg>Programming Languages</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Langages de programmation</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Языки программирования</seg>
+            </tuv>
+        </tu>
+
+        <tu id="skills.programming.list">
+            <tuv xml:lang="en">
+                <seg>Python, JavaScript, PHP, SQL, Java, C++</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Python, JavaScript, PHP, SQL, Java, C++</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Python, JavaScript, PHP, SQL, Java, C++</seg>
+            </tuv>
+        </tu>
+
+        <tu id="skills.frameworks">
+            <tuv xml:lang="en">
+                <seg>Frameworks &amp; Technologies</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Frameworks et technologies</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Фреймворки и технологии</seg>
+            </tuv>
+        </tu>
+
+        <tu id="skills.frameworks.list">
+            <tuv xml:lang="en">
+                <seg>React, Node.js, Django, Apache Spark, Docker, AWS</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>React, Node.js, Django, Apache Spark, Docker, AWS</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>React, Node.js, Django, Apache Spark, Docker, AWS</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «Проекты» —— -->
+        <tu id="projects.title">
+            <tuv xml:lang="en">
+                <seg>Featured Projects</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Projets phares</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Основные проекты</seg>
+            </tuv>
+        </tu>
+
+        <tu id="project1.title">
+            <tuv xml:lang="en">
+                <seg>Data Pipeline Optimization</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Optimisation de pipeline de données</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Оптимизация пайплайна данных</seg>
+            </tuv>
+        </tu>
+
+        <tu id="project1.description">
+            <tuv xml:lang="en">
+                <seg>Developed an automated data processing pipeline using Apache Spark and Python,
+                    reducing processing time by 60% for large-scale insurance data analysis.</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Développement d'un pipeline de traitement de données automatisé avec Apache
+                    Spark et Python, réduisant le temps de traitement de 60% pour l'analyse de
+                    données d'assurance à grande échelle.</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Разработка автоматизированного пайплайна обработки данных с использованием
+                    Apache Spark и Python, сокращающего время обработки на 60% для анализа страховых
+                    данных большого объема.</seg>
+            </tuv>
+        </tu>
+
+        <tu id="project2.title">
+            <tuv xml:lang="en">
+                <seg>ML Risk Assessment Model</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Modèle ML d'évaluation des risques</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>ML модель оценки рисков</seg>
+            </tuv>
+        </tu>
+
+        <tu id="project2.description">
+            <tuv xml:lang="en">
+                <seg>Built a machine learning model for insurance risk assessment using ensemble
+                    methods, achieving 92% accuracy in risk prediction and improving decision-making
+                    processes.</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Construction d'un modèle d'apprentissage automatique pour l'évaluation des
+                    risques d'assurance utilisant des méthodes d'ensemble, atteignant 92% de
+                    précision dans la prédiction des risques et améliorant les processus de prise de
+                    décision.</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Создание модели машинного обучения для оценки страховых рисков с использованием
+                    методов ансамбля, достигающей 92% точности в прогнозировании рисков и улучшающей
+                    процессы принятия решений.</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «Контакты» —— -->
+        <tu id="contact.title">
+            <tuv xml:lang="en">
+                <seg>Get In Touch</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Contact</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Контакты</seg>
+            </tuv>
+        </tu>
+
+        <tu id="contact.text">
+            <tuv xml:lang="en">
+                <seg>Feel free to reach out for collaboration opportunities or just to say hello!</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>N'hésitez pas à me contacter pour des opportunités de collaboration ou
+                    simplement pour dire bonjour !</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Свяжитесь со мной для сотрудничества или просто чтобы поздороваться!</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «Видео» —— -->
+        <tu id="video.title">
+            <tuv xml:lang="en">
+                <seg>Quick Introduction</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Brève présentation</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Краткое видео</seg>
+            </tuv>
+        </tu>
+
+    </body>
+</tmx>

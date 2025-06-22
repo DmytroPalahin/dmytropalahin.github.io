@@ -1,0 +1,6 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <https://dmytro.example/schema#> .
+
+ex:Project a rdfs:Class ;
+    rdfs:label "Project"@en , "Projet"@fr , "Проект"@ru ;
+    rdfs:comment "Academic or personal project listed in the portfolio"@en .

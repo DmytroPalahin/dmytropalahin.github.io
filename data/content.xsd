@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:element name="tmx">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="header" type="HeaderType" />
+                <xs:element name="body" type="BodyType" />
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="HeaderType">
+        <xs:attribute name="srclang" type="xs:language" use="required" />
+        <xs:attribute name="adminlang" type="xs:language" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="BodyType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="tu" type="TuType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TuType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="tuv" type="TuvType" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="TuvType">
+        <xs:sequence>
+            <xs:element name="seg" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute ref="xml:lang" use="required" />
+    </xs:complexType>
+</xs:schema>

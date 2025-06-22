@@ -1,0 +1,8 @@
+PREFIX schema: <http://schema.org/>
+
+SELECT ?name ?title
+WHERE {
+  ?p a schema:Person ;
+     schema:name ?name ;
+     schema:jobTitle ?title .
+}

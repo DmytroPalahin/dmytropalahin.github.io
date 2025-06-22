@@ -1,11 +1,27 @@
-# Portfolio Web Application
+# Multilingual Portfolio (XML + XSLT + RDFa + SPARQL)
 
-This project is a modern and interactive portfolio web application that showcases various projects with support for multiple languages and theme selection. The application is built using XML, XSLT, and TypeScript, adhering to web semantics best practices.
+Demo portfolio for Sup Galilée “Web sémantique” course.  
+*Languages*: English / Français / Русский.
 
-## Features
+## Tech stack
 
-- **Multi-language Support**: The portfolio supports English, French, Ukrainian, and Russian languages.
-- **Theme Selection**: Users can toggle between light and dark themes for a personalized experience.
-- **Responsive Design**: The application is designed to be responsive and user-friendly across different devices.
+- PHP 8.1 (mini-MVC, no framework)
+- XML (TM X) + XSD validation
+- XSLT 1.0 ⟶ XHTML5 + RDFa (schema.org)
+- RDF/RDFS in Turtle
+- SPARQL demo query
+- Plain CSS, no build-step
 
-## Project Structure
+Run locally:
+
+```bash
+php -S localhost:8000 -t public
+
+http://localhost:8000
+```
+
+```bash
+lsof -i :8000
+
+kill -9 <PID>
+```
