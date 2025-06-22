@@ -115,7 +115,7 @@
                         <div class="language-selector">
                             <button class="language-toggle" id="language-toggle" type="button"
                                 aria-label="Change language">
-                                <svg class="language-icon" width="16" height="16"
+                                <svg class="language-icon" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="m5 8 6 6"></path>
@@ -124,19 +124,6 @@
                                     <path d="M7 2h1"></path>
                                     <path d="m22 22-5-10-5 10"></path>
                                     <path d="M14 18h6"></path>
-                                </svg>
-                                <span class="current-lang">
-                                    <xsl:choose>
-                                        <xsl:when test="$uiLang = 'en'">EN</xsl:when>
-                                        <xsl:when test="$uiLang = 'fr'">FR</xsl:when>
-                                        <xsl:when test="$uiLang = 'ru'">RU</xsl:when>
-                                        <xsl:otherwise>EN</xsl:otherwise>
-                                    </xsl:choose>
-                                </span>
-                                <svg class="chevron-down" width="12" height="12" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6,9 12,15 18,9"></polyline>
                                 </svg>
                             </button>
                             <div class="language-dropdown" id="language-dropdown">
@@ -152,30 +139,12 @@
                                             <xsl:if test="$isActive">
                                                 <xsl:attribute name="class">language-option active</xsl:attribute>
                                             </xsl:if>
-                                            <span class="language-code">
-                                                <xsl:choose>
-                                                    <xsl:when test="$code = 'en'">EN</xsl:when>
-                                                    <xsl:when test="$code = 'fr'">FR</xsl:when>
-                                                    <xsl:when test="$code = 'ru'">RU</xsl:when>
-                                                    <xsl:otherwise><xsl:value-of select="$code" /></xsl:otherwise>
-                                                </xsl:choose>
-                                            </span>
-                                            <span class="language-name">
-                                                <xsl:choose>
-                                                    <xsl:when test="$code = 'en'">English</xsl:when>
-                                                    <xsl:when test="$code = 'fr'">Français</xsl:when>
-                                                    <xsl:when test="$code = 'ru'">Русский</xsl:when>
-                                                    <xsl:otherwise><xsl:value-of select="$code" /></xsl:otherwise>
-                                                </xsl:choose>
-                                            </span>
-                                            <xsl:if test="$isActive">
-                                                <svg class="check-icon" width="16" height="16"
-                                                    viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round">
-                                                    <polyline points="20,6 9,17 4,12"></polyline>
-                                                </svg>
-                                            </xsl:if>
+                                            <xsl:choose>
+                                                <xsl:when test="$code = 'en'">EN</xsl:when>
+                                                <xsl:when test="$code = 'fr'">FR</xsl:when>
+                                                <xsl:when test="$code = 'ru'">RU</xsl:when>
+                                                <xsl:otherwise><xsl:value-of select="$code" /></xsl:otherwise>
+                                            </xsl:choose>
                                         </a>
                                     </xsl:for-each>
                                 </div>
