@@ -38,8 +38,8 @@ final class LanguageDetector
             }
         }
         
-        // 5. Fallback к первому языку из списка поддерживаемых (приоритет #5)
-        $_SESSION['lang'] = self::SUPPORTED[0];
-        return self::SUPPORTED[0];
+        // 5. Fallback к английскому языку по умолчанию (приоритет #5)
+        $_SESSION['lang'] = 'en';
+        return 'en';
     }
 }

@@ -341,59 +341,78 @@
                     });
                 }
 
-                // Language switching with hash preservation
+                // Language switching with hash preservation (smooth, no jumping)
                 document.querySelectorAll('.lang-flag').forEach(link => {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
+                        
                         const currentHash = window.location.hash;
                         const langCode = this.getAttribute('data-lang');
                         const href = this.getAttribute('href');
                         
-                        // Store current scroll position and hash
-                        sessionStorage.setItem('scrollPosition', window.pageYOffset);
-                        sessionStorage.setItem('targetHash', currentHash);
+                        // Add class to prevent any visual jumps
+                        document.body.classList.add('lang-switching');
                         
-                        // Use POST form for language switching (requirement #2)
-                        const form = document.getElementById('lang-form-' + langCode);
-                        if (form && Math.random() < 0.5) { // Randomly use POST or GET
-                            // Add hash to form action if needed
-                            form.action = currentHash ? '/' + currentHash : '/';
-                            form.submit();
-                        } else {
-                            // Fallback to GET method
-                            window.location.href = href + currentHash;
-                        }
+                        // Store scroll position and hash for restoration
+                        const currentScrollY = window.pageYOffset;
+                        sessionStorage.setItem('scrollPosition', currentScrollY);
+                        sessionStorage.setItem('targetHash', currentHash);
+                        sessionStorage.setItem('preventScrollRestore', 'true');
+                        
+                        // Redirect with current hash preserved
+                        window.location.href = href + currentHash;
                     });
                 });
 
-                // Restore scroll position if no hash but stored position exists
+                // Restore scroll position (instant, no jumping)
                 window.addEventListener('load', function() {
-                    // Check for stored target hash first
+                    // Remove any language switching class immediately
+                    document.body.classList.remove('lang-switching');
+                    
+                    const preventScrollRestore = sessionStorage.getItem('preventScrollRestore');
                     const storedHash = sessionStorage.getItem('targetHash');
+                    const storedScrollPos = sessionStorage.getItem('scrollPosition');
                     const currentHash = window.location.hash || storedHash;
                     
-                    if (currentHash) {
-                        // Update URL if we have stored hash but no current hash
-                        if (!window.location.hash && storedHash) {
-                            history.replaceState(null, null, storedHash);
-                        }
+                    if (preventScrollRestore === 'true') {
+                        // Disable smooth scrolling temporarily for instant restoration
+                        const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+                        document.documentElement.style.scrollBehavior = 'auto';
                         
-                        // Scroll to target section
-                        setTimeout(function() {
+                        if (currentHash) {
+                            // Update URL hash without scrolling
+                            if (!window.location.hash && storedHash) {
+                                history.replaceState(null, null, storedHash);
+                            }
+                            
+                            // Find target and scroll instantly
                             const target = document.querySelector(currentHash);
                             if (target) {
-                                target.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start'
-                                });
+                                target.scrollIntoView({ block: 'start' });
                             }
+                        } else if (storedScrollPos) {
+                            // Restore exact scroll position instantly
+                            window.scrollTo(0, parseInt(storedScrollPos));
+                        }
+                        
+                        // Restore smooth scrolling after a brief delay
+                        setTimeout(() => {
+                            document.documentElement.style.scrollBehavior = originalScrollBehavior;
                         }, 100);
+                        
+                        // Clear the flag
+                        sessionStorage.removeItem('preventScrollRestore');
                     } else {
-                        // Restore scroll position if available
-                        const scrollPos = sessionStorage.getItem('scrollPosition');
-                        if (scrollPos) {
+                        // Normal hash scrolling for direct navigation
+                        if (currentHash) {
                             setTimeout(function() {
-                                window.scrollTo(0, parseInt(scrollPos));
+                                const target = document.querySelector(currentHash);
+                                if (target) {
+                                    target.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                }
                             }, 100);
                         }
                     }
