@@ -111,16 +111,73 @@
                             </li>
                         </ul>
 
-                        <!-- Language Switch -->
-                        <div class="lang-switch">
-                            <xsl:for-each select="//tu[@id='site.title']/tuv">
-                                <xsl:variable name="code" select="@xml:lang" />
-                                <a
-                                    href="?lang={$code}" class="lang-flag" title="Switch to {$code}"
-                                    data-lang="{$code}">
-                                    <img src="assets/img/flags/{$code}.svg" alt="{$code}" />
-                                </a>
-                            </xsl:for-each>
+                        <!-- Modern Language Switch -->
+                        <div class="language-selector">
+                            <button class="language-toggle" id="language-toggle" type="button"
+                                aria-label="Language selector">
+                                <svg class="language-icon" width="16" height="16"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                        d="m2 12c0 4.418 2.015 8.366 5.192 11.009 0.508-1.008 1.265-1.951 2.192-2.721 1.387-1.156 3.118-1.788 4.928-1.788s3.541 0.632 4.928 1.788c0.927 0.77 1.684 1.713 2.192 2.721 3.177-2.643 5.192-6.591 5.192-11.009z"></path>
+                                </svg>
+                                <span class="current-lang">
+                                    <xsl:choose>
+                                        <xsl:when test="$uiLang = 'en'">EN</xsl:when>
+                                        <xsl:when test="$uiLang = 'fr'">FR</xsl:when>
+                                        <xsl:when test="$uiLang = 'ru'">RU</xsl:when>
+                                        <xsl:otherwise>EN</xsl:otherwise>
+                                    </xsl:choose>
+                                </span>
+                                <svg class="chevron-down" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6,9 12,15 18,9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="language-dropdown" id="language-dropdown">
+                                <div class="language-dropdown-content">
+                                    <xsl:for-each select="//tu[@id='site.title']/tuv">
+                                        <xsl:variable name="code" select="@xml:lang" />
+                                        <xsl:variable
+                                            name="isActive" select="$code = $uiLang" />
+                                        <a
+                                            href="?lang={$code}"
+                                            class="language-option"
+                                            data-lang="{$code}">
+                                            <xsl:if test="$isActive">
+                                                <xsl:attribute name="class">language-option active</xsl:attribute>
+                                            </xsl:if>
+                                            <span class="language-code">
+                                                <xsl:choose>
+                                                    <xsl:when test="$code = 'en'">EN</xsl:when>
+                                                    <xsl:when test="$code = 'fr'">FR</xsl:when>
+                                                    <xsl:when test="$code = 'ru'">RU</xsl:when>
+                                                    <xsl:otherwise><xsl:value-of select="$code" /></xsl:otherwise>
+                                                </xsl:choose>
+                                            </span>
+                                            <span class="language-name">
+                                                <xsl:choose>
+                                                    <xsl:when test="$code = 'en'">English</xsl:when>
+                                                    <xsl:when test="$code = 'fr'">Français</xsl:when>
+                                                    <xsl:when test="$code = 'ru'">Русский</xsl:when>
+                                                    <xsl:otherwise><xsl:value-of select="$code" /></xsl:otherwise>
+                                                </xsl:choose>
+                                            </span>
+                                            <xsl:if test="$isActive">
+                                                <svg class="check-icon" width="16" height="16"
+                                                    viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                                </svg>
+                                            </xsl:if>
+                                        </a>
+                                    </xsl:for-each>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Hidden POST forms for language switching (requirement #2) -->
@@ -295,7 +352,107 @@
                             }, 600);
                         });
                     }
+                    
+                    // Modern language selector
+                    const languageToggle = document.getElementById('language-toggle');
+                    const languageDropdown = document.getElementById('language-dropdown');
+                    
+                    if (languageToggle && languageDropdown) {
+                        languageToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            
+                            const isOpen = languageDropdown.classList.contains('open');
+                            if (isOpen) {
+                                languageDropdown.classList.remove('open');
+                                languageToggle.setAttribute('aria-expanded', 'false');
+                            } else {
+                                languageDropdown.classList.add('open');
+                                languageToggle.setAttribute('aria-expanded', 'true');
+                            }
+                        });
+                        
+                        // Close dropdown when clicking outside
+                        document.addEventListener('click', function(e) {
+                            if (!languageToggle.contains(e.target) && !languageDropdown.contains(e.target)) {
+                                languageDropdown.classList.remove('open');
+                                languageToggle.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                        
+                        // Enhanced language switching with smooth transitions
+                        const languageOptions = document.querySelectorAll('.language-option');
+                        languageOptions.forEach(option => {
+                            option.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                
+                                const href = this.getAttribute('href');
+                                const langCode = this.getAttribute('data-lang');
+                                const currentHash = window.location.hash;
+                                
+                                // Store current position for smooth transition
+                                const currentScrollY = window.pageYOffset;
+                                sessionStorage.setItem('scrollPosition', currentScrollY);
+                                sessionStorage.setItem('targetHash', currentHash);
+                                sessionStorage.setItem('preventScrollRestore', 'true');
+                                sessionStorage.setItem('langChanged', 'true');
+                                
+                                // Show loading animation
+                                showLanguageLoader(langCode);
+                                
+                                // Close dropdown
+                                languageDropdown.classList.remove('open');
+                                languageToggle.setAttribute('aria-expanded', 'false');
+                                
+                                // Modern page transition with blur and fade effects
+                                document.body.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                                document.body.style.opacity = '0.3';
+                                document.body.style.filter = 'blur(2px)';
+                                document.body.style.transform = 'scale(0.98)';
+                                
+                                setTimeout(() => {
+                                    window.location.href = href + currentHash;
+                                }, 200);
+                            });
+                        });
+                    }
                 });
+
+                // Language switching functions
+                function showLanguageLoader(langCode) {
+                    const loader = document.getElementById('language-loader');
+                    const loaderText = document.getElementById('loader-text');
+                    const langNames = {
+                        'en': 'English',
+                        'fr': 'Français', 
+                        'ru': 'Русский'
+                    };
+                    
+                    if (loader && loaderText) {
+                        loaderText.textContent = `Switching to ${langNames[langCode] || langCode}...`;
+                        loader.classList.add('active');
+                    }
+                    document.body.classList.add('lang-switching');
+                }
+
+                function showLanguageIndicator(langCode) {
+                    const indicator = document.getElementById('lang-indicator');
+                    const langData = {
+                        'en': { flag: '\u{1F1FA}\u{1F1F8}', name: 'English' },
+                        'fr': { flag: '\u{1F1EB}\u{1F1F7}', name: 'Français' }, 
+                        'ru': { flag: '\u{1F1F7}\u{1F1FA}', name: 'Русский' }
+                    };
+                    
+                    if (indicator) {
+                        const data = langData[langCode] || { flag: '', name: langCode };
+                        indicator.innerHTML = `<span class="flag-emoji">${data.flag}</span> <span class="lang-name">${data.name}</span>`;
+                        indicator.classList.add('show');
+                        
+                        setTimeout(() => {
+                            indicator.classList.remove('show');
+                        }, 2500);
+                    }
+                }
 
                 // Smooth scrolling navigation with hash preservation
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
