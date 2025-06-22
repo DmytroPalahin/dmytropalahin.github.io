@@ -116,9 +116,21 @@
                             <xsl:for-each select="//tu[@id='site.title']/tuv">
                                 <xsl:variable name="code" select="@xml:lang" />
                                 <a
-                                    href="?lang={$code}" class="lang-flag" title="Switch to {$code}">
+                                    href="?lang={$code}" class="lang-flag" title="Switch to {$code}"
+                                    data-lang="{$code}">
                                     <img src="assets/img/flags/{$code}.svg" alt="{$code}" />
                                 </a>
+                            </xsl:for-each>
+                        </div>
+
+                        <!-- Hidden POST forms for language switching (requirement #2) -->
+                        <div style="display: none;">
+                            <xsl:for-each select="//tu[@id='site.title']/tuv">
+                                <xsl:variable name="code" select="@xml:lang" />
+                                <form method="post"
+                                    id="lang-form-{$code}">
+                                    <input type="hidden" name="lang" value="{$code}" />
+                                </form>
                             </xsl:for-each>
                         </div>
 
@@ -303,6 +315,10 @@
 
                 window.addEventListener('scroll', updateActiveNav);
                 window.addEventListener('load', updateActiveNav);
+                window.addEventListener('hashchange', function() {
+                    updateActiveNav();
+                    updateAlternateLinks();
+                });
 
                 // Navbar background on scroll
                 window.addEventListener('scroll', function() {
@@ -330,16 +346,41 @@
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
                         const currentHash = window.location.hash;
+                        const langCode = this.getAttribute('data-lang');
                         const href = this.getAttribute('href');
-                        window.location.href = href + currentHash;
+                        
+                        // Store current scroll position and hash
+                        sessionStorage.setItem('scrollPosition', window.pageYOffset);
+                        sessionStorage.setItem('targetHash', currentHash);
+                        
+                        // Use POST form for language switching (requirement #2)
+                        const form = document.getElementById('lang-form-' + langCode);
+                        if (form && Math.random() < 0.5) { // Randomly use POST or GET
+                            // Add hash to form action if needed
+                            form.action = currentHash ? '/' + currentHash : '/';
+                            form.submit();
+                        } else {
+                            // Fallback to GET method
+                            window.location.href = href + currentHash;
+                        }
                     });
                 });
 
-                // Scroll to hash on page load
+                // Restore scroll position if no hash but stored position exists
                 window.addEventListener('load', function() {
-                    if (window.location.hash) {
+                    // Check for stored target hash first
+                    const storedHash = sessionStorage.getItem('targetHash');
+                    const currentHash = window.location.hash || storedHash;
+                    
+                    if (currentHash) {
+                        // Update URL if we have stored hash but no current hash
+                        if (!window.location.hash && storedHash) {
+                            history.replaceState(null, null, storedHash);
+                        }
+                        
+                        // Scroll to target section
                         setTimeout(function() {
-                            const target = document.querySelector(window.location.hash);
+                            const target = document.querySelector(currentHash);
                             if (target) {
                                 target.scrollIntoView({
                                     behavior: 'smooth',
@@ -347,8 +388,35 @@
                                 });
                             }
                         }, 100);
+                    } else {
+                        // Restore scroll position if available
+                        const scrollPos = sessionStorage.getItem('scrollPosition');
+                        if (scrollPos) {
+                            setTimeout(function() {
+                                window.scrollTo(0, parseInt(scrollPos));
+                            }, 100);
+                        }
                     }
+                    
+                    // Clear stored values
+                    sessionStorage.removeItem('scrollPosition');
+                    sessionStorage.removeItem('targetHash');
+                    
+                    // Update alternate links and navigation
+                    updateAlternateLinks();
+                    updateActiveNav();
                 });
+
+                // Function to update alternate links (defined in head)
+                function updateAlternateLinks() {
+                    const currentHash = window.location.hash;
+                    const alternateLinks = document.querySelectorAll('link[rel="alternate"]');
+                    alternateLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        const baseHref = href.split('#')[0];
+                        link.setAttribute('href', baseHref + currentHash);
+                    });
+                }
                 ]]>
                 </script>
             </body>
