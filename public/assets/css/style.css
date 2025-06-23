@@ -31,7 +31,7 @@ html {
     --gradient-primary: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
     --gradient-secondary: linear-gradient(135deg, #34c759 0%, #30d158 100%);
     --gradient-hero: linear-gradient(135deg, #000000 0%, #1c1c1e 50%, #2c2c2e 100%);
-    
+
     /* Typography - SF Pro Display/Text inspired */
     --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
     --font-size-xs: 0.75rem;
@@ -44,7 +44,7 @@ html {
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
     --font-size-6xl: 3.75rem;
-    
+
     /* Spacing */
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -56,18 +56,18 @@ html {
     --space-16: 4rem;
     --space-20: 5rem;
     --space-24: 6rem;
-    
+
     /* Dark Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.25);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5);
     --shadow-glow: 0 0 20px rgb(0 122 255 / 0.3);
-    
+
     /* Animation - Apple-like easing */
     --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    
+
     /* Glass morphism */
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
@@ -130,8 +130,13 @@ body.loading {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Language Indicator */
@@ -327,10 +332,21 @@ body.loading {
     position: relative;
 }
 
-.language-option:nth-child(1) { animation-delay: 0ms; }
-.language-option:nth-child(2) { animation-delay: 30ms; }
-.language-option:nth-child(3) { animation-delay: 60ms; }
-.language-option:nth-child(4) { animation-delay: 90ms; }
+.language-option:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.language-option:nth-child(2) {
+    animation-delay: 30ms;
+}
+
+.language-option:nth-child(3) {
+    animation-delay: 60ms;
+}
+
+.language-option:nth-child(4) {
+    animation-delay: 90ms;
+}
 
 .language-option:hover {
     background: var(--glass-bg-hover);
@@ -423,8 +439,8 @@ body.loading {
     right: 0;
     bottom: 0;
     background: radial-gradient(circle at 30% 40%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(88, 86, 214, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(52, 199, 89, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 80% 20%, rgba(88, 86, 214, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(52, 199, 89, 0.05) 0%, transparent 50%);
 }
 
 .hero-container {
@@ -479,39 +495,57 @@ body.loading {
 }
 
 @keyframes wave {
-    0%, 10%, 20% {
+
+    0%,
+    10%,
+    20% {
         transform: rotate(0deg);
     }
-    30%, 40% {
+
+    30%,
+    40% {
         transform: rotate(-10deg);
     }
-    50%, 60% {
+
+    50%,
+    60% {
         transform: rotate(12deg);
     }
-    70%, 80% {
+
+    70%,
+    80% {
         transform: rotate(-10deg);
     }
-    90%, 100% {
+
+    90%,
+    100% {
         transform: rotate(0deg);
     }
 }
 
 @keyframes activeWave {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(0deg);
     }
+
     15% {
         transform: rotate(-15deg);
     }
+
     30% {
         transform: rotate(20deg);
     }
+
     45% {
         transform: rotate(-15deg);
     }
+
     60% {
         transform: rotate(20deg);
     }
+
     75% {
         transform: rotate(-10deg);
     }
@@ -778,6 +812,7 @@ body.loading {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -790,6 +825,7 @@ body.loading {
         opacity: 0;
         transform: translateY(-15px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -801,6 +837,7 @@ body.loading {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
     to {
         opacity: 0;
         transform: translateY(-15px) scale(0.95);
@@ -812,6 +849,7 @@ body.loading {
         opacity: 0;
         transform: translateX(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -953,7 +991,7 @@ body.loading {
     html {
         scroll-behavior: auto;
     }
-    
+
     *,
     *::before,
     *::after {

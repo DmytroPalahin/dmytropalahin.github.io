@@ -60,6 +60,76 @@
 
                 <link rel="stylesheet" href="assets/css/style.css" />
 
+                <!-- Custom styles for language selector hover effects -->
+                <style>
+                <![CDATA[
+                /* Language selector hover effects */
+                .language-option {
+                    position: relative;
+                    padding: 8px 16px;
+                    border-radius: 6px;
+                    color: rgba(255, 255, 255, 0.8);
+                    text-decoration: none;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    font-weight: 500;
+                    font-size: 14px;
+                    letter-spacing: 0.5px;
+                }
+
+                /* Hover effect - приглушенный синий без линии */
+                .language-option:hover:not(.active) {
+                    background-color: rgba(59, 130, 246, 0.15);
+                    color: rgba(147, 197, 253, 0.9);
+                    transform: translateX(2px);
+                    backdrop-filter: blur(8px);
+                }
+
+                /* Active state - яркая синяя линия слева */
+                .language-option.active {
+                    background-color: rgba(59, 130, 246, 0.1);
+                    color: rgba(147, 197, 253, 1);
+                    font-weight: 600;
+                }
+
+                .language-option.active::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 3px;
+                    height: 16px;
+                    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+                    border-radius: 0 2px 2px 0;
+                    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+                }
+
+                /* Smooth dropdown animation */
+                .language-dropdown {
+                    transform: translateY(-10px);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .language-dropdown.open {
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                /* Language toggle button hover */
+                .language-toggle:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    transform: scale(1.05);
+                }
+
+                .language-toggle:hover .language-icon {
+                    color: rgba(147, 197, 253, 0.9);
+                }
+                ]]>
+                </style>
+
                 <!-- Alternate language links for SEO -->
                 <xsl:for-each select="//tu[@id='site.title']/tuv">
                     <xsl:variable name="code" select="@xml:lang" />
