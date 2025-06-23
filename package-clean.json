@@ -1,0 +1,40 @@
+{
+    "name": "dmytropalahin-portfolio",
+    "version": "1.0.0",
+    "description": "Multilingual portfolio website built with PHP, XSLT, and modern CSS",
+    "private": true,
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    },
+    "scripts": {
+        "dev": "php -S localhost:8080 -t public",
+        "start": "php -S localhost:8080 -t public",
+        "deploy": "npx vercel@latest --prod",
+        "deploy-preview": "npx vercel@latest",
+        "vercel": "npx vercel@latest",
+        "clean": "rm -rf dist",
+        "clean-all": "rm -rf node_modules dist package-lock.json",
+        "postinstall": "echo 'Dependencies installed successfully'"
+    },
+    "devDependencies": {},
+    "keywords": [
+        "portfolio",
+        "multilingual",
+        "php",
+        "xslt",
+        "xml",
+        "vercel",
+        "web-development"
+    ],
+    "author": "Dmytro Palahin",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dmytropalahin/dmytropalahin.github.io.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dmytropalahin/dmytropalahin.github.io/issues"
+    },
+    "homepage": "https://dmytropalahin.github.io"
+}
