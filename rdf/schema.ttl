@@ -2,5 +2,5 @@
 @prefix ex:   <https://dmytro.example/schema#> .
 
 ex:Project a rdfs:Class ;
-    rdfs:label "Project"@en , "Projet"@fr , "Проект"@ru ;
+    rdfs:label "Project"@en , "Projet"@fr , "Проект"@ru , "Проєкт"@ua ;
     rdfs:comment "Academic or personal project listed in the portfolio"@en .

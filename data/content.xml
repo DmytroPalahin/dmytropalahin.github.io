@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TMX-подобная структура для трёх языков -->
+<!-- TMX-подобная структура для четырёх языков: EN, FR, UA, RU -->
 <tmx version="1.4">
     <header srclang="en" adminlang="en" />
     <body>
-
         <!-- —— глобальные строки —— -->
         <tu id="site.title">
             <tuv xml:lang="en">
@@ -13,10 +12,12 @@
                 <seg>Portfolio de Dmytro Palahin</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Портфолио Дмитро Палагина</seg>
+                <seg>Портфолио Дмитрия Палагина</seg>
+            </tuv>
+            <tuv xml:lang="ua">
+                <seg>Портфоліо Дмитра Палагіна</seg>
             </tuv>
         </tu>
-
         <tu id="person.greeting">
             <tuv xml:lang="en">
                 <seg>Hi there!</seg>
@@ -27,8 +28,10 @@
             <tuv xml:lang="ru">
                 <seg>Привет!</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Привіт!</seg>
+            </tuv>
         </tu>
-
         <tu id="person.name">
             <tuv xml:lang="en">
                 <seg>I'm Dmytro Palahin</seg>
@@ -37,10 +40,12 @@
                 <seg>Je suis Dmytro Palahin</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Я Дмитро Палагин</seg>
+                <seg>Я Дмитрий Палагин</seg>
+            </tuv>
+            <tuv xml:lang="ua">
+                <seg>Я Дмитро Палагін</seg>
             </tuv>
         </tu>
-
         <tu id="person.role">
             <tuv xml:lang="en">
                 <seg>Full-Stack Developer | Data Engineer</seg>
@@ -51,8 +56,10 @@
             <tuv xml:lang="ru">
                 <seg>Full-stack разработчик и инженер данных</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Full-stack розробник і інженер даних</seg>
+            </tuv>
         </tu>
-
         <!-- —— навигация —— -->
         <tu id="nav.home">
             <tuv xml:lang="en">
@@ -64,8 +71,10 @@
             <tuv xml:lang="ru">
                 <seg>Главная</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Головна</seg>
+            </tuv>
         </tu>
-
         <!-- —— секция «О себе» —— -->
         <tu id="about.title">
             <tuv xml:lang="en">
@@ -77,8 +86,10 @@
             <tuv xml:lang="ru">
                 <seg>Обо мне</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Про мене</seg>
+            </tuv>
         </tu>
-
         <tu id="about.text">
             <tuv xml:lang="en">
                 <seg>
@@ -101,8 +112,12 @@
                     Увлекаюсь ML, оптимизацией и чистым кодом.
                 </seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Студент-інженер факультету інформатики Sup Galilée (Париж) та Data
+                    Engineer-стажер у Société Générale Insurance. Захоплююся ML, оптимізацією та
+                    чистим кодом.</seg>
+            </tuv>
         </tu>
-
         <!-- —— кнопки CTA —— -->
         <tu id="contact.cta">
             <tuv xml:lang="en">
@@ -114,8 +129,10 @@
             <tuv xml:lang="ru">
                 <seg>Связаться</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Зв'язатися зі мною</seg>
+            </tuv>
         </tu>
-
         <tu id="about.cta">
             <tuv xml:lang="en">
                 <seg>Learn More</seg>
@@ -126,8 +143,10 @@
             <tuv xml:lang="ru">
                 <seg>Узнать больше</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Дізнатися більше</seg>
+            </tuv>
         </tu>
-
         <!-- —— секция «Навыки» —— -->
         <tu id="skills.title">
             <tuv xml:lang="en">
@@ -139,8 +158,10 @@
             <tuv xml:lang="ru">
                 <seg>Технические навыки</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Мої навички</seg>
+            </tuv>
         </tu>
-
         <tu id="skills.programming">
             <tuv xml:lang="en">
                 <seg>Programming Languages</seg>
@@ -151,8 +172,10 @@
             <tuv xml:lang="ru">
                 <seg>Языки программирования</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Мови програмування</seg>
+            </tuv>
         </tu>
-
         <tu id="skills.programming.list">
             <tuv xml:lang="en">
                 <seg>Python, JavaScript, PHP, SQL, Java, C++</seg>
@@ -163,8 +186,10 @@
             <tuv xml:lang="ru">
                 <seg>Python, JavaScript, PHP, SQL, Java, C++</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Python, PHP, JavaScript, TypeScript, Java, SQL</seg>
+            </tuv>
         </tu>
-
         <tu id="skills.frameworks">
             <tuv xml:lang="en">
                 <seg>Frameworks &amp; Technologies</seg>
@@ -175,8 +200,10 @@
             <tuv xml:lang="ru">
                 <seg>Фреймворки и технологии</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Фреймворки та технології</seg>
+            </tuv>
         </tu>
-
         <tu id="skills.frameworks.list">
             <tuv xml:lang="en">
                 <seg>React, Node.js, Django, Apache Spark, Docker, AWS</seg>
@@ -187,8 +214,10 @@
             <tuv xml:lang="ru">
                 <seg>React, Node.js, Django, Apache Spark, Docker, AWS</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>React, Next.js, Laravel, Symfony, Docker, AWS, Apache Spark</seg>
+            </tuv>
         </tu>
-
         <!-- —— секция «Проекты» —— -->
         <tu id="projects.title">
             <tuv xml:lang="en">
@@ -200,8 +229,10 @@
             <tuv xml:lang="ru">
                 <seg>Основные проекты</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Мої проєкти</seg>
+            </tuv>
         </tu>
-
         <tu id="project1.title">
             <tuv xml:lang="en">
                 <seg>Data Pipeline Optimization</seg>
@@ -212,8 +243,10 @@
             <tuv xml:lang="ru">
                 <seg>Оптимизация пайплайна данных</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Багатомовний портфоліо сайт</seg>
+            </tuv>
         </tu>
-
         <tu id="project1.description">
             <tuv xml:lang="en">
                 <seg>Developed an automated data processing pipeline using Apache Spark and Python,
@@ -229,8 +262,11 @@
                     Apache Spark и Python, сокращающего время обработки на 60% для анализа страховых
                     данных большого объема.</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Сучасний портфоліо сайт з підтримкою трьох мов, побудований на PHP, XSLT та
+                    сучасному CSS.</seg>
+            </tuv>
         </tu>
-
         <tu id="project2.title">
             <tuv xml:lang="en">
                 <seg>ML Risk Assessment Model</seg>
@@ -241,8 +277,10 @@
             <tuv xml:lang="ru">
                 <seg>ML модель оценки рисков</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Система аналізу даних</seg>
+            </tuv>
         </tu>
-
         <tu id="project2.description">
             <tuv xml:lang="en">
                 <seg>Built a machine learning model for insurance risk assessment using ensemble
@@ -260,8 +298,11 @@
                     методов ансамбля, достигающей 92% точности в прогнозировании рисков и улучшающей
                     процессы принятия решений.</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>ETL пайплайн для обробки великих обсягів фінансових даних з використанням
+                    Apache Spark.</seg>
+            </tuv>
         </tu>
-
         <!-- —— секция «Контакты» —— -->
         <tu id="contact.title">
             <tuv xml:lang="en">
@@ -273,8 +314,10 @@
             <tuv xml:lang="ru">
                 <seg>Контакты</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Зв'язатися зі мною</seg>
+            </tuv>
         </tu>
-
         <tu id="contact.text">
             <tuv xml:lang="en">
                 <seg>Feel free to reach out for collaboration opportunities or just to say hello!</seg>
@@ -286,8 +329,10 @@
             <tuv xml:lang="ru">
                 <seg>Свяжитесь со мной для сотрудничества или просто чтобы поздороваться!</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Готовий до нових можливостей та співпраці. Напишіть мені!</seg>
+            </tuv>
         </tu>
-
         <!-- —— секция «Видео» —— -->
         <tu id="video.title">
             <tuv xml:lang="en">
@@ -299,7 +344,9 @@
             <tuv xml:lang="ru">
                 <seg>Краткое видео</seg>
             </tuv>
+            <tuv xml:lang="ua">
+                <seg>Відео</seg>
+            </tuv>
         </tu>
-
     </body>
 </tmx>

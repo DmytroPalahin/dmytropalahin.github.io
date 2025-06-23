@@ -14,6 +14,7 @@
             <xsl:attribute name="dir">
                 <xsl:choose>
                     <xsl:when test="$uiLang = 'ru'">ltr</xsl:when>
+                    <xsl:when test="$uiLang = 'ua'">ltr</xsl:when>
                     <xsl:otherwise>ltr</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
@@ -128,25 +129,30 @@
                             </button>
                             <div class="language-dropdown" id="language-dropdown">
                                 <div class="language-dropdown-content">
-                                    <xsl:for-each select="//tu[@id='site.title']/tuv">
-                                        <xsl:variable name="code" select="@xml:lang" />
-                                        <xsl:variable
-                                            name="isActive" select="$code = $uiLang" />
-                                        <a
-                                            href="?lang={$code}"
-                                            class="language-option"
-                                            data-lang="{$code}">
-                                            <xsl:if test="$isActive">
-                                                <xsl:attribute name="class">language-option active</xsl:attribute>
-                                            </xsl:if>
-                                            <xsl:choose>
-                                                <xsl:when test="$code = 'en'">EN</xsl:when>
-                                                <xsl:when test="$code = 'fr'">FR</xsl:when>
-                                                <xsl:when test="$code = 'ru'">RU</xsl:when>
-                                                <xsl:otherwise><xsl:value-of select="$code" /></xsl:otherwise>
-                                            </xsl:choose>
-                                        </a>
-                                    </xsl:for-each>
+                                    <!-- English -->
+                                    <a href="?lang=en" class="language-option" data-lang="en">
+                                        <xsl:if test="$uiLang = 'en'">
+                                            <xsl:attribute name="class">language-option active</xsl:attribute>
+                                        </xsl:if>
+        EN </a>
+                                    <!-- French -->
+                                    <a href="?lang=fr" class="language-option" data-lang="fr">
+                                        <xsl:if test="$uiLang = 'fr'">
+                                            <xsl:attribute name="class">language-option active</xsl:attribute>
+                                        </xsl:if>
+        FR </a>
+                                    <!-- Ukrainian -->
+                                    <a href="?lang=ua" class="language-option" data-lang="ua">
+                                        <xsl:if test="$uiLang = 'ua'">
+                                            <xsl:attribute name="class">language-option active</xsl:attribute>
+                                        </xsl:if>
+        UA </a>
+                                    <!-- Russian -->
+                                    <a href="?lang=ru" class="language-option" data-lang="ru">
+                                        <xsl:if test="$uiLang = 'ru'">
+                                            <xsl:attribute name="class">language-option active</xsl:attribute>
+                                        </xsl:if>
+        RU </a>
                                 </div>
                             </div>
                         </div>
@@ -396,6 +402,7 @@
                     const langNames = {
                         'en': 'English',
                         'fr': 'Français', 
+                        'ua': 'Українська',
                         'ru': 'Русский'
                     };
                     
@@ -411,6 +418,7 @@
                     const langData = {
                         'en': { flag: '\u{1F1FA}\u{1F1F8}', name: 'English' },
                         'fr': { flag: '\u{1F1EB}\u{1F1F7}', name: 'Français' }, 
+                        'ua': { flag: '\u{1F1FA}\u{1F1E6}', name: 'Українська' },
                         'ru': { flag: '\u{1F1F7}\u{1F1FA}', name: 'Русский' }
                     };
                     

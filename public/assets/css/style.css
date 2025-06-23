@@ -324,11 +324,13 @@ body.loading {
     font-size: 13px;
     font-weight: 500;
     min-height: 28px;
+    position: relative;
 }
 
 .language-option:nth-child(1) { animation-delay: 0ms; }
 .language-option:nth-child(2) { animation-delay: 30ms; }
 .language-option:nth-child(3) { animation-delay: 60ms; }
+.language-option:nth-child(4) { animation-delay: 90ms; }
 
 .language-option:hover {
     background: var(--glass-bg-hover);
@@ -336,7 +338,7 @@ body.loading {
 }
 
 .language-option.active {
-    background: rgba(var(--primary-rgb), 0.1);
+    background: rgba(0, 122, 255, 0.1);
     color: var(--primary-color);
     font-weight: 600;
 }

@@ -1,7 +1,7 @@
 {
     "name": "portfolio-classic",
     "version": "1.0.0",
-    "description": "Multilingual portfolio website built with PHP, XSLT, and modern CSS",
+    "description": "Multilingual portfolio website built with PHP, XSLT, and modern CSS. Supports EN, FR, UA, RU languages.",
     "private": true,
     "engines": {
         "node": ">=18.0.0",

@@ -6,7 +6,7 @@ Multilingual portfolio website built with PHP, XSLT, and modern CSS.
 
 ## Features
 
-- 🌍 **Multilingual support** (EN, FR, RU) with smooth language switching
+- 🌍 **Multilingual support** (EN, FR, UA, RU) with smooth language switching
 - 🎨 **Modern dark theme** with Apple-style design and glassmorphism effects
 - 📱 **Fully responsive** and accessible design (WCAG compliant)
 - ⚡ **Fast XSLT transformations** for dynamic content rendering
@@ -195,7 +195,7 @@ The project includes these configuration files:
 ### Development Tips
 
 - **Hot reload**: The PHP built-in server automatically serves updated files
-- **Language testing**: Add `?lang=en|fr|ru` to URL to test different languages
+- **Language testing**: Add `?lang=en|fr|ru|ua` to URL to test different languages
 - **XML validation**: Use the included XSD schema to validate content.xml
 - **CSS changes**: Refresh browser to see CSS updates immediately
 

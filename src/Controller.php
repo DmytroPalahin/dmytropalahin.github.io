@@ -4,7 +4,7 @@ namespace Portfolio;
 
 final class Controller
 {
-    private const LANGS = ['en', 'fr', 'ru'];
+    private const LANGS = ['en', 'fr', 'ua', 'ru'];
 
     public function handleRequest(): void
     {

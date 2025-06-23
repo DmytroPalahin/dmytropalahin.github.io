@@ -4,7 +4,7 @@ namespace Portfolio;
 
 final class LanguageDetector
 {
-    private const SUPPORTED = ['en', 'fr', 'ru'];
+    private const SUPPORTED = ['en', 'fr', 'ua', 'ru'];
 
     public function detect(): string
     {
