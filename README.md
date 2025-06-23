@@ -209,8 +209,8 @@ The project includes these configuration files:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ---
 
-Built with ❤️ using PHP, XSLT, and modern web technologies.
+Built with ❤️ using PHP, XSLT, and modern web technologies
