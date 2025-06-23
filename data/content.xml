@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- TMX-подобная структура для четырёх языков: EN, FR, UA, RU -->
-<tmx version="1.4">
+<tmx version="1.4"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="content.xsd">
     <header srclang="en" adminlang="en" />
     <body>
         <!-- —— глобальные строки —— -->

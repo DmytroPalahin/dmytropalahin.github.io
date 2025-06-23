@@ -35,6 +35,19 @@ Multilingual portfolio website built with PHP, XSLT, and modern CSS.
 | **Preview Deploy** | `npm run deploy-preview` | Deploy preview version |
 | | `npm run clean-all` | Clean build files |
 
+## XML/XSD Validation & Build Commands
+
+| Make Command | Description | Terminal Equivalent |
+|--------------|-------------|---------------------|
+| `make validate` | Validate XML against XSD schema | `xmllint --noout --schema data/content.xsd data/content.xml` |
+| `make schema-check` | Validate XSD schema itself | `xmllint --noout data/content.xsd` |
+| `make full-check` | Full validation + build process | `make validate && make build` |
+| `make stats` | Show translation statistics | - |
+| `make build` | Generate HTML from XML+XSLT | - |
+| `make serve` | Start local development server | `php -S localhost:8080 -t public` |
+| `make clean` | Clean build directory | `rm -rf dist/` |
+| `make help` | Show all available commands | - |
+
 ## Local Development Setup
 
 ### Prerequisites
@@ -196,7 +209,9 @@ The project includes these configuration files:
 
 - **Hot reload**: The PHP built-in server automatically serves updated files
 - **Language testing**: Add `?lang=en|fr|ru|ua` to URL to test different languages
-- **XML validation**: Use the included XSD schema to validate content.xml
+- **XML validation**: Use `make validate` to validate content.xml against XSD schema
+- **Translation stats**: Use `make stats` to check translation completeness
+- **Full workflow**: Use `make full-check` for complete validation + build process
 - **CSS changes**: Refresh browser to see CSS updates immediately
 
 ## Contributing
