@@ -1,0 +1,50 @@
+<!-- node modules and package lock (if not needed for copying) -->
+node_modules
+npm-debug.log
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+<!-- logs and temporary files -->
+*.log
+*.tmp
+.cache/
+dist/
+build/
+coverage/
+out/
+.DS_Store
+
+<!-- ide -->
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+<!-- tests and examples (if not needed in production) -->
+__tests__/
+tests/
+test/
+*.spec.*
+*.test.*
+
+<!-- docs -->
+docs/
+*.md
+
+<!-- local dev conf -->
+.env.local
+.env.development
+.env.test
+.env.*
+
+<!-- dev scripts -->
+scripts/
+bin/
+tools/
+
+<!-- other commonly ignored files/folders -->
+examples/
+tmp/
+*.swp
+Thumbs.db

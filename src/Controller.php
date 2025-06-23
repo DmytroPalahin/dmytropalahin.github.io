@@ -6,6 +6,11 @@ final class Controller
 {
     private const LANGS = ['en', 'fr', 'ru'];
 
+    public function handleRequest(): void
+    {
+        echo $this->render();
+    }
+
     public function render(): string
     {
         $detector = new LanguageDetector();
@@ -27,7 +32,7 @@ final class Controller
     private function sameUrl(string $lang): string
     {
         // Сохраняем текущую страницу и якорь
-        $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
+        $baseUrl = strtok($_SERVER['REQUEST_URI'] ?? '/', '?');
         $query = $_GET;
         $query['lang'] = $lang;
         

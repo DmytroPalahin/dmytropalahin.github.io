@@ -1,0 +1,25 @@
+{
+    "name": "dmytropalahin/portfolio",
+    "description": "Multilingual portfolio website with XSLT transformation",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "ext-dom": "*",
+        "ext-xsl": "*",
+        "ext-libxml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Portfolio\\": "src/"
+        }
+    },
+    "scripts": {
+        "build": "echo 'Build completed'",
+        "post-install-cmd": [
+            "echo 'Dependencies installed successfully'"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

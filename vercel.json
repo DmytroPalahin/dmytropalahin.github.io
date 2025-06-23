@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.3"
+        }
+    },
+    "rewrites": [
+        {
+            "source": "/assets/(.*)",
+            "destination": "/public/assets/$1"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/api/index.php"
+        }
+    ]
+}

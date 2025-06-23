@@ -276,11 +276,15 @@ yarn-error.log*
 
 # vercel
 .vercel
+vendor/
+composer.lock
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 .turbo
+package-lock.json
+pnpm-lock.yaml
 
 # flex
 # lex.yy.c
