@@ -31,10 +31,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dmytropalahin/portfolio-classic.git"
+        "url": "git+https://github.com/DmytroPalahin/portfolio-classic.git"
     },
     "bugs": {
-        "url": "https://github.com/dmytropalahin/portfolio-classic/issues"
+        "url": "https://github.com/DmytroPalahin/portfolio-classic/issues"
     },
     "homepage": "https://portfolio-dmytropalahin.vercel.app/"
 }
