@@ -5,12 +5,14 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xhtml">
     <xsl:param name="uiLang" select="'en'" />
-    <xsl:output method="html" doctype-system="about:legacy-compat" indent="yes" />
+    <xsl:output method="html"
+        doctype-public=""
+        doctype-system=""
+        indent="yes"
+        encoding="UTF-8" />
 
     <xsl:template match="/">
-        <html xmlns="http://www.w3.org/1999/xhtml"
-            lang="{$uiLang}"
-            prefix="schema: http://schema.org/">
+        <html lang="{$uiLang}">
             <xsl:attribute name="dir">
                 <xsl:choose>
                     <xsl:when test="$uiLang = 'ru'">ltr</xsl:when>
@@ -27,10 +29,6 @@
                     content="Dmytro Palahin, Full-Stack Developer, Data Engineer, Portfolio" />
                 <meta name="author" content="{//tu[@id='person.name']/tuv[@xml:lang=$uiLang]/seg}" />
                 <meta name="robots" content="index, follow" />
-
-                <!-- Language and accessibility meta tags -->
-                <meta http-equiv="Content-Language" content="{$uiLang}" />
-                <meta name="language" content="{$uiLang}" />
 
                 <!-- Open Graph / Facebook -->
                 <meta property="og:type" content="website" />
@@ -53,7 +51,7 @@
 
                 <!-- Preload fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
                     rel="stylesheet" />
@@ -139,7 +137,7 @@
                 </xsl:for-each>
             </head>
 
-            <body typeof="schema:Person" resource="#me">
+            <body>
                 <!-- Navigation Bar -->
                 <nav class="navbar" id="navbar">
                     <div class="nav-container">
