@@ -1,6 +1,92 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 @prefix ex:   <https://dmytro.example/schema#> .
 
+# Portfolio-specific classes
 ex:Project a rdfs:Class ;
     rdfs:label "Project"@en , "Projet"@fr , "Проект"@ru , "Проєкт"@uk ;
-    rdfs:comment "Academic or personal project listed in the portfolio"@en .
+    rdfs:comment "Academic or personal project listed in the portfolio"@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+ex:Education a rdfs:Class ;
+    rdfs:label "Education"@en , "Formation"@fr , "Образование"@ru , "Освіта"@uk ;
+    rdfs:comment "Educational background entry"@en ;
+    rdfs:subClassOf schema:EducationalOccupationalCredential .
+
+ex:WorkExperience a rdfs:Class ;
+    rdfs:label "Work Experience"@en , "Expérience professionnelle"@fr , "Опыт работы"@ru , "Досвід роботи"@uk ;
+    rdfs:comment "Professional work experience entry"@en ;
+    rdfs:subClassOf schema:WorkExperience .
+
+ex:TechnicalSkill a rdfs:Class ;
+    rdfs:label "Technical Skill"@en , "Compétence technique"@fr , "Технический навык"@ru , "Технічна навичка"@uk ;
+    rdfs:comment "Technical skill or competency"@en ;
+    rdfs:subClassOf schema:DefinedTerm .
+
+ex:SoftSkill a rdfs:Class ;
+    rdfs:label "Soft Skill"@en , "Compétence relationnelle"@fr , "Гибкий навык"@ru , "М'який навик"@uk ;
+    rdfs:comment "Interpersonal or soft skill"@en ;
+    rdfs:subClassOf schema:DefinedTerm .
+
+ex:Publication a rdfs:Class ;
+    rdfs:label "Publication"@en , "Publication"@fr , "Публикация"@ru , "Публікація"@uk ;
+    rdfs:comment "Academic or professional publication"@en ;
+    rdfs:subClassOf schema:ScholarlyArticle .
+
+ex:Award a rdfs:Class ;
+    rdfs:label "Award"@en , "Récompense"@fr , "Награда"@ru , "Нагорода"@uk ;
+    rdfs:comment "Award or recognition received"@en ;
+    rdfs:subClassOf schema:Award .
+
+ex:Certification a rdfs:Class ;
+    rdfs:label "Certification"@en , "Certification"@fr , "Сертификация"@ru , "Сертифікація"@uk ;
+    rdfs:comment "Professional certification or credential"@en ;
+    rdfs:subClassOf schema:EducationalOccupationalCredential .
+
+ex:Interest a rdfs:Class ;
+    rdfs:label "Interest"@en , "Centre d'intérêt"@fr , "Интерес"@ru , "Інтерес"@uk ;
+    rdfs:comment "Personal interest or hobby"@en ;
+    rdfs:subClassOf schema:Thing .
+
+# Properties
+ex:hasSkillLevel a rdfs:Property ;
+    rdfs:label "has skill level"@en , "a niveau de compétence"@fr , "имеет уровень навыка"@ru , "має рівень навички"@uk ;
+    rdfs:comment "Indicates the proficiency level of a skill"@en ;
+    rdfs:domain ex:TechnicalSkill ;
+    rdfs:range rdfs:Literal .
+
+ex:usedTechnology a rdfs:Property ;
+    rdfs:label "used technology"@en , "technologie utilisée"@fr , "использованная технология"@ru , "використана технологія"@uk ;
+    rdfs:comment "Technology or tool used in a project or work experience"@en ;
+    rdfs:domain ex:Project , ex:WorkExperience ;
+    rdfs:range rdfs:Literal .
+
+ex:hasInstitution a rdfs:Property ;
+    rdfs:label "has institution"@en , "a institution"@fr , "имеет учреждение"@ru , "має установу"@uk ;
+    rdfs:comment "Educational institution associated with education or certification"@en ;
+    rdfs:domain ex:Education , ex:Certification ;
+    rdfs:range schema:EducationalOrganization .
+
+ex:hasEmployer a rdfs:Property ;
+    rdfs:label "has employer"@en , "a employeur"@fr , "имеет работодателя"@ru , "має роботодавця"@uk ;
+    rdfs:comment "Organization where work experience was gained"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range schema:Organization .
+
+ex:projectType a rdfs:Property ;
+    rdfs:label "project type"@en , "type de projet"@fr , "тип проекта"@ru , "тип проєкту"@uk ;
+    rdfs:comment "Category or type of project (academic, personal, professional)"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range rdfs:Literal .
+
+ex:publicationVenue a rdfs:Property ;
+    rdfs:label "publication venue"@en , "lieu de publication"@fr , "место публикации"@ru , "місце публікації"@uk ;
+    rdfs:comment "Journal, conference, or other venue where work was published"@en ;
+    rdfs:domain ex:Publication ;
+    rdfs:range rdfs:Literal .
+
+ex:awardingOrganization a rdfs:Property ;
+    rdfs:label "awarding organization"@en , "organisation décernante"@fr , "награждающая организация"@ru , "нагороджуюча організація"@uk ;
+    rdfs:comment "Organization that granted the award"@en ;
+    rdfs:domain ex:Award ;
+    rdfs:range schema:Organization .

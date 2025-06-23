@@ -47,10 +47,10 @@ full-check: schema-check validate build
 stats:
 	@echo -e "$(BLUE)📊 Translation Statistics:$(NC)"
 	@echo "Total translation units: $$(xmllint --xpath 'count(//tu)' data/content.xml)"
-	@echo "English translations: $$(xmllint --xpath 'count(//tuv[@xml:lang=\"en\"])' data/content.xml)"
-	@echo "French translations: $$(xmllint --xpath 'count(//tuv[@xml:lang=\"fr\"])' data/content.xml)"
-	@echo "Russian translations: $$(xmllint --xpath 'count(//tuv[@xml:lang=\"ru\"])' data/content.xml)"
-	@echo "Ukrainian translations: $$(xmllint --xpath 'count(//tuv[@xml:lang=\"ua\"])' data/content.xml)"
+	@echo "English translations: $$(xmllint --xpath 'count(//tuv[@xml:lang='"'"'en'"'"'])' data/content.xml)"
+	@echo "French translations: $$(xmllint --xpath 'count(//tuv[@xml:lang='"'"'fr'"'"'])' data/content.xml)"
+	@echo "Russian translations: $$(xmllint --xpath 'count(//tuv[@xml:lang='"'"'ru'"'"'])' data/content.xml)"
+	@echo "Ukrainian translations: $$(xmllint --xpath 'count(//tuv[@xml:lang='"'"'uk'"'"'])' data/content.xml)"
 
 # Подготовка к W3C валидации
 prepare-validation:

@@ -350,5 +350,914 @@
                 <seg>Відео</seg>
             </tuv>
         </tu>
+
+        <!-- —— секция «Образование» —— -->
+        <tu id="education.title">
+            <tuv xml:lang="en">
+                <seg>Education</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Formation</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Образование</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Освіта</seg>
+            </tuv>
+        </tu>
+        <tu id="education.current.title">
+            <tuv xml:lang="en">
+                <seg>Computer Science Engineering Degree</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Diplôme d'ingénieur en informatique</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Степень инженера по информатике</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Диплом інженера з інформатики</seg>
+            </tuv>
+        </tu>
+        <tu id="education.current.institution">
+            <tuv xml:lang="en">
+                <seg>Sup Galilée School, in an Internship, Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>École Sup Galilée, en alternance, Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Школа Sup Galilée, по программе стажировки, Париж, Франция</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Школа Sup Galilée, за програмою стажування, Париж, Франція</seg>
+            </tuv>
+        </tu>
+        <tu id="education.current.period">
+            <tuv xml:lang="en">
+                <seg>2023 — 2026</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2023 — 2026</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2023 — 2026</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2023 — 2026</seg>
+            </tuv>
+        </tu>
+        <tu id="education.preparatory.title">
+            <tuv xml:lang="en">
+                <seg>Preparatory Class at Sup Galilée School of Engineering</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Classe préparatoire à l'École d'ingénieurs Sup Galilée</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Подготовительный класс в Школе инженеров Sup Galilée</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Підготовчий клас у Школі інженерів Sup Galilée</seg>
+            </tuv>
+        </tu>
+        <tu id="education.preparatory.institution">
+            <tuv xml:lang="en">
+                <seg>Sorbonne Paris Nord University, Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Université Sorbonne Paris Nord, Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Университет Сорбонна Париж Норд, Париж, Франция</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Університет Сорбонна Париж Норд, Париж, Франція</seg>
+            </tuv>
+        </tu>
+        <tu id="education.preparatory.period">
+            <tuv xml:lang="en">
+                <seg>2021 — 2023</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2021 — 2023</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2021 — 2023</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2021 — 2023</seg>
+            </tuv>
+        </tu>
+        <tu id="education.highschool.title">
+            <tuv xml:lang="en">
+                <seg>Physics and Mathematics High School</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Lycée de physique et mathématiques</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Физико-математический лицей</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Фізико-математичний ліцей</seg>
+            </tuv>
+        </tu>
+        <tu id="education.highschool.institution">
+            <tuv xml:lang="en">
+                <seg>Plymly, Cherkasy, Ukraine</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Plymly, Tcherkassy, Ukraine</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Плымлы, Черкассы, Украина</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Плимли, Черкаси, Україна</seg>
+            </tuv>
+        </tu>
+        <tu id="education.highschool.period">
+            <tuv xml:lang="en">
+                <seg>2016 — 2021</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2016 — 2021</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2016 — 2021</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2016 — 2021</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «Опыт работы» —— -->
+        <tu id="experience.title">
+            <tuv xml:lang="en">
+                <seg>Work Experience</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Expérience professionnelle</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Опыт работы</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Досвід роботи</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.title">
+            <tuv xml:lang="en">
+                <seg>Internship at Société Générale Insurance</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Alternance chez Société Générale Assurance</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Стажировка в Société Générale Insurance</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Стажування в Société Générale Insurance</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.role">
+            <tuv xml:lang="en">
+                <seg>Data Engineer / MLOps, Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Ingénieur de données / MLOps, Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Инженер данных / MLOps, Париж, Франция</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Інженер даних / MLOps, Париж, Франція</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.period">
+            <tuv xml:lang="en">
+                <seg>2023 — 2026</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2023 — 2026</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2023 — 2026</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2023 — 2026</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.task1">
+            <tuv xml:lang="en">
+                <seg>Migrate from the existing SAS to the Data Science Platform of Société Générale Insurance</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Migrer du SAS existant vers la plateforme Data Science de Société Générale Assurance</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Миграция с существующей SAS на платформу Data Science Société Générale Insurance</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Міграція з існуючої SAS на платформу Data Science Société Générale Insurance</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.task2">
+            <tuv xml:lang="en">
+                <seg>Design and develop various data pipelines, from ingestion to delivery in a format consumable by data scientists</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Concevoir et développer divers pipelines de données, de l'ingestion à la livraison dans un format consommable par les data scientists</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Проектирование и разработка различных пайплайнов данных, от приема до доставки в формате, пригодном для использования специалистами по данным</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Проектування та розробка різних пайплайнів даних, від прийому до доставки у форматі, придатному для споживання спеціалістами з даних</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.task3">
+            <tuv xml:lang="en">
+                <seg>Maintain and evolve the data development framework of the DataLab</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Maintenir et faire évoluer le framework de développement de données du DataLab</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Поддержание и развитие фреймворка разработки данных DataLab</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Підтримка та розвиток фреймворку розробки даних DataLab</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.current.technologies">
+            <tuv xml:lang="en">
+                <seg>Kedro — MLFlow — Superset — Kibana — Python — SQL</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Kedro — MLFlow — Superset — Kibana — Python — SQL</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Kedro — MLFlow — Superset — Kibana — Python — SQL</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Kedro — MLFlow — Superset — Kibana — Python — SQL</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— дополнительные курсы —— -->
+        <tu id="experience.course2021.title">
+            <tuv xml:lang="en">
+                <seg>Course in Machine Learning at an IT Company SPD Ukraine</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Cours de Machine Learning dans une entreprise IT SPD Ukraine</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Курс машинного обучения в IT-компании SPD Ukraine</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Курс машинного навчання в IT-компанії SPD Ukraine</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.course2021.period">
+            <tuv xml:lang="en">
+                <seg>2021</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2021</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2021</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2021</seg>
+            </tuv>
+        </tu>
+        <tu id="experience.course2021.technologies">
+            <tuv xml:lang="en">
+                <seg>Scikit-Learn — Pandas — Numpy — KNN — XGBoost</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Scikit-Learn — Pandas — Numpy — KNN — XGBoost</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Scikit-Learn — Pandas — Numpy — KNN — XGBoost</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Scikit-Learn — Pandas — Numpy — KNN — XGBoost</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— дополнительное образование —— -->
+        <tu id="education.summer2019.title">
+            <tuv xml:lang="en">
+                <seg>Summer Math School Kontora Pi, Kyiv, Winter Math School of Kharkiv</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>École d'été de mathématiques Kontora Pi, Kiev, École d'hiver de mathématiques de Kharkiv</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Летняя математическая школа Контора Пи, Киев, Зимняя математическая школа Харькова</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Літня математична школа Контора Пі, Київ, Зимова математична школа Харкова</seg>
+            </tuv>
+        </tu>
+        <tu id="education.summer2019.period">
+            <tuv xml:lang="en">
+                <seg>2019</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2019</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2019</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2019</seg>
+            </tuv>
+        </tu>
+
+        <tu id="education.entrepreneurship.title">
+            <tuv xml:lang="en">
+                <seg>Entrepreneurship and Leadership School MBA, Kyiv</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>École d'entrepreneuriat et de leadership MBA, Kiev</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Школа предпринимательства и лидерства MBA, Киев</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Школа підприємництва та лідерства MBA, Київ</seg>
+            </tuv>
+        </tu>
+        <tu id="education.entrepreneurship.period">
+            <tuv xml:lang="en">
+                <seg>2018</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2018</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2018</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2018</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— секция «Проекты IT» —— -->
+        <tu id="projects.it.title">
+            <tuv xml:lang="en">
+                <seg>IT Projects</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Projets informatiques</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>IT проекты</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>IT проєкти</seg>
+            </tuv>
+        </tu>
+        <tu id="projects.haskell.title">
+            <tuv xml:lang="en">
+                <seg>Project in Haskell for representing reaction systems and processes</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Projet en Haskell pour représenter les systèmes et processus de réaction</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Проект на Haskell для представления реакционных систем и процессов</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Проєкт на Haskell для представлення реакційних систем та процесів</seg>
+            </tuv>
+        </tu>
+        <tu id="projects.haskell.year">
+            <tuv xml:lang="en">
+                <seg>2024</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2024</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2024</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2024</seg>
+            </tuv>
+        </tu>
+
+        <tu id="projects.travelling.title">
+            <tuv xml:lang="en">
+                <seg>Project Travelling Salesman Problem (Ant Colony Optimization Algorithm, Reinforcement Learning, C)</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Projet du problème du voyageur de commerce (Algorithme d'optimisation par colonies de fourmis, Apprentissage par renforcement, C)</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Проект задачи коммивояжера (Алгоритм оптимизации муравьиной колонии, Обучение с подкреплением, C)</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Проєкт задачі комівояжера (Алгоритм оптимізації мурашиної колонії, Навчання з підкріпленням, C)</seg>
+            </tuv>
+        </tu>
+        <tu id="projects.travelling.year">
+            <tuv xml:lang="en">
+                <seg>2023</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2023</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2023</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2023</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— личные проекты —— -->
+        <tu id="projects.personal.title">
+            <tuv xml:lang="en">
+                <seg>Personal Projects</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Projets personnels</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Личные проекты</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Особисті проєкти</seg>
+            </tuv>
+        </tu>
+        <!-- —— публикации —— -->
+        <tu id="publications.title">
+            <tuv xml:lang="en">
+                <seg>Publications</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Publications</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Публикации</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Публікації</seg>
+            </tuv>
+        </tu>
+        <tu id="publications.article.title">
+            <tuv xml:lang="en">
+                <seg>Method of Pulse Noise Filtration in Video Images</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Méthode de filtrage du bruit impulsionnel dans les images vidéo</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Метод фильтрации импульсного шума в видеоизображениях</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Метод фільтрації імпульсного шуму у відеозображеннях</seg>
+            </tuv>
+        </tu>
+        <tu id="publications.article.details">
+            <tuv xml:lang="en">
+                <seg>O.Palahin, O.Horak — Informatics and Mathematical Methods in Simulation, Vol. 11 (2021), No. 4</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>O.Palahin, O.Horak — Informatique et méthodes mathématiques en simulation, Vol. 11 (2021), No. 4</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>О.Палагин, О.Горак — Информатика и математические методы в моделировании, Том 11 (2021), № 4</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>О.Палагін, О.Горак — Інформатика та математичні методи в моделюванні, Том 11 (2021), № 4</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— награды —— -->
+        <tu id="awards.title">
+            <tuv xml:lang="en">
+                <seg>Awards &amp; Participations</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Récompenses et participations</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Награды и участие</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Нагороди та участь</seg>
+            </tuv>
+        </tu>
+        <tu id="awards.besse.title">
+            <tuv xml:lang="en">
+                <seg>Recipient of the Georges Besse Foundation Award (Class of 2022)</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Lauréat du prix de la Fondation Georges Besse (Promotion 2022)</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Лауреат премии Фонда Жоржа Бесса (класс 2022)</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Лауреат премії Фонду Жоржа Бесса (клас 2022)</seg>
+            </tuv>
+        </tu>
+        <tu id="awards.besse.year">
+            <tuv xml:lang="en">
+                <seg>2022</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>2022</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>2022</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>2022</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— сертификации —— -->
+        <tu id="certifications.title">
+            <tuv xml:lang="en">
+                <seg>Certifications</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Certifications</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Сертификации</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Сертифікації</seg>
+            </tuv>
+        </tu>
+        <tu id="certifications.spd.title">
+            <tuv xml:lang="en">
+                <seg>SPD Ukraine: Course in Machine Learning at an IT company</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>SPD Ukraine: Cours de Machine Learning dans une entreprise IT</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>SPD Ukraine: Курс машинного навчання в IT-компанії</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>SPD Ukraine: Курс машинного навчання в IT-компанії</seg>
+            </tuv>
+        </tu>
+        <tu id="certifications.skopik.title">
+            <tuv xml:lang="en">
+                <seg>Skopik: Course in Machine Learning</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Skopik: Cours de Machine Learning</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Skopik: Курс машинного обучения</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Skopik: Курс машинного навчання</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— мягкие навыки —— -->
+        <tu id="soft.skills.title">
+            <tuv xml:lang="en">
+                <seg>Soft Skills</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Compétences relationnelles</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Гибкие навыки</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>М'які навички</seg>
+            </tuv>
+        </tu>
+        <tu id="soft.skills.list">
+            <tuv xml:lang="en">
+                <seg>Teamwork, Communication, Problem-solving, Adaptability, Voluntary, Responsibility</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Travail d'équipe, Communication, Résolution de problèmes, Adaptabilité, Volontariat, Responsabilité</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Командная работа, Коммуникация, Решение проблем, Адаптивность, Волонтерство, Ответственность</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Командна робота, Комунікація, Вирішення проблем, Адаптивність, Волонтерство, Відповідальність</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— языки —— -->
+        <tu id="languages.title">
+            <tuv xml:lang="en">
+                <seg>Languages</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Langues</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Языки</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Мови</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.ukrainian">
+            <tuv xml:lang="en">
+                <seg>Ukrainian: Native</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Ukrainien: Natif</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Украинский: Родной</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Українська: Рідна</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.english">
+            <tuv xml:lang="en">
+                <seg>English: Fluent</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Anglais: Courant</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Английский: Свободно</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Англійська: Вільно</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.russian">
+            <tuv xml:lang="en">
+                <seg>Russian: Bilingual</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Russe: Bilingue</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Русский: Двуязычный</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Російська: Двомовний</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.german">
+            <tuv xml:lang="en">
+                <seg>German: Beginner</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Allemand: Débutant</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Немецкий: Начинающий</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Німецька: Початковий</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.french">
+            <tuv xml:lang="en">
+                <seg>French: Fluent</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Français: Courant</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Французский: Свободно</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Французька: Вільно</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— интересы —— -->
+        <tu id="interests.title">
+            <tuv xml:lang="en">
+                <seg>Interests</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Centres d'intérêt</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Интересы</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Інтереси</seg>
+            </tuv>
+        </tu>
+        <tu id="interests.chess">
+            <tuv xml:lang="en">
+                <seg>Chess</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Échecs</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Шахматы</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Шахи</seg>
+            </tuv>
+        </tu>
+        <tu id="interests.tennis">
+            <tuv xml:lang="en">
+                <seg>Tennis</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Tennis</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Теннис</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Теніс</seg>
+            </tuv>
+        </tu>
+        <tu id="interests.skiing">
+            <tuv xml:lang="en">
+                <seg>Skiing</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Ski</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Катание на лыжах</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Катання на лижах</seg>
+            </tuv>
+        </tu>
+        <tu id="interests.crypto">
+            <tuv xml:lang="en">
+                <seg>Cryptocurrencies</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Cryptomonnaies</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Криптовалюты</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Криптовалюти</seg>
+            </tuv>
+        </tu>
+        <tu id="interests.swimming">
+            <tuv xml:lang="en">
+                <seg>Swimming</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Natation</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Плавание</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Плавання</seg>
+            </tuv>
+        </tu>
+        <tu id="interests.mountains">
+            <tuv xml:lang="en">
+                <seg>Mountains</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Montagnes</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Горы</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Гори</seg>
+            </tuv>
+        </tu>
+
+        <!-- —— контактная информация —— -->
+        <tu id="contact.info.title">
+            <tuv xml:lang="en">
+                <seg>Contact Information</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Informations de contact</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Контактная информация</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Контактна інформація</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.birthday">
+            <tuv xml:lang="en">
+                <seg>Birthday: 05/12/2003 (20 years)</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Anniversaire: 05/12/2003 (20 ans)</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>День рождения: 05/12/2003 (20 лет)</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>День народження: 05/12/2003 (20 років)</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.nationality">
+            <tuv xml:lang="en">
+                <seg>Nationality: Ukrainian</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Nationalité: Ukrainienne</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Национальность: Украинец</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Національність: Українець</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.duration">
+            <tuv xml:lang="en">
+                <seg>Duration: 9 weeks</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Durée: 9 semaines</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Продолжительность: 9 недель</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Тривалість: 9 тижнів</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.availability">
+            <tuv xml:lang="en">
+                <seg>Availability: September 2025</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Disponibilité: Septembre 2025</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Доступность: Сентябрь 2025</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Доступність: Вересень 2025</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.location">
+            <tuv xml:lang="en">
+                <seg>Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Paris, France</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Париж, Франция</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Париж, Франція</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.phone">
+            <tuv xml:lang="en">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+        </tu>
+        <tu id="contact.email">
+            <tuv xml:lang="en">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+        </tu>
     </body>
 </tmx>

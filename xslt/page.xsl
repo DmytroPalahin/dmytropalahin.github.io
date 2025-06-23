@@ -167,6 +167,18 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="#experience" class="nav-link">
+                                    <xsl:value-of
+                                        select="//tu[@id='experience.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#education" class="nav-link">
+                                    <xsl:value-of
+                                        select="//tu[@id='education.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="#projects" class="nav-link">
                                     <xsl:value-of
                                         select="//tu[@id='projects.title']/tuv[@xml:lang=$uiLang]/seg" />
@@ -335,6 +347,136 @@
                             </div>
                         </div>
                     </div>
+                </section>                <!--
+                Experience Section -->
+                <section id="experience" class="section">
+                    <div class="container">
+                        <h2 class="section-title">
+                            <xsl:value-of
+                                select="//tu[@id='experience.title']/tuv[@xml:lang=$uiLang]/seg" />
+                        </h2>
+                        <div class="experience-container">
+                            <!-- Current Experience -->
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3 class="experience-company">
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.current.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                    <span class="experience-duration">
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.current.period']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
+                                </div>
+                                <h4 class="experience-position">
+                                    <xsl:value-of
+                                        select="//tu[@id='experience.current.role']/tuv[@xml:lang=$uiLang]/seg" />
+                                </h4>
+                                <ul class="experience-description">
+                                    <li>
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.current.task1']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </li>
+                                    <li>
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.current.task2']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </li>
+                                    <li>
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.current.task3']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </li>
+                                </ul>
+                                <div class="experience-tech">
+                                    <strong>Technologies: </strong>
+                                    <xsl:value-of
+                                        select="//tu[@id='experience.current.technologies']/tuv[@xml:lang=$uiLang]/seg" />
+                                </div>
+                            </div>
+
+                            <!-- Course 2021 -->
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <h3 class="experience-company">
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.course2021.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                    <span class="experience-duration">
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.course2021.period']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
+                                </div>
+                                <div class="experience-tech">
+                                    <strong>Technologies: </strong>
+                                    <xsl:value-of
+                                        select="//tu[@id='experience.course2021.technologies']/tuv[@xml:lang=$uiLang]/seg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>                <!--
+                Education Section -->
+                <section id="education" class="section section-dark">
+                    <div class="container">
+                        <h2 class="section-title">
+                            <xsl:value-of
+                                select="//tu[@id='education.title']/tuv[@xml:lang=$uiLang]/seg" />
+                        </h2>
+                        <div class="education-container">
+                            <!-- Current Education -->
+                            <div class="education-card">
+                                <div class="education-header">
+                                    <h3 class="education-school">
+                                        <xsl:value-of
+                                            select="//tu[@id='education.current.institution']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                    <span class="education-duration">
+                                        <xsl:value-of
+                                            select="//tu[@id='education.current.period']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
+                                </div>
+                                <h4 class="education-degree">
+                                    <xsl:value-of
+                                        select="//tu[@id='education.current.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </h4>
+                            </div>
+
+                            <!-- Preparatory -->
+                            <div class="education-card">
+                                <div class="education-header">
+                                    <h3 class="education-school">
+                                        <xsl:value-of
+                                            select="//tu[@id='education.preparatory.institution']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                    <span class="education-duration">
+                                        <xsl:value-of
+                                            select="//tu[@id='education.preparatory.period']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
+                                </div>
+                                <h4 class="education-degree">
+                                    <xsl:value-of
+                                        select="//tu[@id='education.preparatory.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </h4>
+                            </div>
+
+                            <!-- High School -->
+                            <div class="education-card">
+                                <div class="education-header">
+                                    <h3 class="education-school">
+                                        <xsl:value-of
+                                            select="//tu[@id='education.highschool.institution']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                    <span class="education-duration">
+                                        <xsl:value-of
+                                            select="//tu[@id='education.highschool.period']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
+                                </div>
+                                <h4 class="education-degree">
+                                    <xsl:value-of
+                                        select="//tu[@id='education.highschool.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Projects Section -->
@@ -344,22 +486,27 @@
                             <xsl:value-of
                                 select="//tu[@id='projects.title']/tuv[@xml:lang=$uiLang]/seg" />
                         </h2>
-                        <div class="projects-grid">
+                        <div class="projects-container">
                             <div class="project-card" typeof="schema:CreativeWork">
-                                <h3 class="project-title" property="schema:name">
-                                    <xsl:value-of
-                                        select="//tu[@id='project1.title']/tuv[@xml:lang=$uiLang]/seg" />
-                                </h3>
+                                <div class="project-header">
+                                    <h3 class="project-name" property="schema:name">
+                                        <xsl:value-of
+                                            select="//tu[@id='project1.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                </div>
                                 <p class="project-description" property="schema:description">
                                     <xsl:value-of
                                         select="//tu[@id='project1.description']/tuv[@xml:lang=$uiLang]/seg" />
                                 </p>
                             </div>
+
                             <div class="project-card" typeof="schema:CreativeWork">
-                                <h3 class="project-title" property="schema:name">
-                                    <xsl:value-of
-                                        select="//tu[@id='project2.title']/tuv[@xml:lang=$uiLang]/seg" />
-                                </h3>
+                                <div class="project-header">
+                                    <h3 class="project-name" property="schema:name">
+                                        <xsl:value-of
+                                            select="//tu[@id='project2.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </h3>
+                                </div>
                                 <p class="project-description" property="schema:description">
                                     <xsl:value-of
                                         select="//tu[@id='project2.description']/tuv[@xml:lang=$uiLang]/seg" />
