@@ -1,6 +1,7 @@
 # Portfolio Website
 
-🚀 **Live Demo**: [https://portfolio-dmytropalahin.vercel.app](https://portfolio-dmytropalahin.vercel.app)
+🚀 **Live Demo**: [https://portfolio-dmytropalahin.vercel.app](https://portfolio-dmytropalahin.vercel.app)  
+🛠️ **Dev Version**: [https://portfolio-dmytropalahin-dev.vercel.app](https://portfolio-dmytropalahin-dev.vercel.app)
 
 Multilingual portfolio website built with PHP, XSLT, and modern CSS.
 
