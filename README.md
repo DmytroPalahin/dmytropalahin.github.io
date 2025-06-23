@@ -47,7 +47,7 @@ Multilingual portfolio website built with PHP, XSLT, and modern CSS.
 
    ```bash
    git clone <your-repo-url>
-   cd dmytropalahin.github.io
+   cd portfolio-classic
    ```
 
 2. **Install dependencies**:
