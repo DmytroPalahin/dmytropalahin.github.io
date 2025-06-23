@@ -5,6 +5,12 @@
             "runtime": "vercel-php@0.7.3"
         }
     },
+    "git": {
+        "deploymentEnabled": {
+            "main": true,
+            "dev": true
+        }
+    },
     "routes": [
         {
             "src": "/assets/(.*)",
