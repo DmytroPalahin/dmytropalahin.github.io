@@ -50,14 +50,20 @@ stats:
 	@echo "Russian translations: $$(xmllint --xpath 'count(//tuv[@xml:lang=\"ru\"])' data/content.xml)"
 	@echo "Ukrainian translations: $$(xmllint --xpath 'count(//tuv[@xml:lang=\"ua\"])' data/content.xml)"
 
+# Подготовка к W3C валидации
+prepare-validation:
+	@echo -e "$(BLUE)🚀 Preparing for W3C validation...$(NC)"
+	@./scripts/prepare-validation.sh
+
 # Помощь
 help:
 	@echo -e "$(BLUE)Available commands:$(NC)"
-	@echo "  validate      - Validate XML against XSD schema"
-	@echo "  schema-check  - Validate XSD schema itself"
-	@echo "  build         - Generate HTML from XML+XSLT"
-	@echo "  serve         - Start local development server"
-	@echo "  clean         - Clean build directory"
-	@echo "  full-check    - Run all validations and build"
-	@echo "  stats         - Show translation statistics"
-	@echo "  help          - Show this help message"
+	@echo "  validate           - Validate XML against XSD schema"
+	@echo "  schema-check       - Validate XSD schema itself"
+	@echo "  build              - Generate HTML from XML+XSLT"
+	@echo "  serve              - Start local development server"
+	@echo "  clean              - Clean build directory"
+	@echo "  full-check         - Run all validations and build"
+	@echo "  stats              - Show translation statistics"
+	@echo "  prepare-validation - Prepare files for W3C validation"
+	@echo "  help               - Show this help message"

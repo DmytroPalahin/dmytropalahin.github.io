@@ -45,6 +45,7 @@ Multilingual portfolio website built with PHP, XSLT, and modern CSS.
 | `make stats` | Show translation statistics | - |
 | `make build` | Generate HTML from XML+XSLT | - |
 | `make serve` | Start local development server | `php -S localhost:8080 -t public` |
+| `make prepare-validation` | Prepare for W3C validation | `./scripts/prepare-validation.sh` |
 | `make clean` | Clean build directory | `rm -rf dist/` |
 | `make help` | Show all available commands | - |
 
