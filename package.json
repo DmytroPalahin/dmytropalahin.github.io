@@ -1,5 +1,5 @@
 {
-    "name": "dmytropalahin-portfolio",
+    "name": "portfolio-classic",
     "version": "1.0.0",
     "description": "Multilingual portfolio website built with PHP, XSLT, and modern CSS",
     "private": true,
@@ -31,10 +31,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dmytropalahin/dmytropalahin.github.io.git"
+        "url": "git+https://github.com/dmytropalahin/portfolio-classic.git"
     },
     "bugs": {
-        "url": "https://github.com/dmytropalahin/dmytropalahin.github.io/issues"
+        "url": "https://github.com/dmytropalahin/portfolio-classic/issues"
     },
-    "homepage": "https://dmytropalahin.github.io"
+    "homepage": "https://portfolio-classic.vercel.app/"
 }
