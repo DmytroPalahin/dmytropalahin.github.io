@@ -70,6 +70,7 @@ html {
 
     /* Glass morphism */
     --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg-hover: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.1);
     --backdrop-blur: blur(20px);
 }
@@ -325,11 +326,12 @@ body.loading {
     border-radius: 4px;
     color: var(--text-primary);
     text-decoration: none;
-    transition: all 0.15s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 13px;
     font-weight: 500;
     min-height: 28px;
     position: relative;
+    border-left: 3px solid transparent;
 }
 
 .language-option:nth-child(1) {
@@ -348,26 +350,19 @@ body.loading {
     animation-delay: 90ms;
 }
 
-.language-option:hover {
-    background: var(--glass-bg-hover);
+.language-option:hover:not(.active) {
+    background: rgba(59, 130, 246, 0.08);
+    color: rgba(147, 197, 253, 0.9);
     transform: translateX(2px);
+    border-left: 1px solid rgba(59, 130, 246, 0.3);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .language-option.active {
-    background: rgba(0, 122, 255, 0.1);
+    background: rgba(0, 122, 255, 0.15);
     color: var(--primary-color);
     font-weight: 600;
-}
-
-.language-option.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--primary-color);
-    border-radius: 0 2px 2px 0;
 }
 
 .language-code {
