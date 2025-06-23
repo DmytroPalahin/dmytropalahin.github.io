@@ -83,7 +83,7 @@ Multilingual portfolio website built with PHP, XSLT, and modern CSS.
 
 ## Deployment to Vercel
 
-### Prerequisites
+### Vercel Prerequisites
 
 - [Vercel account](https://vercel.com) (free tier available)
 - [Vercel CLI](https://vercel.com/cli) (installed via npm)
@@ -130,7 +130,7 @@ The project includes these configuration files:
 
 ## Project Structure
 
-```
+```tree
 ├── api/
 │   └── index.php          # Vercel serverless function entry point
 ├── data/
