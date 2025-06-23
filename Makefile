@@ -24,7 +24,9 @@ build: validate
 	@xsltproc --param uiLang "'en'" xslt/page.xsl data/content.xml > dist/index.html
 	@xsltproc --param uiLang "'fr'" xslt/page.xsl data/content.xml > dist/index-fr.html
 	@xsltproc --param uiLang "'ru'" xslt/page.xsl data/content.xml > dist/index-ru.html
-	@xsltproc --param uiLang "'ua'" xslt/page.xsl data/content.xml > dist/index-ua.html
+	@xsltproc --param uiLang "'uk'" xslt/page.xsl data/content.xml > dist/index-uk.html
+	@# Fix HTML5 doctype in all generated files
+	@sed -i '' 's/<!DOCTYPE html PUBLIC "" "">/<!DOCTYPE html>/' dist/*.html
 	@echo -e "$(GREEN)✅ Build complete: dist/index*.html$(NC)"
 
 # Локальный сервер для тестирования

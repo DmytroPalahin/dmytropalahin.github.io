@@ -4,7 +4,7 @@ namespace Portfolio;
 
 final class LanguageDetector
 {
-    private const SUPPORTED = ['en', 'fr', 'ua', 'ru'];
+    private const SUPPORTED = ['en', 'fr', 'uk', 'ru'];
     private const COOKIE_NAME = 'portfolio_lang';
     private const COOKIE_LIFETIME = 60 * 60 * 24 * 365; // 1 год
 

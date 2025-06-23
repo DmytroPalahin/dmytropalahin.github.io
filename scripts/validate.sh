@@ -26,7 +26,7 @@ TU_COUNT=$(xmllint --xpath "count(//tu)" data/content.xml)
 echo -e "${BLUE}Found $TU_COUNT translation units${NC}"
 
 # Проверка каждого языка
-LANGUAGES=("en" "fr" "ru" "ua")
+LANGUAGES=("en" "fr" "ru" "uk")
 MISSING_TRANSLATIONS=false
 
 for LANG in "${LANGUAGES[@]}"; do

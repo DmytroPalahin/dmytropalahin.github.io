@@ -16,7 +16,7 @@
             <tuv xml:lang="ru">
                 <seg>Портфолио Дмитрия Палагина</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Портфоліо Дмитра Палагіна</seg>
             </tuv>
         </tu>
@@ -30,7 +30,7 @@
             <tuv xml:lang="ru">
                 <seg>Привет!</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Привіт!</seg>
             </tuv>
         </tu>
@@ -44,7 +44,7 @@
             <tuv xml:lang="ru">
                 <seg>Я Дмитрий Палагин</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Я Дмитро Палагін</seg>
             </tuv>
         </tu>
@@ -58,7 +58,7 @@
             <tuv xml:lang="ru">
                 <seg>Full-stack разработчик и инженер данных</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Full-stack розробник і інженер даних</seg>
             </tuv>
         </tu>
@@ -73,7 +73,7 @@
             <tuv xml:lang="ru">
                 <seg>Главная</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Головна</seg>
             </tuv>
         </tu>
@@ -88,7 +88,7 @@
             <tuv xml:lang="ru">
                 <seg>Обо мне</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Про мене</seg>
             </tuv>
         </tu>
@@ -114,7 +114,7 @@
                     Увлекаюсь ML, оптимизацией и чистым кодом.
                 </seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Студент-інженер факультету інформатики Sup Galilée (Париж) та Data
                     Engineer-стажер у Société Générale Insurance. Захоплююся ML, оптимізацією та
                     чистим кодом.</seg>
@@ -131,7 +131,7 @@
             <tuv xml:lang="ru">
                 <seg>Связаться</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Зв'язатися зі мною</seg>
             </tuv>
         </tu>
@@ -145,7 +145,7 @@
             <tuv xml:lang="ru">
                 <seg>Узнать больше</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Дізнатися більше</seg>
             </tuv>
         </tu>
@@ -160,7 +160,7 @@
             <tuv xml:lang="ru">
                 <seg>Технические навыки</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Мої навички</seg>
             </tuv>
         </tu>
@@ -174,7 +174,7 @@
             <tuv xml:lang="ru">
                 <seg>Языки программирования</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Мови програмування</seg>
             </tuv>
         </tu>
@@ -188,7 +188,7 @@
             <tuv xml:lang="ru">
                 <seg>Python, JavaScript, PHP, SQL, Java, C++</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Python, PHP, JavaScript, TypeScript, Java, SQL</seg>
             </tuv>
         </tu>
@@ -202,7 +202,7 @@
             <tuv xml:lang="ru">
                 <seg>Фреймворки и технологии</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Фреймворки та технології</seg>
             </tuv>
         </tu>
@@ -216,7 +216,7 @@
             <tuv xml:lang="ru">
                 <seg>React, Node.js, Django, Apache Spark, Docker, AWS</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>React, Next.js, Laravel, Symfony, Docker, AWS, Apache Spark</seg>
             </tuv>
         </tu>
@@ -231,7 +231,7 @@
             <tuv xml:lang="ru">
                 <seg>Основные проекты</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Мої проєкти</seg>
             </tuv>
         </tu>
@@ -245,7 +245,7 @@
             <tuv xml:lang="ru">
                 <seg>Оптимизация пайплайна данных</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Багатомовний портфоліо сайт</seg>
             </tuv>
         </tu>
@@ -264,7 +264,7 @@
                     Apache Spark и Python, сокращающего время обработки на 60% для анализа страховых
                     данных большого объема.</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Сучасний портфоліо сайт з підтримкою трьох мов, побудований на PHP, XSLT та
                     сучасному CSS.</seg>
             </tuv>
@@ -279,7 +279,7 @@
             <tuv xml:lang="ru">
                 <seg>ML модель оценки рисков</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Система аналізу даних</seg>
             </tuv>
         </tu>
@@ -300,7 +300,7 @@
                     методов ансамбля, достигающей 92% точности в прогнозировании рисков и улучшающей
                     процессы принятия решений.</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>ETL пайплайн для обробки великих обсягів фінансових даних з використанням
                     Apache Spark.</seg>
             </tuv>
@@ -316,7 +316,7 @@
             <tuv xml:lang="ru">
                 <seg>Контакты</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Зв'язатися зі мною</seg>
             </tuv>
         </tu>
@@ -331,7 +331,7 @@
             <tuv xml:lang="ru">
                 <seg>Свяжитесь со мной для сотрудничества или просто чтобы поздороваться!</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Готовий до нових можливостей та співпраці. Напишіть мені!</seg>
             </tuv>
         </tu>
@@ -346,7 +346,7 @@
             <tuv xml:lang="ru">
                 <seg>Краткое видео</seg>
             </tuv>
-            <tuv xml:lang="ua">
+            <tuv xml:lang="uk">
                 <seg>Відео</seg>
             </tuv>
         </tu>

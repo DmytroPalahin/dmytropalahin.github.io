@@ -5,11 +5,11 @@
     schema:name       "Dmytro Palahin"@en ,
                       "Dmytro Palahin"@fr ,
                       "Дмитрий Палагин"@ru ,
-                      "Дмитро Палагін"@ua ;
+                      "Дмитро Палагін"@uk ;
     schema:jobTitle   "Full-Stack Developer & Data Engineer"@en ,
                       "Développeur full-stack & Ingénieur Data"@fr ,
                       "Full-stack разработчик / инженер данных"@ru ,
-                      "Full-stack розробник / інженер даних"@ua ;
+                      "Full-stack розробник / інженер даних"@uk ;
     schema:email      "mailto:dmytro.palahin@gmail.com" ;
     schema:sameAs     <https://github.com/DmytroPalahin> ;
     schema:worksFor   "Société Générale Insurance"@fr .

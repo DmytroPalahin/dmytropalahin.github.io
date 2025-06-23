@@ -10,7 +10,11 @@ mkdir -p dist
 xsltproc --param uiLang "'en'" xslt/page.xsl data/content.xml > dist/index-en.html
 xsltproc --param uiLang "'fr'" xslt/page.xsl data/content.xml > dist/index-fr.html
 xsltproc --param uiLang "'ru'" xslt/page.xsl data/content.xml > dist/index-ru.html
-xsltproc --param uiLang "'ua'" xslt/page.xsl data/content.xml > dist/index-ua.html
+xsltproc --param uiLang "'uk'" xslt/page.xsl data/content.xml > dist/index-uk.html
+
+# Fix HTML5 doctype in all generated files
+echo "🔧 Fixing HTML5 doctype..."
+sed -i '' 's/<!DOCTYPE html PUBLIC "" "">/<!DOCTYPE html>/' dist/*.html
 
 echo "✅ HTML files generated in dist/ folder"
 echo ""

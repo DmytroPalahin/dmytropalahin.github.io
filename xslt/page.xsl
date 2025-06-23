@@ -6,17 +6,17 @@
     exclude-result-prefixes="xhtml">
     <xsl:param name="uiLang" select="'en'" />
     <xsl:output method="html"
-        doctype-public=""
-        doctype-system=""
+        omit-xml-declaration="yes"
         indent="yes"
         encoding="UTF-8" />
 
     <xsl:template match="/">
-        <html lang="{$uiLang}">
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;
+</xsl:text><html lang="{$uiLang}">
             <xsl:attribute name="dir">
                 <xsl:choose>
                     <xsl:when test="$uiLang = 'ru'">ltr</xsl:when>
-                    <xsl:when test="$uiLang = 'ua'">ltr</xsl:when>
+                    <xsl:when test="$uiLang = 'uk'">ltr</xsl:when>
                     <xsl:otherwise>ltr</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
@@ -210,8 +210,8 @@
                                         </xsl:if>
         FR </a>
                                     <!-- Ukrainian -->
-                                    <a href="?lang=ua" class="language-option" data-lang="ua">
-                                        <xsl:if test="$uiLang = 'ua'">
+                                    <a href="?lang=uk" class="language-option" data-lang="uk">
+                                        <xsl:if test="$uiLang = 'uk'">
                                             <xsl:attribute name="class">language-option active</xsl:attribute>
                                         </xsl:if>
         UA </a>
@@ -470,7 +470,7 @@
                     const langNames = {
                         'en': 'English',
                         'fr': 'Français', 
-                        'ua': 'Українська',
+                        'uk': 'Українська',
                         'ru': 'Русский'
                     };
                     
@@ -486,7 +486,7 @@
                     const langData = {
                         'en': { flag: '\u{1F1FA}\u{1F1F8}', name: 'English' },
                         'fr': { flag: '\u{1F1EB}\u{1F1F7}', name: 'Français' }, 
-                        'ua': { flag: '\u{1F1FA}\u{1F1E6}', name: 'Українська' },
+                        'uk': { flag: '\u{1F1FA}\u{1F1E6}', name: 'Українська' },
                         'ru': { flag: '\u{1F1F7}\u{1F1FA}', name: 'Русский' }
                     };
                     
