@@ -5,6 +5,17 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* ПОЛНОСТЬЮ убираем все рамки и выделения */
+    outline: none !important;
+}
+
+/* ПОЛНОСТЬЮ убираем focus для всех элементов */
+*:focus,
+*:focus-visible,
+*:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 html {
@@ -216,10 +227,31 @@ body.loading {
     position: relative;
     transition: var(--transition);
     padding: var(--space-2) 0;
+    /* Убираем все рамки и outline */
+    outline: none;
+    border: none;
+    background: none;
 }
 
 .nav-link:hover {
     color: var(--text-primary);
+}
+
+.nav-link:focus {
+    color: var(--text-primary);
+    /* ПОЛНОСТЬЮ убираем все виды выделения */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+.nav-link:active {
+    color: var(--primary-color);
+    /* ПОЛНОСТЬЮ убираем все виды выделения */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .nav-link.active {
@@ -971,12 +1003,32 @@ body.loading {
     }
 }
 
-/* Focus Styles for Accessibility */
+/* Focus Styles ПОЛНОСТЬЮ УБРАНЫ */
 .nav-link:focus,
 .btn:focus,
 .lang-flag:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Убираем outline для всех интерактивных элементов */
+a:focus,
+button:focus,
+select:focus,
+input:focus,
+textarea:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Убираем все виды фокуса */
+a:focus-visible,
+button:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* Reduced Motion */
