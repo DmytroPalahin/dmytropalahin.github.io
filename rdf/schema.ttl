@@ -1,92 +1,604 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix schema: <http://schema.org/> .
 @prefix ex:   <https://dmytro.example/schema#> .
 
-# Portfolio-specific classes
-ex:Project a rdfs:Class ;
-    rdfs:label "Project"@en , "Projet"@fr , "Проект"@ru , "Проєкт"@uk ;
-    rdfs:comment "Academic or personal project listed in the portfolio"@en ;
-    rdfs:subClassOf schema:CreativeWork .
+# Ontology metadata
+ex: a owl:Ontology ;
+    rdfs:label "Portfolio Ontology"@en , "Ontologie de Portfolio"@fr , "Онтология Портфолио"@ru , "Онтологія Портфоліо"@uk ;
+    rdfs:comment "A comprehensive ontology for describing professional portfolios and career information"@en ;
+    dc:creator "Dmytro Palahin" ;
+    dc:date "2025-06-24" ;
+    dc:description "An extended ontology built on Schema.org for rich semantic description of professional portfolios, skills, projects, and career progression"@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:versionInfo "2.0" ;
+    void:vocabulary schema: , foaf: , dc: .
 
-ex:Education a rdfs:Class ;
+# =============================================================================
+# CORE PORTFOLIO CLASSES
+# =============================================================================
+
+# Professional Portfolio Root Class
+ex:Portfolio a owl:Class ;
+    rdfs:label "Portfolio"@en , "Portfolio"@fr , "Портфолио"@ru , "Портфоліо"@uk ;
+    rdfs:comment "A collection of professional work, projects, and achievements that demonstrates a person's skills and experience"@en ;
+    rdfs:subClassOf schema:CreativeWork ;
+    owl:equivalentClass foaf:Document .
+
+# Enhanced Project Class with subtypes
+ex:Project a owl:Class ;
+    rdfs:label "Project"@en , "Projet"@fr , "Проект"@ru , "Проєкт"@uk ;
+    rdfs:comment "Academic, professional, or personal project listed in the portfolio"@en ;
+    rdfs:subClassOf schema:CreativeWork ;
+    owl:equivalentClass foaf:Project .
+
+ex:AcademicProject a owl:Class ;
+    rdfs:label "Academic Project"@en , "Projet Académique"@fr , "Академический проект"@ru , "Академічний проєкт"@uk ;
+    rdfs:comment "Project completed as part of academic studies"@en ;
+    rdfs:subClassOf ex:Project .
+
+ex:PersonalProject a owl:Class ;
+    rdfs:label "Personal Project"@en , "Projet Personnel"@fr , "Личный проект"@ru , "Особистий проєкт"@uk ;
+    rdfs:comment "Self-initiated project for learning or personal interest"@en ;
+    rdfs:subClassOf ex:Project .
+
+ex:ProfessionalProject a owl:Class ;
+    rdfs:label "Professional Project"@en , "Projet Professionnel"@fr , "Профессиональный проект"@ru , "Професійний проєкт"@uk ;
+    rdfs:comment "Project completed in a professional work context"@en ;
+    rdfs:subClassOf ex:Project .
+
+ex:OpenSourceProject a owl:Class ;
+    rdfs:label "Open Source Project"@en , "Projet Open Source"@fr , "Проект с открытым исходным кодом"@ru , "Проєкт з відкритим кодом"@uk ;
+    rdfs:comment "Project with publicly available source code"@en ;
+    rdfs:subClassOf ex:Project .
+
+# Enhanced Education Class with subtypes
+ex:Education a owl:Class ;
     rdfs:label "Education"@en , "Formation"@fr , "Образование"@ru , "Освіта"@uk ;
-    rdfs:comment "Educational background entry"@en ;
+    rdfs:comment "Educational background entry with detailed academic information"@en ;
     rdfs:subClassOf schema:EducationalOccupationalCredential .
 
-ex:WorkExperience a rdfs:Class ;
+ex:Degree a owl:Class ;
+    rdfs:label "Academic Degree"@en , "Diplôme Universitaire"@fr , "Академическая степень"@ru , "Академічний ступінь"@uk ;
+    rdfs:comment "Formal academic degree or diploma"@en ;
+    rdfs:subClassOf ex:Education .
+
+ex:Course a owl:Class ;
+    rdfs:label "Course"@en , "Cours"@fr , "Курс"@ru , "Курс"@uk ;
+    rdfs:comment "Individual course or training program"@en ;
+    rdfs:subClassOf ex:Education .
+
+ex:Workshop a owl:Class ;
+    rdfs:label "Workshop"@en , "Atelier"@fr , "Семинар"@ru , "Семінар"@uk ;
+    rdfs:comment "Short-term intensive training session"@en ;
+    rdfs:subClassOf ex:Education .
+
+# Enhanced Work Experience
+ex:WorkExperience a owl:Class ;
     rdfs:label "Work Experience"@en , "Expérience professionnelle"@fr , "Опыт работы"@ru , "Досвід роботи"@uk ;
-    rdfs:comment "Professional work experience entry"@en ;
+    rdfs:comment "Professional work experience with detailed role information"@en ;
     rdfs:subClassOf schema:WorkExperience .
 
-ex:TechnicalSkill a rdfs:Class ;
+ex:Internship a owl:Class ;
+    rdfs:label "Internship"@en , "Stage"@fr , "Стажировка"@ru , "Стажування"@uk ;
+    rdfs:comment "Temporary work experience for learning purposes"@en ;
+    rdfs:subClassOf ex:WorkExperience .
+
+ex:FullTimePosition a owl:Class ;
+    rdfs:label "Full-Time Position"@en , "Poste à temps plein"@fr , "Полная занятость"@ru , "Повна зайнятість"@uk ;
+    rdfs:comment "Full-time employment position"@en ;
+    rdfs:subClassOf ex:WorkExperience .
+
+ex:PartTimePosition a owl:Class ;
+    rdfs:label "Part-Time Position"@en , "Poste à temps partiel"@fr , "Частичная занятость"@ru , "Часткова зайнятість"@uk ;
+    rdfs:comment "Part-time employment position"@en ;
+    rdfs:subClassOf ex:WorkExperience .
+
+ex:ContractWork a owl:Class ;
+    rdfs:label "Contract Work"@en , "Travail contractuel"@fr , "Контрактная работа"@ru , "Контрактна робота"@uk ;
+    rdfs:comment "Fixed-term contract or freelance work"@en ;
+    rdfs:subClassOf ex:WorkExperience .
+
+# Enhanced Skills Taxonomy
+ex:Skill a owl:Class ;
+    rdfs:label "Skill"@en , "Compétence"@fr , "Навык"@ru , "Навичка"@uk ;
+    rdfs:comment "General skill or competency"@en ;
+    rdfs:subClassOf schema:DefinedTerm ;
+    owl:equivalentClass skos:Concept .
+
+ex:TechnicalSkill a owl:Class ;
     rdfs:label "Technical Skill"@en , "Compétence technique"@fr , "Технический навык"@ru , "Технічна навичка"@uk ;
-    rdfs:comment "Technical skill or competency"@en ;
-    rdfs:subClassOf schema:DefinedTerm .
+    rdfs:comment "Technical skill or competency related to tools, technologies, or methodologies"@en ;
+    rdfs:subClassOf ex:Skill .
 
-ex:SoftSkill a rdfs:Class ;
+ex:ProgrammingLanguage a owl:Class ;
+    rdfs:label "Programming Language"@en , "Langage de programmation"@fr , "Язык программирования"@ru , "Мова програмування"@uk ;
+    rdfs:comment "Computer programming language skill"@en ;
+    rdfs:subClassOf ex:TechnicalSkill .
+
+ex:Framework a owl:Class ;
+    rdfs:label "Framework"@en , "Framework"@fr , "Фреймворк"@ru , "Фреймворк"@uk ;
+    rdfs:comment "Software framework or library skill"@en ;
+    rdfs:subClassOf ex:TechnicalSkill .
+
+ex:Database a owl:Class ;
+    rdfs:label "Database Technology"@en , "Technologie de base de données"@fr , "Технология баз данных"@ru , "Технологія баз даних"@uk ;
+    rdfs:comment "Database management system or related technology"@en ;
+    rdfs:subClassOf ex:TechnicalSkill .
+
+ex:CloudPlatform a owl:Class ;
+    rdfs:label "Cloud Platform"@en , "Plateforme cloud"@fr , "Облачная платформа"@ru , "Хмарна платформа"@uk ;
+    rdfs:comment "Cloud computing platform or service"@en ;
+    rdfs:subClassOf ex:TechnicalSkill .
+
+ex:DevOpsTool a owl:Class ;
+    rdfs:label "DevOps Tool"@en , "Outil DevOps"@fr , "Инструмент DevOps"@ru , "Інструмент DevOps"@uk ;
+    rdfs:comment "Development operations tool or practice"@en ;
+    rdfs:subClassOf ex:TechnicalSkill .
+
+ex:SoftSkill a owl:Class ;
     rdfs:label "Soft Skill"@en , "Compétence relationnelle"@fr , "Гибкий навык"@ru , "М'який навик"@uk ;
-    rdfs:comment "Interpersonal or soft skill"@en ;
-    rdfs:subClassOf schema:DefinedTerm .
+    rdfs:comment "Interpersonal, communication, or leadership skill"@en ;
+    rdfs:subClassOf ex:Skill .
 
-ex:Publication a rdfs:Class ;
+ex:LanguageSkill a owl:Class ;
+    rdfs:label "Language Skill"@en , "Compétence linguistique"@fr , "Языковой навык"@ru , "Мовна навичка"@uk ;
+    rdfs:comment "Natural language proficiency"@en ;
+    rdfs:subClassOf ex:Skill ;
+    owl:equivalentClass schema:Language .
+
+# Enhanced Publication Types
+ex:Publication a owl:Class ;
     rdfs:label "Publication"@en , "Publication"@fr , "Публикация"@ru , "Публікація"@uk ;
-    rdfs:comment "Academic or professional publication"@en ;
-    rdfs:subClassOf schema:ScholarlyArticle .
+    rdfs:comment "Academic, professional, or technical publication"@en ;
+    rdfs:subClassOf schema:ScholarlyArticle ;
+    owl:equivalentClass foaf:Document .
 
-ex:Award a rdfs:Class ;
+ex:JournalArticle a owl:Class ;
+    rdfs:label "Journal Article"@en , "Article de journal"@fr , "Журнальная статья"@ru , "Журнальна стаття"@uk ;
+    rdfs:comment "Article published in an academic or professional journal"@en ;
+    rdfs:subClassOf ex:Publication .
+
+ex:ConferencePaper a owl:Class ;
+    rdfs:label "Conference Paper"@en , "Article de conférence"@fr , "Конференц-доклад"@ru , "Конференційна доповідь"@uk ;
+    rdfs:comment "Paper presented at an academic or professional conference"@en ;
+    rdfs:subClassOf ex:Publication .
+
+ex:TechnicalReport a owl:Class ;
+    rdfs:label "Technical Report"@en , "Rapport technique"@fr , "Технический отчет"@ru , "Технічний звіт"@uk ;
+    rdfs:comment "Technical documentation or research report"@en ;
+    rdfs:subClassOf ex:Publication .
+
+ex:BlogPost a owl:Class ;
+    rdfs:label "Blog Post"@en , "Article de blog"@fr , "Пост в блоге"@ru , "Допис у блозі"@uk ;
+    rdfs:comment "Article published on a blog or online platform"@en ;
+    rdfs:subClassOf ex:Publication .
+
+# Awards and Recognition
+ex:Award a owl:Class ;
     rdfs:label "Award"@en , "Récompense"@fr , "Награда"@ru , "Нагорода"@uk ;
-    rdfs:comment "Award or recognition received"@en ;
+    rdfs:comment "Award, prize, or recognition received"@en ;
     rdfs:subClassOf schema:Award .
 
-ex:Certification a rdfs:Class ;
+ex:AcademicAward a owl:Class ;
+    rdfs:label "Academic Award"@en , "Prix académique"@fr , "Академическая награда"@ru , "Академічна нагорода"@uk ;
+    rdfs:comment "Award received for academic excellence or achievement"@en ;
+    rdfs:subClassOf ex:Award .
+
+ex:ProfessionalAward a owl:Class ;
+    rdfs:label "Professional Award"@en , "Prix professionnel"@fr , "Профессиональная награда"@ru , "Професійна нагорода"@uk ;
+    rdfs:comment "Award received for professional work or contribution"@en ;
+    rdfs:subClassOf ex:Award .
+
+ex:Scholarship a owl:Class ;
+    rdfs:label "Scholarship"@en , "Bourse d'études"@fr , "Стипендия"@ru , "Стипендія"@uk ;
+    rdfs:comment "Financial award for educational purposes"@en ;
+    rdfs:subClassOf ex:Award .
+
+# Certifications
+ex:Certification a owl:Class ;
     rdfs:label "Certification"@en , "Certification"@fr , "Сертификация"@ru , "Сертифікація"@uk ;
-    rdfs:comment "Professional certification or credential"@en ;
+    rdfs:comment "Professional certification, credential, or license"@en ;
     rdfs:subClassOf schema:EducationalOccupationalCredential .
 
-ex:Interest a rdfs:Class ;
+ex:TechnicalCertification a owl:Class ;
+    rdfs:label "Technical Certification"@en , "Certification technique"@fr , "Техническая сертификация"@ru , "Технічна сертифікація"@uk ;
+    rdfs:comment "Certification in technical skills or technologies"@en ;
+    rdfs:subClassOf ex:Certification .
+
+ex:ProfessionalCertification a owl:Class ;
+    rdfs:label "Professional Certification"@en , "Certification professionnelle"@fr , "Профессиональная сертификация"@ru , "Професійна сертифікація"@uk ;
+    rdfs:comment "Industry-recognized professional certification"@en ;
+    rdfs:subClassOf ex:Certification .
+
+# Additional Classes
+ex:Interest a owl:Class ;
     rdfs:label "Interest"@en , "Centre d'intérêt"@fr , "Интерес"@ru , "Інтерес"@uk ;
-    rdfs:comment "Personal interest or hobby"@en ;
+    rdfs:comment "Personal interest, hobby, or area of curiosity"@en ;
     rdfs:subClassOf schema:Thing .
 
-# Properties
-ex:hasSkillLevel a rdfs:Property ;
+ex:Reference a owl:Class ;
+    rdfs:label "Professional Reference"@en , "Référence professionnelle"@fr , "Профессиональная рекомендация"@ru , "Професійна рекомендація"@uk ;
+    rdfs:comment "Person who can provide professional reference or recommendation"@en ;
+    rdfs:subClassOf foaf:Person .
+
+ex:VolunteerWork a owl:Class ;
+    rdfs:label "Volunteer Work"@en , "Travail bénévole"@fr , "Волонтерская работа"@ru , "Волонтерська робота"@uk ;
+    rdfs:comment "Unpaid volunteer work or community service"@en ;
+    rdfs:subClassOf schema:VolunteerWork .
+
+# =============================================================================
+# COMPREHENSIVE PROPERTIES
+# =============================================================================
+
+# ==================== SKILL-RELATED PROPERTIES ====================
+
+ex:hasSkillLevel a owl:DatatypeProperty ;
     rdfs:label "has skill level"@en , "a niveau de compétence"@fr , "имеет уровень навыка"@ru , "має рівень навички"@uk ;
-    rdfs:comment "Indicates the proficiency level of a skill"@en ;
-    rdfs:domain ex:TechnicalSkill ;
-    rdfs:range rdfs:Literal .
+    rdfs:comment "Indicates the proficiency level of a skill (Beginner, Intermediate, Advanced, Expert)"@en ;
+    rdfs:domain ex:Skill ;
+    rdfs:range [ owl:oneOf ( "Beginner" "Intermediate" "Advanced" "Expert" "Native" ) ] ;
+    owl:equivalentProperty schema:skillLevel .
 
-ex:usedTechnology a rdfs:Property ;
+ex:hasSkillCategory a owl:ObjectProperty ;
+    rdfs:label "has skill category"@en , "a catégorie de compétence"@fr , "имеет категорию навыка"@ru , "має категорію навички"@uk ;
+    rdfs:comment "Categories or groups that organize related skills"@en ;
+    rdfs:domain ex:Skill ;
+    rdfs:range skos:Concept .
+
+ex:hasSkillEndorsement a owl:ObjectProperty ;
+    rdfs:label "has skill endorsement"@en , "a recommandation de compétence"@fr , "имеет подтверждение навыка"@ru , "має підтвердження навички"@uk ;
+    rdfs:comment "Person or organization that endorses this skill"@en ;
+    rdfs:domain ex:Skill ;
+    rdfs:range foaf:Agent .
+
+ex:skillAcquiredDate a owl:DatatypeProperty ;
+    rdfs:label "skill acquired date"@en , "date d'acquisition de la compétence"@fr , "дата получения навыка"@ru , "дата отримання навички"@uk ;
+    rdfs:comment "Date when the skill was first acquired"@en ;
+    rdfs:domain ex:Skill ;
+    rdfs:range xsd:date .
+
+ex:yearsOfExperience a owl:DatatypeProperty ;
+    rdfs:label "years of experience"@en , "années d'expérience"@fr , "лет опыта"@ru , "років досвіду"@uk ;
+    rdfs:comment "Number of years of experience with this skill"@en ;
+    rdfs:domain ex:Skill ;
+    rdfs:range xsd:decimal .
+
+# ==================== PROJECT-RELATED PROPERTIES ====================
+
+ex:usedTechnology a owl:ObjectProperty ;
     rdfs:label "used technology"@en , "technologie utilisée"@fr , "использованная технология"@ru , "використана технологія"@uk ;
-    rdfs:comment "Technology or tool used in a project or work experience"@en ;
-    rdfs:domain ex:Project , ex:WorkExperience ;
-    rdfs:range rdfs:Literal .
+    rdfs:comment "Technology, tool, or framework used in a project or work experience"@en ;
+    rdfs:domain [ owl:unionOf ( ex:Project ex:WorkExperience ) ] ;
+    rdfs:range ex:TechnicalSkill .
 
-ex:hasInstitution a rdfs:Property ;
+ex:projectType a owl:DatatypeProperty ;
+    rdfs:label "project type"@en , "type de projet"@fr , "тип проекта"@ru , "тип проєкту"@uk ;
+    rdfs:comment "Category or type of project (academic, personal, professional, open-source)"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range [ owl:oneOf ( "Academic" "Personal" "Professional" "Open Source" "Research" "Commercial" ) ] .
+
+ex:projectStatus a owl:DatatypeProperty ;
+    rdfs:label "project status"@en , "statut du projet"@fr , "статус проекта"@ru , "статус проєкту"@uk ;
+    rdfs:comment "Current status of the project"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range [ owl:oneOf ( "Planning" "In Progress" "Completed" "On Hold" "Cancelled" "Maintained" ) ] .
+
+ex:repositoryUrl a owl:DatatypeProperty ;
+    rdfs:label "repository URL"@en , "URL du dépôt"@fr , "URL репозитория"@ru , "URL репозиторію"@uk ;
+    rdfs:comment "URL of the source code repository"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf schema:codeRepository .
+
+ex:demoUrl a owl:DatatypeProperty ;
+    rdfs:label "demo URL"@en , "URL de démonstration"@fr , "URL демо"@ru , "URL демо"@uk ;
+    rdfs:comment "URL of a live demonstration or deployed version"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range xsd:anyURI .
+
+ex:projectDifficulty a owl:DatatypeProperty ;
+    rdfs:label "project difficulty"@en , "difficulté du projet"@fr , "сложность проекта"@ru , "складність проєкту"@uk ;
+    rdfs:comment "Subjective difficulty level of the project"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range [ owl:oneOf ( "Easy" "Medium" "Hard" "Expert" ) ] .
+
+ex:teamSize a owl:DatatypeProperty ;
+    rdfs:label "team size"@en , "taille de l'équipe"@fr , "размер команды"@ru , "розмір команди"@uk ;
+    rdfs:comment "Number of people who worked on this project"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range xsd:nonNegativeInteger .
+
+ex:hasCollaborator a owl:ObjectProperty ;
+    rdfs:label "has collaborator"@en , "a collaborateur"@fr , "имеет соавтора"@ru , "має співавтора"@uk ;
+    rdfs:comment "Person who collaborated on this project"@en ;
+    rdfs:domain ex:Project ;
+    rdfs:range foaf:Person .
+
+# ==================== EDUCATION-RELATED PROPERTIES ====================
+
+ex:hasInstitution a owl:ObjectProperty ;
     rdfs:label "has institution"@en , "a institution"@fr , "имеет учреждение"@ru , "має установу"@uk ;
     rdfs:comment "Educational institution associated with education or certification"@en ;
-    rdfs:domain ex:Education , ex:Certification ;
+    rdfs:domain [ owl:unionOf ( ex:Education ex:Certification ) ] ;
     rdfs:range schema:EducationalOrganization .
 
-ex:hasEmployer a rdfs:Property ;
+ex:degreeType a owl:DatatypeProperty ;
+    rdfs:label "degree type"@en , "type de diplôme"@fr , "тип степени"@ru , "тип ступінь"@uk ;
+    rdfs:comment "Type of academic degree (Bachelor's, Master's, PhD, etc.)"@en ;
+    rdfs:domain ex:Degree ;
+    rdfs:range [ owl:oneOf ( "Associate" "Bachelor" "Master" "PhD" "Certificate" "Diploma" ) ] .
+
+ex:fieldOfStudy a owl:DatatypeProperty ;
+    rdfs:label "field of study"@en , "domaine d'études"@fr , "область изучения"@ru , "галузь навчання"@uk ;
+    rdfs:comment "Academic field or major area of study"@en ;
+    rdfs:domain ex:Education ;
+    rdfs:range xsd:string .
+
+ex:gpa a owl:DatatypeProperty ;
+    rdfs:label "GPA"@en , "moyenne générale"@fr , "средний балл"@ru , "середній бал"@uk ;
+    rdfs:comment "Grade Point Average or equivalent academic performance measure"@en ;
+    rdfs:domain ex:Education ;
+    rdfs:range xsd:decimal .
+
+ex:maxGpa a owl:DatatypeProperty ;
+    rdfs:label "maximum GPA"@en , "moyenne maximale"@fr , "максимальный балл"@ru , "максимальний бал"@uk ;
+    rdfs:comment "Maximum possible GPA for the grading system used"@en ;
+    rdfs:domain ex:Education ;
+    rdfs:range xsd:decimal .
+
+ex:academicHonors a owl:DatatypeProperty ;
+    rdfs:label "academic honors"@en , "distinctions académiques"@fr , "академические почести"@ru , "академічні нагороди"@uk ;
+    rdfs:comment "Academic honors or distinctions received (Magna Cum Laude, etc.)"@en ;
+    rdfs:domain ex:Education ;
+    rdfs:range xsd:string .
+
+ex:thesis a owl:ObjectProperty ;
+    rdfs:label "thesis"@en , "thèse"@fr , "диссертация"@ru , "дисертація"@uk ;
+    rdfs:comment "Academic thesis or dissertation associated with the degree"@en ;
+    rdfs:domain ex:Degree ;
+    rdfs:range ex:Publication .
+
+ex:courseCredit a owl:DatatypeProperty ;
+    rdfs:label "course credit"@en , "crédit de cours"@fr , "кредит курса"@ru , "кредит курсу"@uk ;
+    rdfs:comment "Number of academic credits for a course"@en ;
+    rdfs:domain ex:Course ;
+    rdfs:range xsd:decimal .
+
+# ==================== WORK EXPERIENCE PROPERTIES ====================
+
+ex:hasEmployer a owl:ObjectProperty ;
     rdfs:label "has employer"@en , "a employeur"@fr , "имеет работодателя"@ru , "має роботодавця"@uk ;
     rdfs:comment "Organization where work experience was gained"@en ;
     rdfs:domain ex:WorkExperience ;
     rdfs:range schema:Organization .
 
-ex:projectType a rdfs:Property ;
-    rdfs:label "project type"@en , "type de projet"@fr , "тип проекта"@ru , "тип проєкту"@uk ;
-    rdfs:comment "Category or type of project (academic, personal, professional)"@en ;
-    rdfs:domain ex:Project ;
-    rdfs:range rdfs:Literal .
+ex:positionLevel a owl:DatatypeProperty ;
+    rdfs:label "position level"@en , "niveau de poste"@fr , "уровень должности"@ru , "рівень посади"@uk ;
+    rdfs:comment "Hierarchical level of the position (Junior, Senior, Lead, etc.)"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range [ owl:oneOf ( "Intern" "Junior" "Mid-level" "Senior" "Lead" "Principal" "Manager" "Director" "Executive" ) ] .
 
-ex:publicationVenue a rdfs:Property ;
+ex:employmentType a owl:DatatypeProperty ;
+    rdfs:label "employment type"@en , "type d'emploi"@fr , "тип занятости"@ru , "тип зайнятості"@uk ;
+    rdfs:comment "Type of employment arrangement"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range [ owl:oneOf ( "Full-time" "Part-time" "Contract" "Freelance" "Internship" "Volunteer" ) ] .
+
+ex:workLocation a owl:ObjectProperty ;
+    rdfs:label "work location"@en , "lieu de travail"@fr , "место работы"@ru , "місце роботи"@uk ;
+    rdfs:comment "Physical or virtual location where work was performed"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range [ owl:unionOf ( schema:Place vcard:Location ) ] .
+
+ex:isRemoteWork a owl:DatatypeProperty ;
+    rdfs:label "is remote work"@en , "est télétravail"@fr , "удаленная работа"@ru , "віддалена робота"@uk ;
+    rdfs:comment "Whether the work was performed remotely"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range xsd:boolean .
+
+ex:reportingManager a owl:ObjectProperty ;
+    rdfs:label "reporting manager"@en , "responsable hiérarchique"@fr , "руководитель"@ru , "керівник"@uk ;
+    rdfs:comment "Person to whom this position reported"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range foaf:Person .
+
+ex:teamMembers a owl:DatatypeProperty ;
+    rdfs:label "team members"@en , "membres de l'équipe"@fr , "члены команды"@ru , "члени команди"@uk ;
+    rdfs:comment "Number of team members worked with"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range xsd:nonNegativeInteger .
+
+ex:keyAchievement a owl:DatatypeProperty ;
+    rdfs:label "key achievement"@en , "réalisation clé"@fr , "ключевое достижение"@ru , "ключове досягнення"@uk ;
+    rdfs:comment "Notable achievement during this work experience"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range xsd:string .
+
+ex:hasResponsibility a owl:DatatypeProperty ;
+    rdfs:label "has responsibility"@en , "a responsabilité"@fr , "имеет обязанность"@ru , "має відповідальність"@uk ;
+    rdfs:comment "Key responsibility or duty in this role"@en ;
+    rdfs:domain ex:WorkExperience ;
+    rdfs:range xsd:string .
+
+# ==================== PUBLICATION PROPERTIES ====================
+
+ex:publicationVenue a owl:DatatypeProperty ;
     rdfs:label "publication venue"@en , "lieu de publication"@fr , "место публикации"@ru , "місце публікації"@uk ;
     rdfs:comment "Journal, conference, or other venue where work was published"@en ;
     rdfs:domain ex:Publication ;
-    rdfs:range rdfs:Literal .
+    rdfs:range xsd:string .
 
-ex:awardingOrganization a rdfs:Property ;
+ex:doi a owl:DatatypeProperty ;
+    rdfs:label "DOI"@en , "DOI"@fr , "DOI"@ru , "DOI"@uk ;
+    rdfs:comment "Digital Object Identifier for the publication"@en ;
+    rdfs:domain ex:Publication ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dc:identifier .
+
+ex:impactFactor a owl:DatatypeProperty ;
+    rdfs:label "impact factor"@en , "facteur d'impact"@fr , "импакт-фактор"@ru , "імпакт-фактор"@uk ;
+    rdfs:comment "Impact factor of the publication venue"@en ;
+    rdfs:domain ex:Publication ;
+    rdfs:range xsd:decimal .
+
+ex:citationCount a owl:DatatypeProperty ;
+    rdfs:label "citation count"@en , "nombre de citations"@fr , "количество цитирований"@ru , "кількість цитувань"@uk ;
+    rdfs:comment "Number of times this publication has been cited"@en ;
+    rdfs:domain ex:Publication ;
+    rdfs:range xsd:nonNegativeInteger .
+
+ex:hasCoAuthor a owl:ObjectProperty ;
+    rdfs:label "has co-author"@en , "a co-auteur"@fr , "имеет соавтора"@ru , "має співавтора"@uk ;
+    rdfs:comment "Person who co-authored this publication"@en ;
+    rdfs:domain ex:Publication ;
+    rdfs:range foaf:Person .
+
+ex:publicationType a owl:DatatypeProperty ;
+    rdfs:label "publication type"@en , "type de publication"@fr , "тип публикации"@ru , "тип публікації"@uk ;
+    rdfs:comment "Type or format of the publication"@en ;
+    rdfs:domain ex:Publication ;
+    rdfs:range [ owl:oneOf ( "Journal Article" "Conference Paper" "Book Chapter" "Technical Report" "White Paper" "Blog Post" "Preprint" ) ] .
+
+# ==================== AWARD PROPERTIES ====================
+
+ex:awardingOrganization a owl:ObjectProperty ;
     rdfs:label "awarding organization"@en , "organisation décernante"@fr , "награждающая организация"@ru , "нагороджуюча організація"@uk ;
     rdfs:comment "Organization that granted the award"@en ;
     rdfs:domain ex:Award ;
     rdfs:range schema:Organization .
+
+ex:awardValue a owl:DatatypeProperty ;
+    rdfs:label "award value"@en , "valeur du prix"@fr , "ценность награды"@ru , "вартість нагороди"@uk ;
+    rdfs:comment "Monetary value of the award, if applicable"@en ;
+    rdfs:domain ex:Award ;
+    rdfs:range schema:MonetaryAmount .
+
+ex:awardCriteria a owl:DatatypeProperty ;
+    rdfs:label "award criteria"@en , "critères du prix"@fr , "критерии награды"@ru , "критерії нагороди"@uk ;
+    rdfs:comment "Criteria or reason for receiving the award"@en ;
+    rdfs:domain ex:Award ;
+    rdfs:range xsd:string .
+
+ex:awardCategory a owl:DatatypeProperty ;
+    rdfs:label "award category"@en , "catégorie de prix"@fr , "категория награды"@ru , "категорія нагороди"@uk ;
+    rdfs:comment "Category or classification of the award"@en ;
+    rdfs:domain ex:Award ;
+    rdfs:range xsd:string .
+
+# ==================== TEMPORAL PROPERTIES ====================
+
+ex:startDate a owl:DatatypeProperty ;
+    rdfs:label "start date"@en , "date de début"@fr , "дата начала"@ru , "дата початку"@uk ;
+    rdfs:comment "Date when something began"@en ;
+    rdfs:domain [ owl:unionOf ( ex:WorkExperience ex:Education ex:Project ) ] ;
+    rdfs:range xsd:date ;
+    owl:equivalentProperty schema:startDate .
+
+ex:endDate a owl:DatatypeProperty ;
+    rdfs:label "end date"@en , "date de fin"@fr , "дата окончания"@ru , "дата закінчення"@uk ;
+    rdfs:comment "Date when something ended"@en ;
+    rdfs:domain [ owl:unionOf ( ex:WorkExperience ex:Education ex:Project ) ] ;
+    rdfs:range xsd:date ;
+    owl:equivalentProperty schema:endDate .
+
+ex:isCurrent a owl:DatatypeProperty ;
+    rdfs:label "is current"@en , "est actuel"@fr , "текущий"@ru , "поточний"@uk ;
+    rdfs:comment "Whether this activity is currently ongoing"@en ;
+    rdfs:domain [ owl:unionOf ( ex:WorkExperience ex:Education ex:Project ) ] ;
+    rdfs:range xsd:boolean .
+
+ex:duration a owl:DatatypeProperty ;
+    rdfs:label "duration"@en , "durée"@fr , "продолжительность"@ru , "тривалість"@uk ;
+    rdfs:comment "Duration of the activity or experience"@en ;
+    rdfs:domain [ owl:unionOf ( ex:WorkExperience ex:Education ex:Project ) ] ;
+    rdfs:range xsd:duration .
+
+# ==================== CERTIFICATION PROPERTIES ====================
+
+ex:certificationId a owl:DatatypeProperty ;
+    rdfs:label "certification ID"@en , "ID de certification"@fr , "ID сертификации"@ru , "ID сертифікації"@uk ;
+    rdfs:comment "Unique identifier for the certification"@en ;
+    rdfs:domain ex:Certification ;
+    rdfs:range xsd:string .
+
+ex:expirationDate a owl:DatatypeProperty ;
+    rdfs:label "expiration date"@en , "date d'expiration"@fr , "дата истечения"@ru , "дата закінчення"@uk ;
+    rdfs:comment "Date when the certification expires"@en ;
+    rdfs:domain ex:Certification ;
+    rdfs:range xsd:date .
+
+ex:issuingOrganization a owl:ObjectProperty ;
+    rdfs:label "issuing organization"@en , "organisation émettrice"@fr , "выдающая организация"@ru , "організація-емітент"@uk ;
+    rdfs:comment "Organization that issued the certification"@en ;
+    rdfs:domain ex:Certification ;
+    rdfs:range schema:Organization .
+
+ex:verificationUrl a owl:DatatypeProperty ;
+    rdfs:label "verification URL"@en , "URL de vérification"@fr , "URL верификации"@ru , "URL верифікації"@uk ;
+    rdfs:comment "URL where the certification can be verified"@en ;
+    rdfs:domain ex:Certification ;
+    rdfs:range xsd:anyURI .
+
+# ==================== CONTACT AND SOCIAL PROPERTIES ====================
+
+ex:hasPortfolio a owl:ObjectProperty ;
+    rdfs:label "has portfolio"@en , "a portfolio"@fr , "имеет портфолио"@ru , "має портфоліо"@uk ;
+    rdfs:comment "Links a person to their professional portfolio"@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:range ex:Portfolio .
+
+ex:socialMediaProfile a owl:DatatypeProperty ;
+    rdfs:label "social media profile"@en , "profil de réseau social"@fr , "профиль соцсети"@ru , "профіль соцмережі"@uk ;
+    rdfs:comment "URL of a social media profile"@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf foaf:homepage .
+
+ex:githubProfile a owl:DatatypeProperty ;
+    rdfs:label "GitHub profile"@en , "profil GitHub"@fr , "профиль GitHub"@ru , "профіль GitHub"@uk ;
+    rdfs:comment "URL of GitHub profile"@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf ex:socialMediaProfile .
+
+ex:linkedinProfile a owl:DatatypeProperty ;
+    rdfs:label "LinkedIn profile"@en , "profil LinkedIn"@fr , "профиль LinkedIn"@ru , "профіль LinkedIn"@uk ;
+    rdfs:comment "URL of LinkedIn profile"@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf ex:socialMediaProfile .
+
+# ==================== PORTFOLIO ORGANIZATION PROPERTIES ====================
+
+ex:hasSection a owl:ObjectProperty ;
+    rdfs:label "has section"@en , "a section"@fr , "имеет раздел"@ru , "має розділ"@uk ;
+    rdfs:comment "Sections that make up the portfolio"@en ;
+    rdfs:domain ex:Portfolio ;
+    rdfs:range schema:CreativeWork .
+
+ex:displayOrder a owl:DatatypeProperty ;
+    rdfs:label "display order"@en , "ordre d'affichage"@fr , "порядок отображения"@ru , "порядок відображення"@uk ;
+    rdfs:comment "Numerical order for displaying items in the portfolio"@en ;
+    rdfs:range xsd:integer .
+
+ex:isHighlighted a owl:DatatypeProperty ;
+    rdfs:label "is highlighted"@en , "est en vedette"@fr , "выделено"@ru , "виділено"@uk ;
+    rdfs:comment "Whether this item should be prominently featured"@en ;
+    rdfs:range xsd:boolean .
+
+ex:confidentialityLevel a owl:DatatypeProperty ;
+    rdfs:label "confidentiality level"@en , "niveau de confidentialité"@fr , "уровень конфиденциальности"@ru , "рівень конфіденційності"@uk ;
+    rdfs:comment "Level of confidentiality for sensitive information"@en ;
+    rdfs:range [ owl:oneOf ( "Public" "Restricted" "Confidential" "Secret" ) ] .

@@ -1,8 +1,217 @@
-PREFIX schema: <http://schema.org/>
+# =============================================================================
+# ADVANCED SPARQL QUERIES FOR PORTFOLIO ANALYSIS
+# =============================================================================
 
-SELECT ?name ?title
+# Query 1: Get all technical skills with proficiency levels
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?skillName ?level ?yearsExp ?category
 WHERE {
-  ?p a schema:Person ;
-     schema:name ?name ;
-     schema:jobTitle ?title .
+  ?person a schema:Person ;
+          schema:name "Dmytro Palahin" .
+  ?skill a ex:TechnicalSkill ;
+         rdfs:label ?skillName ;
+         ex:hasSkillLevel ?level .
+  OPTIONAL { ?skill ex:yearsOfExperience ?yearsExp }
+  OPTIONAL { ?skill ex:hasSkillCategory ?cat .
+             ?cat rdfs:label ?category }
+  FILTER(lang(?skillName) = "en")
 }
+ORDER BY DESC(?yearsExp) ?level
+
+# Query 2: Project timeline with technologies used
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?projectName ?startDate ?endDate ?status ?techUsed ?projectType
+WHERE {
+  ?project a ex:Project ;
+           rdfs:label ?projectName ;
+           ex:startDate ?startDate ;
+           ex:projectStatus ?status ;
+           ex:projectType ?projectType .
+  OPTIONAL { ?project ex:endDate ?endDate }
+  OPTIONAL { 
+    ?project ex:usedTechnology ?tech .
+    ?tech rdfs:label ?techUsed .
+    FILTER(lang(?techUsed) = "en")
+  }
+  FILTER(lang(?projectName) = "en")
+}
+ORDER BY DESC(?startDate)
+
+# Query 3: Career progression analysis
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?jobTitle ?employer ?startDate ?endDate ?positionLevel ?employmentType
+WHERE {
+  ?experience a ex:WorkExperience ;
+              rdfs:label ?jobTitle ;
+              ex:startDate ?startDate ;
+              ex:positionLevel ?positionLevel ;
+              ex:employmentType ?employmentType .
+  ?experience ex:hasEmployer ?org .
+  ?org schema:name ?employer .
+  OPTIONAL { ?experience ex:endDate ?endDate }
+  FILTER(lang(?jobTitle) = "en")
+}
+ORDER BY DESC(?startDate)
+
+# Query 4: Educational background with achievements
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?degreeName ?institution ?fieldOfStudy ?startDate ?endDate ?gpa ?honors
+WHERE {
+  ?education a ex:Education ;
+             rdfs:label ?degreeName ;
+             ex:fieldOfStudy ?fieldOfStudy ;
+             ex:startDate ?startDate .
+  ?education ex:hasInstitution ?inst .
+  ?inst schema:name ?institution .
+  OPTIONAL { ?education ex:endDate ?endDate }
+  OPTIONAL { ?education ex:gpa ?gpa }
+  OPTIONAL { ?education ex:academicHonors ?honors }
+  FILTER(lang(?degreeName) = "en")
+  FILTER(lang(?institution) = "en")
+}
+ORDER BY DESC(?startDate)
+
+# Query 5: Publications and citations analysis
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+SELECT ?title ?venue ?publicationType ?citationCount ?coAuthors ?publishedDate
+WHERE {
+  ?publication a ex:Publication ;
+               dc:title ?title ;
+               ex:publicationVenue ?venue ;
+               ex:publicationType ?publicationType ;
+               schema:datePublished ?publishedDate .
+  OPTIONAL { ?publication ex:citationCount ?citationCount }
+  OPTIONAL { 
+    ?publication ex:hasCoAuthor ?coauthor .
+    ?coauthor schema:name ?coAuthors 
+  }
+  FILTER(lang(?title) = "en")
+}
+ORDER BY DESC(?publishedDate)
+
+# Query 6: Skills gap analysis - compare with job requirements
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?requiredSkill ?currentLevel ?yearsExp
+WHERE {
+  # Example job requirements (would be imported from job postings)
+  VALUES ?requiredSkill { "Python" "Machine Learning" "Docker" "Kubernetes" "AWS" }
+  
+  OPTIONAL {
+    ?skill a ex:TechnicalSkill ;
+           rdfs:label ?requiredSkill ;
+           ex:hasSkillLevel ?currentLevel ;
+           ex:yearsOfExperience ?yearsExp .
+  }
+}
+
+# Query 7: Network analysis - collaborators and references
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?collaboratorName ?context ?relationship
+WHERE {
+  {
+    ?project a ex:Project ;
+             ex:hasCollaborator ?collaborator .
+    ?collaborator foaf:name ?collaboratorName .
+    BIND("Project Collaboration" AS ?context)
+    BIND("Collaborator" AS ?relationship)
+  }
+  UNION
+  {
+    ?publication a ex:Publication ;
+                 ex:hasCoAuthor ?coauthor .
+    ?coauthor schema:name ?collaboratorName .
+    BIND("Co-authorship" AS ?context)
+    BIND("Co-author" AS ?relationship)
+  }
+  UNION
+  {
+    ?reference a ex:Reference ;
+               foaf:name ?collaboratorName .
+    BIND("Professional Reference" AS ?context)
+    BIND("Reference" AS ?relationship)
+  }
+}
+
+# Query 8: Technology evolution over time
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?year ?technology (COUNT(*) AS ?projectCount)
+WHERE {
+  ?project a ex:Project ;
+           ex:startDate ?startDate ;
+           ex:usedTechnology ?tech .
+  ?tech rdfs:label ?technology .
+  BIND(YEAR(?startDate) AS ?year)
+  FILTER(lang(?technology) = "en")
+}
+GROUP BY ?year ?technology
+ORDER BY ?year DESC(?projectCount)
+
+# Query 9: Award and recognition timeline
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?awardName ?organization ?date ?value ?criteria
+WHERE {
+  ?award a ex:Award ;
+         rdfs:label ?awardName ;
+         schema:dateReceived ?date .
+  ?award ex:awardingOrganization ?org .
+  ?org schema:name ?organization .
+  OPTIONAL { ?award ex:awardValue ?value }
+  OPTIONAL { ?award ex:awardCriteria ?criteria }
+  FILTER(lang(?awardName) = "en")
+  FILTER(lang(?organization) = "en")
+}
+ORDER BY DESC(?date)
+
+# Query 10: Certification status and validity
+PREFIX ex: <https://dmytro.example/schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?certName ?issuer ?issueDate ?expirationDate ?status ?verificationUrl
+WHERE {
+  ?cert a ex:Certification ;
+        rdfs:label ?certName ;
+        schema:dateReceived ?issueDate .
+  ?cert ex:issuingOrganization ?org .
+  ?org schema:name ?issuer .
+  OPTIONAL { ?cert ex:expirationDate ?expirationDate }
+  OPTIONAL { ?cert ex:verificationUrl ?verificationUrl }
+  
+  BIND(
+    IF(?expirationDate && ?expirationDate < NOW(), "Expired",
+      IF(?expirationDate && ?expirationDate > NOW(), "Valid", "No Expiration")
+    ) AS ?status
+  )
+  
+  FILTER(lang(?certName) = "en")
+  FILTER(lang(?issuer) = "en")
+}
+ORDER BY ?expirationDate

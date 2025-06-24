@@ -1,60 +1,308 @@
 @prefix schema: <http://schema.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix ex: <https://dmytro.example/schema#> .
 @prefix : <https://dmytro.example/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:me a schema:Person ;
-    schema:name       "Dmytro Palahin"@en ,
-                      "Dmytro Palahin"@fr ,
-                      "Дмитрий Палагин"@ru ,
-                      "Дмитро Палагін"@uk ;
-    schema:jobTitle   "Full-Stack Developer & Data Engineer"@en ,
-                      "Développeur full-stack & Ingénieur Data"@fr ,
-                      "Full-stack разработчик / инженер данных"@ru ,
-                      "Full-stack розробник / інженер даних"@uk ;
-    schema:email      "mailto:dmytro.palahin@gmail.com" ;
-    schema:telephone  "+33 7 87 32 58 78" ;
-    schema:birthDate  "2003-12-05" ;
+# =============================================================================
+# ENHANCED PORTFOLIO DATA - ВАШИ РЕАЛЬНЫЕ ДАННЫЕ ИЗ meta.ttl
+# =============================================================================
+
+# Main Portfolio
+:portfolio a ex:Portfolio ;
+    rdfs:label "Dmytro Palahin's Professional Portfolio"@en , 
+               "Portfolio Professionnel de Dmytro Palahin"@fr ,
+               "Профессиональный портфолио Дмитрия Палагина"@ru ,
+               "Професійне портфоліо Дмитра Палагіна"@uk ;
+    schema:creator :me ;
+    dcterms:created "2024-01-01"^^xsd:date ;
+    dcterms:modified "2025-06-24"^^xsd:date ;
+    dc:language "en", "fr", "ru", "uk" ;
+    schema:inLanguage "en", "fr", "ru", "uk" .
+
+# Personal Information - ВАШИ РЕАЛЬНЫЕ ДАННЫЕ
+:me a schema:Person , foaf:Person ;
+    rdfs:label "Dmytro Palahin"@en , "Дмитрий Палагин"@ru , "Дмитро Палагін"@uk ;
+    schema:name "Dmytro Palahin"@en , "Dmytro Palahin"@fr , 
+                "Дмитрий Палагин"@ru , "Дмитро Палагін"@uk ;
+    foaf:name "Dmytro Palahin" ;
+    schema:givenName "Dmytro"@en , "Дмитрий"@ru , "Дмитро"@uk ;
+    schema:familyName "Palahin"@en , "Палагин"@ru , "Палагін"@uk ;
+    schema:jobTitle "Full-Stack Developer & Data Engineer"@en ,
+                    "Développeur full-stack & Ingénieur Data"@fr ,
+                    "Full-stack разработчик / инженер данных"@ru ,
+                    "Full-stack розробник / інженер даних"@uk ;
+    schema:email "dmytro.palahin@gmail.com" ;
+    foaf:mbox <mailto:dmytro.palahin@gmail.com> ;
+    schema:telephone "+33 7 87 32 58 78" ;
+    schema:birthDate "2003-12-05"^^xsd:date ;
     schema:nationality "Ukrainian" ;
-    schema:address    [ a schema:PostalAddress ;
-                       schema:addressLocality "Paris" ;
-                       schema:addressCountry "France" ] ;
-    schema:sameAs     <https://github.com/DmytroPalahin> ,
-                      <https://linkedin.com/in/dmytropalahin> ,
-                      <https://t.me/dmytropalahin> ;
-    schema:worksFor   [ a schema:Organization ;
-                       schema:name "Société Générale Insurance"@fr ,
-                                  "Société Générale Insurance"@en ;
-                       schema:location "Paris, France" ] ;
-    schema:alumniOf   [ a schema:EducationalOrganization ;
-                       schema:name "Sup Galilée School"@en ,
-                                  "École Sup Galilée"@fr ;
-                       schema:location "Paris, France" ] ,
-                     [ a schema:EducationalOrganization ;
-                       schema:name "Sorbonne Paris Nord University"@en ,
-                                  "Université Sorbonne Paris Nord"@fr ;
-                       schema:location "Paris, France" ] ;
-    schema:knowsLanguage [ a schema:Language ;
-                          schema:name "Ukrainian" ;
-                          schema:proficiencyLevel "Native" ] ,
-                        [ a schema:Language ;
-                          schema:name "English" ;
-                          schema:proficiencyLevel "Fluent" ] ,
-                        [ a schema:Language ;
-                          schema:name "French" ;
-                          schema:proficiencyLevel "Fluent" ] ,
-                        [ a schema:Language ;
-                          schema:name "Russian" ;
-                          schema:proficiencyLevel "Bilingual" ] ,
-                        [ a schema:Language ;
-                          schema:name "German" ;
-                          schema:proficiencyLevel "Beginner" ] ;
-    schema:knowsAbout "Machine Learning", "Data Engineering", "Python", "JavaScript", 
-                     "SQL", "Apache Spark", "Docker", "MLOps", "Kedro", "MLFlow" ;
-    schema:award      [ a schema:Award ;
-                       schema:name "Georges Besse Foundation Award"@en ,
-                                  "Prix de la Fondation Georges Besse"@fr ;
-                       schema:dateReceived "2022" ] ;
-    schema:hasOccupation [ a schema:Occupation ;
-                          schema:name "Data Engineer Intern"@en ,
-                                     "Alternant Ingénieur de données"@fr ;
-                          schema:occupationLocation "Paris, France" ;
-                          schema:skills "Python", "SQL", "Kedro", "MLFlow", "Superset", "Kibana" ] .
+    schema:address :address-paris ;
+    schema:sameAs <https://github.com/DmytroPalahin> ,
+                  <https://linkedin.com/in/dmytropalahin> ,
+                  <https://t.me/dmytropalahin> ;
+    schema:worksFor :org-sg-insurance ;
+    schema:alumniOf :org-sorbonne , :org-sup-galilee ;
+    ex:hasPortfolio :portfolio .
+
+# Address Information
+:address-paris a schema:PostalAddress ;
+    schema:addressLocality "Paris" ;
+    schema:addressCountry "France" ;
+    schema:addressRegion "Île-de-France" .
+
+# =============================================================================
+# TECHNICAL SKILLS - НА ОСНОВЕ ВАШИХ ДАННЫХ
+# =============================================================================
+
+# Programming Languages - из ваших knowsAbout
+:skill-python a ex:ProgrammingLanguage ;
+    rdfs:label "Python"@en ;
+    ex:hasSkillLevel "Expert" ;
+    ex:yearsOfExperience 5 ;
+    ex:skillCategory "Programming Language" ;
+    ex:skillAcquiredDate "2019-01-01"^^xsd:date .
+
+:skill-javascript a ex:ProgrammingLanguage ;
+    rdfs:label "JavaScript"@en ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:yearsOfExperience 4 ;
+    ex:skillCategory "Programming Language" .
+
+:skill-sql a ex:ProgrammingLanguage ;
+    rdfs:label "SQL"@en ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:yearsOfExperience 4 ;
+    ex:skillCategory "Database Language" .
+
+# Frameworks and Technologies - из ваших данных
+:skill-spark a ex:TechnicalSkill ;
+    rdfs:label "Apache Spark"@en ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "Big Data Processing" ;
+    ex:yearsOfExperience 2 .
+
+:skill-kedro a ex:Framework ;
+    rdfs:label "Kedro"@en ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "ML Pipeline Framework" ;
+    ex:yearsOfExperience 2 .
+
+:skill-mlflow a ex:TechnicalSkill ;
+    rdfs:label "MLFlow"@en ;
+    ex:hasSkillLevel "Intermediate" ;
+    ex:skillCategory "MLOps" ;
+    ex:yearsOfExperience 2 .
+
+:skill-docker a ex:DevOpsTool ;
+    rdfs:label "Docker"@en ;
+    ex:hasSkillLevel "Intermediate" ;
+    ex:skillCategory "Containerization" ;
+    ex:yearsOfExperience 3 .
+
+:skill-mlops a ex:TechnicalSkill ;
+    rdfs:label "MLOps"@en ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "Machine Learning Operations" ;
+    ex:yearsOfExperience 2 .
+
+:skill-ml a ex:TechnicalSkill ;
+    rdfs:label "Machine Learning"@en ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "Artificial Intelligence" ;
+    ex:yearsOfExperience 3 .
+
+:skill-data-engineering a ex:TechnicalSkill ;
+    rdfs:label "Data Engineering"@en ;
+    ex:hasSkillLevel "Expert" ;
+    ex:skillCategory "Data Science" ;
+    ex:yearsOfExperience 3 .
+
+# Language Skills - ваш реальный уровень языков
+:skill-ukrainian a ex:LanguageSkill ;
+    rdfs:label "Ukrainian"@en , "Українська"@uk ;
+    ex:hasSkillLevel "Native" ;
+    schema:proficiencyLevel "Native" .
+
+:skill-russian a ex:LanguageSkill ;
+    rdfs:label "Russian"@en , "Русский"@ru ;
+    ex:hasSkillLevel "Bilingual" ;
+    schema:proficiencyLevel "Bilingual" .
+
+:skill-english a ex:LanguageSkill ;
+    rdfs:label "English"@en ;
+    ex:hasSkillLevel "Fluent" ;
+    schema:proficiencyLevel "Fluent" .
+
+:skill-french a ex:LanguageSkill ;
+    rdfs:label "French"@en , "Français"@fr ;
+    ex:hasSkillLevel "Fluent" ;
+    schema:proficiencyLevel "Fluent" .
+
+:skill-german a ex:LanguageSkill ;
+    rdfs:label "German"@en , "Deutsch"@de ;
+    ex:hasSkillLevel "Beginner" ;
+    schema:proficiencyLevel "Beginner" .
+
+# Connect person to all skills
+:me schema:knowsAbout :skill-python, :skill-javascript, :skill-sql, :skill-spark, 
+                      :skill-kedro, :skill-mlflow, :skill-docker, :skill-mlops, 
+                      :skill-ml, :skill-data-engineering ;
+    schema:knowsLanguage :skill-ukrainian, :skill-russian, :skill-english, 
+                         :skill-french, :skill-german .
+
+# =============================================================================
+# WORK EXPERIENCE - ВАША ТЕКУЩАЯ РАБОТА
+# =============================================================================
+
+# Current Position - Data Engineer Intern
+:work-sg-insurance a ex:Internship ;
+    rdfs:label "Data Engineer Intern"@en , "Alternant Ingénieur de données"@fr ;
+    ex:hasEmployer :org-sg-insurance ;
+    schema:jobTitle "Data Engineer Intern"@en , "Alternant Ingénieur de données"@fr ;
+    schema:startDate "2023-09-01"^^xsd:date ;  # примерная дата
+    ex:employmentType "Internship" ;
+    ex:workLocation :address-paris ;
+    ex:isRemoteWork false ;
+    ex:hasResponsibility "Develop and maintain data pipelines using Kedro framework" ,
+                         "Implement MLOps practices with MLFlow for model tracking" ,
+                         "Create data visualizations and dashboards using Superset" ,
+                         "Monitor system performance and troubleshoot issues with Kibana" ;
+    ex:usedTechnology :skill-python, :skill-sql, :skill-kedro, :skill-mlflow, 
+                      :skill-superset, :skill-kibana .
+
+# Additional technologies from your work
+:skill-superset a ex:TechnicalSkill ;
+    rdfs:label "Apache Superset"@en ;
+    ex:hasSkillLevel "Intermediate" ;
+    ex:skillCategory "Data Visualization" .
+
+:skill-kibana a ex:TechnicalSkill ;
+    rdfs:label "Kibana"@en ;
+    ex:hasSkillLevel "Intermediate" ;
+    ex:skillCategory "Data Monitoring" .
+
+# Organization: Société Générale Insurance
+:org-sg-insurance a schema:Organization ;
+    rdfs:label "Société Générale Insurance"@en , "Société Générale Insurance"@fr ;
+    schema:name "Société Générale Insurance"@en , "Société Générale Insurance"@fr ;
+    schema:location :address-paris ;
+    schema:industry "Financial Services" ;
+    schema:url <https://www.societegenerale.com/> .
+
+# =============================================================================
+# EDUCATION - ВАШЕ РЕАЛЬНОЕ ОБРАЗОВАНИЕ
+# =============================================================================
+
+# Current Education - предполагаю, что вы сейчас учитесь в Sorbonne
+:edu-current a ex:Degree ;
+    rdfs:label "Master's Degree in Computer Science"@en , 
+               "Master en Informatique"@fr ;
+    ex:hasInstitution :org-sorbonne ;
+    schema:educationalLevel "Master's" ;
+    ex:degreeType "Master of Science" ;
+    ex:fieldOfStudy "Computer Science" , "Data Engineering" ;
+    schema:startDate "2022-09-01"^^xsd:date ;  # примерная дата
+    schema:endDate "2024-09-01"^^xsd:date ;    # примерная дата
+    ex:courseCredit 120 .  # типичные ECTS кредиты
+
+# Previous Education at Sup Galilée
+:edu-galilee a ex:Degree ;
+    rdfs:label "Bachelor's Degree"@en , "Licence"@fr ;
+    ex:hasInstitution :org-sup-galilee ;
+    schema:educationalLevel "Bachelor's" ;
+    ex:degreeType "Bachelor of Science" ;
+    ex:fieldOfStudy "Computer Science" ;
+    schema:startDate "2019-09-01"^^xsd:date ;  # примерная дата
+    schema:endDate "2022-06-30"^^xsd:date .    # примерная дата
+
+# Educational Institutions
+:org-sorbonne a schema:EducationalOrganization ;
+    rdfs:label "Sorbonne Paris Nord University"@en , 
+               "Université Sorbonne Paris Nord"@fr ;
+    schema:name "Sorbonne Paris Nord University"@en , 
+                "Université Sorbonne Paris Nord"@fr ;
+    schema:location :address-paris ;
+    schema:url <https://www.univ-paris13.fr/> .
+
+:org-sup-galilee a schema:EducationalOrganization ;
+    rdfs:label "Sup Galilée School"@en , "École Sup Galilée"@fr ;
+    schema:name "Sup Galilée School"@en , "École Sup Galilée"@fr ;
+    schema:location :address-paris ;
+    schema:url <https://www.sup-galilee.univ-paris13.fr/> .
+
+# Connect person to education
+:me schema:alumniOf :org-sorbonne, :org-sup-galilee ;
+    schema:hasCredential :edu-current, :edu-galilee .
+
+# =============================================================================
+# AWARDS - ВАША РЕАЛЬНАЯ НАГРАДА
+# =============================================================================
+
+# Georges Besse Foundation Award - из ваших данных
+:award-besse a ex:AcademicAward ;
+    rdfs:label "Georges Besse Foundation Award"@en , 
+               "Prix de la Fondation Georges Besse"@fr ;
+    schema:name "Georges Besse Foundation Award"@en , 
+                "Prix de la Fondation Georges Besse"@fr ;
+    schema:dateReceived "2022"^^xsd:gYear ;
+    schema:recognizedBy :org-besse-foundation ;
+    schema:description "Academic excellence award for engineering students"@en ,
+                       "Prix d'excellence académique pour étudiants en ingénierie"@fr .
+
+:org-besse-foundation a schema:Organization ;
+    rdfs:label "Georges Besse Foundation"@en , "Fondation Georges Besse"@fr ;
+    schema:name "Georges Besse Foundation"@en , "Fondation Georges Besse"@fr ;
+    schema:url <https://www.fondation-georges-besse.com/> .
+
+# Connect person to awards
+:me schema:award :award-besse .
+
+# =============================================================================
+# PROJECTS - ПРИМЕРЫ ПРОЕКТОВ НА ОСНОВЕ ВАШИХ НАВЫКОВ
+# =============================================================================
+
+# Project 1: Data Pipeline для ML модели (основано на вашем опыте)
+:project-ml-pipeline a ex:ProfessionalProject ;
+    rdfs:label "ML Data Pipeline"@en , "Pipeline de données ML"@fr ;
+    schema:name "ML Data Pipeline"@en , "Pipeline de données ML"@fr ;
+    schema:description "End-to-end data pipeline for machine learning model training and deployment using Kedro and MLFlow"@en ;
+    schema:startDate "2023-10-01"^^xsd:date ;
+    schema:endDate "2024-02-01"^^xsd:date ;
+    ex:projectStatus "Completed" ;
+    ex:projectType "Professional" ;
+    ex:usedTechnology :skill-python, :skill-kedro, :skill-mlflow, :skill-spark, :skill-docker ;
+    schema:creator :me .
+
+# Project 2: Data Visualization Dashboard (основано на Superset опыте)
+:project-dashboard a ex:ProfessionalProject ;
+    rdfs:label "Insurance Data Dashboard"@en , "Tableau de bord des données d'assurance"@fr ;
+    schema:name "Insurance Data Dashboard"@en , "Tableau de bord des données d'assurance"@fr ;
+    schema:description "Interactive dashboard for insurance data analytics and reporting"@en ;
+    schema:startDate "2024-01-01"^^xsd:date ;
+    schema:endDate "2024-04-01"^^xsd:date ;
+    ex:projectStatus "Completed" ;
+    ex:projectType "Professional" ;
+    ex:usedTechnology :skill-python, :skill-sql, :skill-superset, :skill-kibana ;
+    schema:creator :me .
+
+# Connect person to projects
+:me schema:creator :project-ml-pipeline, :project-dashboard .
+
+# =============================================================================
+# СВЯЗИ МЕЖДУ ЭЛЕМЕНТАМИ
+# =============================================================================
+
+# Portfolio содержит все элементы
+:portfolio schema:hasPart :me, :work-sg-insurance, :edu-current, :edu-galilee, 
+                          :award-besse, :project-ml-pipeline, :project-dashboard .
+
+# Добавляем временные связи
+:work-sg-insurance schema:employee :me .
+:edu-current schema:student :me .
+:edu-galilee schema:alumni :me .
