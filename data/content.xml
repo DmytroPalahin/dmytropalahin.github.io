@@ -335,6 +335,82 @@
                 <seg>Готовий до нових можливостей та співпраці. Напишіть мені!</seg>
             </tuv>
         </tu>
+
+        <!-- —— социальные сети и контакты —— -->
+        <tu id="contact.social.email">
+            <tuv xml:lang="en">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>dmytro.palahin@gmail.com</seg>
+            </tuv>
+        </tu>
+
+        <tu id="contact.social.github">
+            <tuv xml:lang="en">
+                <seg>github.com/DmytroPalahin</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>github.com/DmytroPalahin</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>github.com/DmytroPalahin</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>github.com/DmytroPalahin</seg>
+            </tuv>
+        </tu>
+
+        <tu id="contact.social.telegram">
+            <tuv xml:lang="en">
+                <seg>@dmytropalahin</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>@dmytropalahin</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>@dmytropalahin</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>@dmytropalahin</seg>
+            </tuv>
+        </tu>
+
+        <tu id="contact.social.linkedin">
+            <tuv xml:lang="en">
+                <seg>linkedin.com/in/dmytropalahin</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>linkedin.com/in/dmytropalahin</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>linkedin.com/in/dmytropalahin</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>linkedin.com/in/dmytropalahin</seg>
+            </tuv>
+        </tu>
+
+        <tu id="contact.social.phone">
+            <tuv xml:lang="en">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>+33 7 87 32 58 78</seg>
+            </tuv>
+        </tu>
         <!-- —— секция «Видео» —— -->
         <tu id="video.title">
             <tuv xml:lang="en">
@@ -552,13 +628,16 @@
         </tu>
         <tu id="experience.current.task1">
             <tuv xml:lang="en">
-                <seg>Migrate from the existing SAS to the Data Science Platform of Société Générale Insurance</seg>
+                <seg>Migrate from the existing SAS to the Data Science Platform of Société Générale
+                    Insurance</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>Migrer du SAS existant vers la plateforme Data Science de Société Générale Assurance</seg>
+                <seg>Migrer du SAS existant vers la plateforme Data Science de Société Générale
+                    Assurance</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Миграция с существующей SAS на платформу Data Science Société Générale Insurance</seg>
+                <seg>Миграция с существующей SAS на платформу Data Science Société Générale
+                    Insurance</seg>
             </tuv>
             <tuv xml:lang="uk">
                 <seg>Міграція з існуючої SAS на платформу Data Science Société Générale Insurance</seg>
@@ -566,16 +645,20 @@
         </tu>
         <tu id="experience.current.task2">
             <tuv xml:lang="en">
-                <seg>Design and develop various data pipelines, from ingestion to delivery in a format consumable by data scientists</seg>
+                <seg>Design and develop various data pipelines, from ingestion to delivery in a
+                    format consumable by data scientists</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>Concevoir et développer divers pipelines de données, de l'ingestion à la livraison dans un format consommable par les data scientists</seg>
+                <seg>Concevoir et développer divers pipelines de données, de l'ingestion à la
+                    livraison dans un format consommable par les data scientists</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Проектирование и разработка различных пайплайнов данных, от приема до доставки в формате, пригодном для использования специалистами по данным</seg>
+                <seg>Проектирование и разработка различных пайплайнов данных, от приема до доставки
+                    в формате, пригодном для использования специалистами по данным</seg>
             </tuv>
             <tuv xml:lang="uk">
-                <seg>Проектування та розробка різних пайплайнів даних, від прийому до доставки у форматі, придатному для споживання спеціалістами з даних</seg>
+                <seg>Проектування та розробка різних пайплайнів даних, від прийому до доставки у
+                    форматі, придатному для споживання спеціалістами з даних</seg>
             </tuv>
         </tu>
         <tu id="experience.current.task3">
@@ -657,10 +740,12 @@
                 <seg>Summer Math School Kontora Pi, Kyiv, Winter Math School of Kharkiv</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>École d'été de mathématiques Kontora Pi, Kiev, École d'hiver de mathématiques de Kharkiv</seg>
+                <seg>École d'été de mathématiques Kontora Pi, Kiev, École d'hiver de mathématiques
+                    de Kharkiv</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Летняя математическая школа Контора Пи, Киев, Зимняя математическая школа Харькова</seg>
+                <seg>Летняя математическая школа Контора Пи, Киев, Зимняя математическая школа
+                    Харькова</seg>
             </tuv>
             <tuv xml:lang="uk">
                 <seg>Літня математична школа Контора Пі, Київ, Зимова математична школа Харкова</seg>
@@ -756,16 +841,20 @@
 
         <tu id="projects.travelling.title">
             <tuv xml:lang="en">
-                <seg>Project Travelling Salesman Problem (Ant Colony Optimization Algorithm, Reinforcement Learning, C)</seg>
+                <seg>Project Travelling Salesman Problem (Ant Colony Optimization Algorithm,
+                    Reinforcement Learning, C)</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>Projet du problème du voyageur de commerce (Algorithme d'optimisation par colonies de fourmis, Apprentissage par renforcement, C)</seg>
+                <seg>Projet du problème du voyageur de commerce (Algorithme d'optimisation par
+                    colonies de fourmis, Apprentissage par renforcement, C)</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Проект задачи коммивояжера (Алгоритм оптимизации муравьиной колонии, Обучение с подкреплением, C)</seg>
+                <seg>Проект задачи коммивояжера (Алгоритм оптимизации муравьиной колонии, Обучение с
+                    подкреплением, C)</seg>
             </tuv>
             <tuv xml:lang="uk">
-                <seg>Проєкт задачі комівояжера (Алгоритм оптимізації мурашиної колонії, Навчання з підкріпленням, C)</seg>
+                <seg>Проєкт задачі комівояжера (Алгоритм оптимізації мурашиної колонії, Навчання з
+                    підкріпленням, C)</seg>
             </tuv>
         </tu>
         <tu id="projects.travelling.year">
@@ -829,16 +918,20 @@
         </tu>
         <tu id="publications.article.details">
             <tuv xml:lang="en">
-                <seg>O.Palahin, O.Horak — Informatics and Mathematical Methods in Simulation, Vol. 11 (2021), No. 4</seg>
+                <seg>O.Palahin, O.Horak — Informatics and Mathematical Methods in Simulation, Vol.
+                    11 (2021), No. 4</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>O.Palahin, O.Horak — Informatique et méthodes mathématiques en simulation, Vol. 11 (2021), No. 4</seg>
+                <seg>O.Palahin, O.Horak — Informatique et méthodes mathématiques en simulation, Vol.
+                    11 (2021), No. 4</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>О.Палагин, О.Горак — Информатика и математические методы в моделировании, Том 11 (2021), № 4</seg>
+                <seg>О.Палагин, О.Горак — Информатика и математические методы в моделировании, Том
+                    11 (2021), № 4</seg>
             </tuv>
             <tuv xml:lang="uk">
-                <seg>О.Палагін, О.Горак — Інформатика та математичні методи в моделюванні, Том 11 (2021), № 4</seg>
+                <seg>О.Палагін, О.Горак — Інформатика та математичні методи в моделюванні, Том 11
+                    (2021), № 4</seg>
             </tuv>
         </tu>
 
@@ -947,16 +1040,20 @@
         </tu>
         <tu id="soft.skills.list">
             <tuv xml:lang="en">
-                <seg>Teamwork, Communication, Problem-solving, Adaptability, Voluntary, Responsibility</seg>
+                <seg>Teamwork, Communication, Problem-solving, Adaptability, Voluntary,
+                    Responsibility</seg>
             </tuv>
             <tuv xml:lang="fr">
-                <seg>Travail d'équipe, Communication, Résolution de problèmes, Adaptabilité, Volontariat, Responsabilité</seg>
+                <seg>Travail d'équipe, Communication, Résolution de problèmes, Adaptabilité,
+                    Volontariat, Responsabilité</seg>
             </tuv>
             <tuv xml:lang="ru">
-                <seg>Командная работа, Коммуникация, Решение проблем, Адаптивность, Волонтерство, Ответственность</seg>
+                <seg>Командная работа, Коммуникация, Решение проблем, Адаптивность, Волонтерство,
+                    Ответственность</seg>
             </tuv>
             <tuv xml:lang="uk">
-                <seg>Командна робота, Комунікація, Вирішення проблем, Адаптивність, Волонтерство, Відповідальність</seg>
+                <seg>Командна робота, Комунікація, Вирішення проблем, Адаптивність, Волонтерство,
+                    Відповідальність</seg>
             </tuv>
         </tu>
 

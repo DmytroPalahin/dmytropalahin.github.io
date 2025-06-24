@@ -517,7 +517,8 @@
                 </section>
 
                 <!-- Contact Section -->
-                <section id="contact" class="section section-dark">
+                <section id="contact" class="section section-dark" vocab="https://schema.org/"
+                    typeof="Person">
                     <div class="container">
                         <h2 class="section-title">
                             <xsl:value-of
@@ -527,6 +528,113 @@
                             <xsl:value-of
                                 select="//tu[@id='contact.text']/tuv[@xml:lang=$uiLang]/seg" />
                         </p>
+
+                        <!-- Contact Cards Grid -->
+                        <div class="contact-grid">
+                            <!-- Email -->
+                            <div class="contact-card">
+                                <div class="contact-icon email">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor">
+                                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                                        <path d="m2 7 10 5 10-5" />
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <h3 class="contact-label">Email</h3>
+                                    <a
+                                        href="mailto:{//tu[@id='contact.social.email']/tuv[@xml:lang=$uiLang]/seg}"
+                                        class="contact-value" property="email">
+                                        <xsl:value-of
+                                            select="//tu[@id='contact.social.email']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- GitHub -->
+                            <div class="contact-card">
+                                <div class="contact-icon github">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <h3 class="contact-label">GitHub</h3>
+                                    <a
+                                        href="https://{//tu[@id='contact.social.github']/tuv[@xml:lang=$uiLang]/seg}"
+                                        class="contact-value" property="sameAs" target="_blank"
+                                        rel="noopener">
+                                        <xsl:value-of
+                                            select="//tu[@id='contact.social.github']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- LinkedIn -->
+                            <div class="contact-card">
+                                <div class="contact-icon linkedin">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <h3 class="contact-label">LinkedIn</h3>
+                                    <a
+                                        href="https://{//tu[@id='contact.social.linkedin']/tuv[@xml:lang=$uiLang]/seg}"
+                                        class="contact-value" property="sameAs" target="_blank"
+                                        rel="noopener">
+                                        <xsl:value-of
+                                            select="//tu[@id='contact.social.linkedin']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Telegram -->
+                            <div class="contact-card">
+                                <div class="contact-icon telegram">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M11.944 0C5.345 0 0 5.345 0 11.944c0 6.599 5.345 11.944 11.944 11.944 6.599 0 11.944-5.345 11.944-11.944C23.888 5.345 18.543 0 11.944 0zm5.205 8.043l-1.412 6.639c-.106.472-.392.59-.796.367l-2.197-1.619-1.06 1.02c-.117.117-.216.216-.443.216l.158-2.254 4.09-3.696c.177-.158-.04-.246-.276-.088l-5.06 3.186-2.186-.684c-.475-.148-.484-.475.099-.702l8.533-3.28c.395-.151.743.089.611.711z" />
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <h3 class="contact-label">Telegram</h3>
+                                    <a
+                                        href="https://t.me/{substring-after(//tu[@id='contact.social.telegram']/tuv[@xml:lang=$uiLang]/seg, '@')}"
+                                        class="contact-value" target="_blank" rel="noopener">
+                                        <xsl:value-of
+                                            select="//tu[@id='contact.social.telegram']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="contact-card">
+                                <div class="contact-icon phone">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <h3 class="contact-label">Phone</h3>
+                                    <a
+                                        href="tel:{//tu[@id='contact.social.phone']/tuv[@xml:lang=$uiLang]/seg}"
+                                        class="contact-value" property="telephone">
+                                        <xsl:value-of
+                                            select="//tu[@id='contact.social.phone']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 

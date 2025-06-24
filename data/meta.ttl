@@ -18,7 +18,8 @@
                        schema:addressLocality "Paris" ;
                        schema:addressCountry "France" ] ;
     schema:sameAs     <https://github.com/DmytroPalahin> ,
-                      <https://linkedin.com/in/dmytropalahin> ;
+                      <https://linkedin.com/in/dmytropalahin> ,
+                      <https://t.me/dmytropalahin> ;
     schema:worksFor   [ a schema:Organization ;
                        schema:name "Société Générale Insurance"@fr ,
                                   "Société Générale Insurance"@en ;
