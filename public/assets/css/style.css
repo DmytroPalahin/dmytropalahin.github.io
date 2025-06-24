@@ -670,6 +670,8 @@ body.loading {
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-xl);
+    object-fit: cover;
+    object-position: center;
 }
 
 .hero-avatar::before {
