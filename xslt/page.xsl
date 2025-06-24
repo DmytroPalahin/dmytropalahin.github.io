@@ -294,7 +294,8 @@
                             </div>
                         </div>
                         <div class="hero-image">
-                            <div class="hero-avatar"></div>
+                            <img src="assets/img/memoji.png" alt="Dmytro Palahin"
+                                class="hero-avatar" />
                         </div>
                     </div>
                 </section>
@@ -413,8 +414,8 @@
                             </div>
                         </div>
                     </div>
-                </section>                <!--
-                Education Section -->
+                </section>
+                <!-- Education Section -->
                 <section id="education" class="section section-dark">
                     <div class="container">
                         <h2 class="section-title">
