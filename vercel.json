@@ -13,7 +13,7 @@
     },
     "headers": [
         {
-            "src": "/assets/(.*)",
+            "source": "/assets/(.*)",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "src": "/video/(.*)\\.(mp4|webm|ogg)",
+            "source": "/video/(.*)\\.(mp4|webm|ogg)",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -35,7 +35,7 @@
             ]
         },
         {
-            "src": "/video/(.*)\\.(jpg|jpeg|png|gif)",
+            "source": "/video/(.*)\\.(jpg|jpeg|png|gif)",
             "headers": [
                 {
                     "key": "Cache-Control",
