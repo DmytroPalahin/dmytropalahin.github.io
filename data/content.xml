@@ -1072,6 +1072,76 @@
                 <seg>Мови</seg>
             </tuv>
         </tu>
+        <tu id="languages.name.ukrainian">
+            <tuv xml:lang="en">
+                <seg>Ukrainian</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Ukrainien</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Украинский</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Українська</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.name.russian">
+            <tuv xml:lang="en">
+                <seg>Russian</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Russe</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Русский</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Російська</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.name.english">
+            <tuv xml:lang="en">
+                <seg>English</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Anglais</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Английский</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Англійська</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.name.french">
+            <tuv xml:lang="en">
+                <seg>French</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Français</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Французский</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Французька</seg>
+            </tuv>
+        </tu>
+        <tu id="languages.name.german">
+            <tuv xml:lang="en">
+                <seg>German</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Allemand</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Немецкий</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Німецька</seg>
+            </tuv>
+        </tu>
         <tu id="languages.ukrainian">
             <tuv xml:lang="en">
                 <seg>Ukrainian: Native</seg>

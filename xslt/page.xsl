@@ -410,22 +410,40 @@
                                 </div>
                             </div>
                             <div class="skill-category">
-                                <h3 class="skill-title">Languages</h3>
+                                <h3 class="skill-title">
+                                    <xsl:value-of
+                                        select="//tu[@id='languages.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </h3>
                                 <div class="skill-items" property="knowsLanguage">
                                     <div class="skill-item" typeof="Language">
-                                        <span class="skill-name" property="name">Ukrainian</span>
+                                        <span class="skill-name" property="name">
+                                            <xsl:value-of
+                                                select="//tu[@id='languages.name.ukrainian']/tuv[@xml:lang=$uiLang]/seg" />
+                                        </span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span class="skill-name" property="name">Russian</span>
+                                        <span class="skill-name" property="name">
+                                            <xsl:value-of
+                                                select="//tu[@id='languages.name.russian']/tuv[@xml:lang=$uiLang]/seg" />
+                                        </span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span class="skill-name" property="name">English</span>
+                                        <span class="skill-name" property="name">
+                                            <xsl:value-of
+                                                select="//tu[@id='languages.name.english']/tuv[@xml:lang=$uiLang]/seg" />
+                                        </span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span class="skill-name" property="name">French</span>
+                                        <span class="skill-name" property="name">
+                                            <xsl:value-of
+                                                select="//tu[@id='languages.name.french']/tuv[@xml:lang=$uiLang]/seg" />
+                                        </span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span class="skill-name" property="name">German</span>
+                                        <span class="skill-name" property="name">
+                                            <xsl:value-of
+                                                select="//tu[@id='languages.name.german']/tuv[@xml:lang=$uiLang]/seg" />
+                                        </span>
                                     </div>
                                 </div>
                             </div>
