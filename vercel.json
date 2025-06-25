@@ -13,6 +13,14 @@
     },
     "routes": [
         {
+            "src": "/favicon.ico",
+            "dest": "/public/assets/img/app_icon.png",
+            "headers": {
+                "Content-Type": "image/x-icon",
+                "Cache-Control": "public, max-age=31536000"
+            }
+        },
+        {
             "src": "/assets/(.*)",
             "dest": "/public/assets/$1",
             "headers": {

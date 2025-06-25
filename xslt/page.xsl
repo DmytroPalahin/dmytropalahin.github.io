@@ -51,6 +51,15 @@
                     <xsl:value-of select="//tu[@id='site.title']/tuv[@xml:lang=$uiLang]/seg" />
                 </title>
 
+                <!-- Favicon and App Icons -->
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/app_icon.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/app_icon.png" />
+                <link rel="manifest" href="/assets/site.webmanifest" />
+                <meta name="theme-color" content="#000000" />
+                <meta name="msapplication-TileColor" content="#000000" />
+                <meta name="msapplication-config" content="/assets/browserconfig.xml" />
+
                 <!-- Preload fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />

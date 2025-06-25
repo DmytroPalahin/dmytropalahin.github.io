@@ -1,0 +1,24 @@
+{
+    "name": "Dmytro Palahin - Portfolio",
+    "short_name": "Dmytro P.",
+    "description": "Professional portfolio of Dmytro Palahin - Full-Stack Developer & Data Engineer",
+    "icons": [
+        {
+            "src": "/assets/img/app_icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/img/app_icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "orientation": "portrait-primary"
+}
