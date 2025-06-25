@@ -13,7 +13,7 @@
     },
     "headers": [
         {
-            "source": "/assets/(.*)",
+            "src": "/assets/(.*)",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "source": "/video/(.*)\\.(mp4|webm|ogg)",
+            "src": "/video/(.*)\\.(mp4|webm|ogg)",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -35,7 +35,7 @@
             ]
         },
         {
-            "source": "/video/(.*)\\.(jpg|jpeg|png|gif)",
+            "src": "/video/(.*)\\.(jpg|jpeg|png|gif)",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -44,30 +44,26 @@
             ]
         }
     ],
-    "rewrites": [
+    "routes": [
         {
-            "source": "/assets/(.*)",
-            "destination": "/public/assets/$1"
+            "src": "/assets/(.*)",
+            "dest": "/public/assets/$1"
         },
         {
-            "source": "/video/(.*)",
-            "destination": "/public/video/$1"
+            "src": "/video/(.*)",
+            "dest": "/public/video/$1"
         },
         {
-            "source": "/test",
-            "destination": "/api/test.php"
+            "src": "/test",
+            "dest": "/api/test.php"
         },
         {
-            "source": "/api/(.*)",
-            "destination": "/api/$1"
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
         },
         {
-            "source": "/",
-            "destination": "/api/index.php"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/api/index.php"
+            "src": "/",
+            "dest": "/api/index.php"
         }
     ]
 }
