@@ -11,26 +11,63 @@
             "dev": true
         }
     },
-    "routes": [
+    "headers": [
         {
-            "src": "/assets/(.*)",
-            "dest": "/public/assets/$1"
+            "source": "/assets/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
         },
         {
-            "src": "/test",
-            "dest": "/api/test.php"
+            "source": "/video/(.*)\\.(mp4|webm|ogg)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000"
+                },
+                {
+                    "key": "Content-Type",
+                    "value": "video/mp4"
+                }
+            ]
         },
         {
-            "src": "/api/(.*)",
-            "dest": "/api/$1"
+            "source": "/video/(.*)\\.(jpg|jpeg|png|gif)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000"
+                }
+            ]
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/assets/(.*)",
+            "destination": "/public/assets/$1"
         },
         {
-            "src": "/",
-            "dest": "/api/index.php"
+            "source": "/video/(.*)",
+            "destination": "/public/video/$1"
         },
         {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "source": "/test",
+            "destination": "/api/test.php"
+        },
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/$1"
+        },
+        {
+            "source": "/",
+            "destination": "/api/index.php"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/api/index.php"
         }
     ]
 }
