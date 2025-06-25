@@ -145,33 +145,6 @@ The project includes these configuration files:
 - **`composer.json`** - PHP dependencies and autoloader
 - **`.vercelignore`** - Files to exclude from deployment
 
-## Project Structure
-
-```tree
-├── api/
-│   └── index.php          # Vercel serverless function entry point
-├── data/
-│   ├── content.xml        # Multilingual content (TMX-like structure)
-│   ├── content.xsd        # XML schema validation
-│   └── meta.ttl           # RDF metadata
-├── public/
-│   ├── index.php          # Local development entry point
-│   └── assets/
-│       ├── css/
-│       │   └── style.css  # Main stylesheet
-│       └── img/
-│           └── animations/ # Animation assets
-├── src/
-│   ├── Controller.php     # Main application controller
-│   ├── LanguageDetector.php # Language detection logic
-│   └── ContentProvider.php  # Content management
-├── xslt/
-│   └── page.xsl          # XSLT template for HTML generation
-├── vercel.json           # Vercel configuration
-├── composer.json         # PHP dependencies
-└── package.json          # Node.js dependencies
-```
-
 ## Troubleshooting
 
 ### Common Issues
