@@ -21,6 +21,13 @@
             }
         },
         {
+            "src": "/assets/css/(.*)",
+            "dest": "/public/assets/css/$1",
+            "headers": {
+                "Cache-Control": "public, max-age=3600, s-maxage=3600"
+            }
+        },
+        {
             "src": "/assets/(.*)",
             "dest": "/public/assets/$1",
             "headers": {
