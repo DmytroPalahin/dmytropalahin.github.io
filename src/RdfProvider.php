@@ -18,6 +18,29 @@ final class RdfProvider
     private const SCHEMA_END_DATE = 'schema:endDate';
     private const SCHEMA_URL = 'schema:url';
     
+    // FOAF vocabulary constants
+    private const FOAF_NAME = 'foaf:name';
+    private const FOAF_MBOX = 'foaf:mbox';
+    private const FOAF_HOMEPAGE = 'foaf:homepage';
+    private const FOAF_IMG = 'foaf:img';
+    private const FOAF_NICK = 'foaf:nick';
+    private const FOAF_TITLE = 'foaf:title';
+    private const FOAF_ORGANIZATION_NAME = 'foaf:organization-name';
+    private const FOAF_WORK_INFO_NOTE = 'foaf:workInfoNote';
+    private const FOAF_ACCOUNT = 'foaf:account';
+    private const FOAF_ACCOUNT_SERVICE_HOMEPAGE = 'foaf:accountServiceHomepage';
+    private const FOAF_ACCOUNT_NAME = 'foaf:accountName';
+    
+    // DCterms vocabulary constants  
+    private const DCTERMS_TITLE = 'dcterms:title';
+    private const DCTERMS_DESCRIPTION = 'dcterms:description';
+    private const DCTERMS_CREATOR = 'dcterms:creator';
+    private const DCTERMS_DATE = 'dcterms:date';
+    private const DCTERMS_SUBJECT = 'dcterms:subject';
+    private const DCTERMS_IDENTIFIER = 'dcterms:identifier';
+    private const DCTERMS_RELATION = 'dcterms:relation';
+    private const DCTERMS_PUBLISHER = 'dcterms:publisher';
+    
     private array $rdfData = [];
     private array $skills = [];
     private array $projects = [];
@@ -471,8 +494,10 @@ final class RdfProvider
         return [
             'person' => [
                 'vocab' => 'https://schema.org/',
-                'typeof' => 'Person',
+                'typeof' => 'Person foaf:Person', // Добавляем FOAF типы как у Ethan'а
+                'prefix' => 'foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ ex: https://dmytro.example/schema#',
                 'properties' => [
+                    // Schema.org properties
                     'name' => self::SCHEMA_NAME,
                     'jobTitle' => 'schema:jobTitle',
                     'email' => 'schema:email',
@@ -486,7 +511,19 @@ final class RdfProvider
                     'knowsAbout' => 'schema:knowsAbout',
                     'knowsLanguage' => 'schema:knowsLanguage',
                     'alumniOf' => 'schema:alumniOf',
-                    'worksFor' => 'schema:worksFor'
+                    'worksFor' => 'schema:worksFor',
+                    
+                    // FOAF properties - как у Ethan'а
+                    'foaf_name' => self::FOAF_NAME,
+                    'foaf_mbox' => self::FOAF_MBOX,
+                    'foaf_homepage' => self::FOAF_HOMEPAGE,
+                    'foaf_img' => self::FOAF_IMG,
+                    'foaf_nick' => self::FOAF_NICK,
+                    
+                    // DCterms properties - как у Ethan'а
+                    'dcterms_creator' => self::DCTERMS_CREATOR,
+                    'dcterms_description' => self::DCTERMS_DESCRIPTION,
+                    'dcterms_identifier' => self::DCTERMS_IDENTIFIER
                 ]
             ],
             'skills' => $this->getSkillsRdfaData(),

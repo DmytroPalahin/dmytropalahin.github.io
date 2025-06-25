@@ -35,6 +35,9 @@
             </xsl:attribute>
             <head>
                 <meta charset="utf-8" />
+                <title>
+                    <xsl:value-of select="//tu[@id='site.title']/tuv[@xml:lang=$uiLang]/seg" />
+                </title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="description"
                     content="{//tu[@id='about.text']/tuv[@xml:lang=$uiLang]/seg}" />
