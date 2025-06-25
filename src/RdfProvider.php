@@ -11,6 +11,13 @@ final class RdfProvider
     private const RDF_SCHEMA_PATH = __DIR__ . '/../rdf/schema.ttl';
     private const RDF_DATA_PATH = __DIR__ . '/../data/meta.ttl';
     
+    // RDFa Schema.org constants
+    private const SCHEMA_NAME = 'schema:name';
+    private const SCHEMA_DESCRIPTION = 'schema:description';
+    private const SCHEMA_START_DATE = 'schema:startDate';
+    private const SCHEMA_END_DATE = 'schema:endDate';
+    private const SCHEMA_URL = 'schema:url';
+    
     private array $rdfData = [];
     private array $skills = [];
     private array $projects = [];
@@ -44,8 +51,8 @@ final class RdfProvider
         // Удаляем комментарии
         $content = preg_replace('/^\s*#.*$/m', '', $content);
         
-        // Парсим основные триплеты (упрощенно)
-        preg_match_all('/:(\w+)\s+a\s+ex:(\w+)\s*;/m', $content, $matches, PREG_SET_ORDER);
+        // Парсим основные триплеты (упрощенно) - включаем дефисы в имена
+        preg_match_all('/:([a-zA-Z0-9_-]+)\s+a\s+ex:(\w+)\s*;/m', $content, $matches, PREG_SET_ORDER);
         
         foreach ($matches as $match) {
             $subject = $match[1];
@@ -55,6 +62,11 @@ final class RdfProvider
             
             // Парсим свойства для этого субъекта
             $this->parseProperties($content, $subject);
+        }
+        
+        // Отладочная информация
+        if (empty($this->rdfData)) {
+            error_log("No RDF data parsed. Content preview: " . substr($content, 0, 500));
         }
     }
     
@@ -68,20 +80,27 @@ final class RdfProvider
             $block = $matches[0];
             
             // Парсим rdfs:label
-            if (preg_match('/rdfs:label\s+"([^"]+)"@(\w+)/', $block, $labelMatch)) {
-                $this->rdfData[$subject]['labels'][$labelMatch[2]] = $labelMatch[1];
+            if (preg_match_all('/rdfs:label\s+"([^"]+)"@(\w+)/', $block, $labelMatches, PREG_SET_ORDER)) {
+                foreach ($labelMatches as $labelMatch) {
+                    $this->rdfData[$subject]['labels'][$labelMatch[2]] = $labelMatch[1];
+                }
             }
             
             // Парсим schema:name
-            if (preg_match_all('/schema:name\s+"([^"]+)"@(\w+)/', $block, $nameMatches, PREG_SET_ORDER)) {
+            if (preg_match_all('/schema:name\s+"([^"]+)"/', $block, $nameMatches, PREG_SET_ORDER)) {
                 foreach ($nameMatches as $nameMatch) {
-                    $this->rdfData[$subject]['names'][$nameMatch[2]] = $nameMatch[1];
+                    $this->rdfData[$subject]['names']['en'] = $nameMatch[1];
                 }
             }
             
             // Парсим ex:hasSkillLevel
             if (preg_match('/ex:hasSkillLevel\s+"([^"]+)"/', $block, $skillMatch)) {
                 $this->rdfData[$subject]['skillLevel'] = $skillMatch[1];
+            }
+            
+            // Парсим ex:skillCategory
+            if (preg_match('/ex:skillCategory\s+"([^"]+)"/', $block, $categoryMatch)) {
+                $this->rdfData[$subject]['category'] = $categoryMatch[1];
             }
         }
     }
@@ -222,6 +241,17 @@ final class RdfProvider
      */
     private function getLocalizedName(array $data, string $lang): string
     {
+        // Если есть прямое имя из schema:name
+        if (isset($data['names']['en'])) {
+            return $data['names']['en'];
+        }
+        
+        // Если есть label
+        if (isset($data['labels']['en'])) {
+            return $data['labels']['en'];
+        }
+        
+        // Попробуем извлечь из других полей
         return $data['names'][$lang] ?? 
                $data['labels'][$lang] ?? 
                $data['names']['en'] ?? 
@@ -280,9 +310,156 @@ final class RdfProvider
     }
     
     /**
-     * Генерировать RDFa атрибуты для HTML элементов
+     * Получить RDFa данные для интеграции с XSLT
      */
-    public function getRdfaAttributes(string $property, string $type = null): string
+    public function getRdfaData(): array
+    {
+        return [
+            'person' => [
+                'vocab' => 'https://schema.org/',
+                'typeof' => 'Person',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'jobTitle' => 'schema:jobTitle',
+                    'email' => 'schema:email',
+                    'telephone' => 'schema:telephone',
+                    'address' => 'schema:address',
+                    'nationality' => 'schema:nationality',
+                    'description' => self::SCHEMA_DESCRIPTION,
+                    'image' => 'schema:image',
+                    'url' => self::SCHEMA_URL,
+                    'sameAs' => 'schema:sameAs',
+                    'knowsAbout' => 'schema:knowsAbout',
+                    'knowsLanguage' => 'schema:knowsLanguage',
+                    'alumniOf' => 'schema:alumniOf',
+                    'worksFor' => 'schema:worksFor'
+                ]
+            ],
+            'skills' => $this->getSkillsRdfaData(),
+            'projects' => $this->getProjectsRdfaData(),
+            'education' => $this->getEducationRdfaData(),
+            'workExperience' => $this->getWorkExperienceRdfaData(),
+            'awards' => $this->getAwardsRdfaData()
+        ];
+    }
+
+    private function getSkillsRdfaData(): array
+    {
+        $rdfaSkills = [];
+        foreach ($this->skills as $id => $skill) {
+            $rdfaSkills[$id] = [
+                'typeof' => 'schema:DefinedTerm',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'skillLevel' => 'ex:hasSkillLevel',
+                    'category' => 'schema:category'
+                ]
+            ];
+        }
+        return $rdfaSkills;
+    }
+
+    private function getProjectsRdfaData(): array
+    {
+        $rdfaProjects = [];
+        foreach ($this->projects as $id => $project) {
+            $rdfaProjects[$id] = [
+                'typeof' => 'schema:CreativeWork',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'description' => self::SCHEMA_DESCRIPTION,
+                    'dateCreated' => 'schema:dateCreated',
+                    'creator' => 'schema:creator',
+                    'programmingLanguage' => 'schema:programmingLanguage',
+                    'url' => self::SCHEMA_URL
+                ]
+            ];
+        }
+        return $rdfaProjects;
+    }
+
+    private function getEducationRdfaData(): array
+    {
+        $rdfaEducation = [];
+        foreach ($this->education as $id => $edu) {
+            $rdfaEducation[$id] = [
+                'typeof' => 'schema:EducationalOccupationalCredential',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'educationalCredentialAwarded' => 'schema:educationalCredentialAwarded',
+                    'sourceOrganization' => 'schema:sourceOrganization',
+                    'startDate' => self::SCHEMA_START_DATE,
+                    'endDate' => self::SCHEMA_END_DATE
+                ]
+            ];
+        }
+        return $rdfaEducation;
+    }
+
+    private function getWorkExperienceRdfaData(): array
+    {
+        $rdfaWork = [];
+        foreach ($this->workExperience as $id => $work) {
+            $rdfaWork[$id] = [
+                'typeof' => 'schema:WorkExperience',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'jobTitle' => 'schema:jobTitle',
+                    'worksFor' => 'schema:worksFor',
+                    'startDate' => self::SCHEMA_START_DATE,
+                    'endDate' => self::SCHEMA_END_DATE,
+                    'description' => self::SCHEMA_DESCRIPTION
+                ]
+            ];
+        }
+        return $rdfaWork;
+    }
+
+    private function getAwardsRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:Award',
+            'properties' => [
+                'name' => self::SCHEMA_NAME,
+                'awardingOrganization' => 'schema:awardingOrganization',
+                'dateReceived' => 'schema:dateReceived'
+            ]
+        ];
+    }
+
+    /**
+     * Генерировать полные RDFa атрибуты для элемента
+     */
+    public function getElementRdfaAttributes(string $elementType, ?string $property = null): string
+    {
+        $rdfaData = $this->getRdfaData();
+        
+        if (!isset($rdfaData[$elementType])) {
+            return '';
+        }
+        
+        $element = $rdfaData[$elementType];
+        $attrs = [];
+        
+        if (isset($element['vocab'])) {
+            $attrs[] = "vocab=\"{$element['vocab']}\"";
+        }
+        
+        if (isset($element['typeof'])) {
+            $attrs[] = "typeof=\"{$element['typeof']}\"";
+        }
+        
+        if ($property && isset($element['properties'][$property])) {
+            $attrs[] = "property=\"{$element['properties'][$property]}\"";
+        }
+        
+        return implode(' ', $attrs);
+    }
+
+    /**
+     * Генерировать RDFa атрибуты для HTML элементов (простой вариант)
+     */
+    public function getRdfaAttributes(string $property, ?string $type = null): string
     {
         $attrs = "property=\"{$property}\"";
         if ($type) {

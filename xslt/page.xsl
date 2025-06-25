@@ -5,6 +5,8 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xhtml">
     <xsl:param name="uiLang" select="'en'" />
+    <xsl:param name="rdfaPersonVocab" select="'https://schema.org/'" />
+    <xsl:param name="rdfaPersonType" select="'Person'" />
     <xsl:output method="html"
         omit-xml-declaration="yes"
         indent="yes"
@@ -259,7 +261,8 @@
 
                 <!-- Hero Section -->
                 <section id="home" class="hero-section">
-                    <div class="hero-container">
+                    <div class="hero-container" vocab="{$rdfaPersonVocab}"
+                        typeof="{$rdfaPersonType}">
                         <div class="hero-content">
                             <div class="hero-greeting">
                                 <span class="greeting-text">
@@ -270,18 +273,37 @@
                                     alt="Waving hand"
                                     class="waving-hand" />
                             </div>
-                            <h1 class="hero-title" property="schema:name">
+                            <h1 class="hero-title" property="name">
                                 <xsl:value-of
                                     select="//tu[@id='person.name']/tuv[@xml:lang=$uiLang]/seg" />
                             </h1>
-                            <p class="hero-subtitle" property="schema:jobTitle">
+                            <p class="hero-subtitle" property="jobTitle">
                                 <xsl:value-of
                                     select="//tu[@id='person.role']/tuv[@xml:lang=$uiLang]/seg" />
                             </p>
-                            <p class="hero-description" property="schema:description">
+                            <p class="hero-description" property="description">
                                 <xsl:value-of
                                     select="//tu[@id='about.text']/tuv[@xml:lang=$uiLang]/seg" />
                             </p>
+
+                            <!-- Hidden Contact Information with RDFa -->
+                            <span property="email" style="display: none;">
+                                <xsl:value-of
+                                    select="//tu[@id='contact.social.email']/tuv[@xml:lang=$uiLang]/seg" />
+                            </span>
+                            <span property="telephone" style="display: none;">
+                                <xsl:value-of
+                                    select="//tu[@id='contact.social.phone']/tuv[@xml:lang=$uiLang]/seg" />
+                            </span>
+                            <span property="nationality" style="display: none;">Ukrainian</span>
+
+                            <!-- Address Information -->
+                            <div property="address" typeof="PostalAddress" style="display: none;">
+                                <span property="addressLocality">Paris</span>
+                                <span property="addressCountry">France</span>
+                            </div>
+
+                            <!-- CTA Buttons -->
                             <div class="hero-buttons">
                                 <a href="#contact" class="btn btn-primary">
                                     <xsl:value-of
@@ -294,8 +316,10 @@
                             </div>
                         </div>
                         <div class="hero-image">
-                            <img src="assets/img/memoji.png" alt="Dmytro Palahin"
-                                class="hero-avatar" />
+                            <img src="assets/img/memoji.png"
+                                alt="Dmytro Palahin"
+                                class="hero-avatar"
+                                property="image" />
                         </div>
                     </div>
                 </section>
@@ -319,32 +343,93 @@
                 </section>
 
                 <!-- Skills Section -->
-                <section id="skills" class="section section-dark">
+                <section id="skills" class="section section-dark" vocab="{$rdfaPersonVocab}"
+                    typeof="{$rdfaPersonType}">
                     <div class="container">
                         <h2 class="section-title">
                             <xsl:value-of
                                 select="//tu[@id='skills.title']/tuv[@xml:lang=$uiLang]/seg" />
                         </h2>
-                        <div class="skills-grid">
+                        <div class="skills-grid" property="knowsAbout">
                             <div class="skill-category">
                                 <h3 class="skill-title">
                                     <xsl:value-of
                                         select="//tu[@id='skills.programming']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h3>
-                                <p class="skill-list">
-                                    <xsl:value-of
-                                        select="//tu[@id='skills.programming.list']/tuv[@xml:lang=$uiLang]/seg" />
-                                </p>
+                                <div class="skill-items">
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">Python</span>
+                                        <span class="skill-level" property="skillLevel">Expert</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">JavaScript</span>
+                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">SQL</span>
+                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">PHP</span>
+                                        <span class="skill-level" property="skillLevel">Intermediate</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="skill-category">
                                 <h3 class="skill-title">
                                     <xsl:value-of
                                         select="//tu[@id='skills.frameworks']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h3>
-                                <p class="skill-list">
-                                    <xsl:value-of
-                                        select="//tu[@id='skills.frameworks.list']/tuv[@xml:lang=$uiLang]/seg" />
-                                </p>
+                                <div class="skill-items">
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">Apache Spark</span>
+                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">Kedro</span>
+                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">MLflow</span>
+                                        <span class="skill-level" property="skillLevel">Intermediate</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">Docker</span>
+                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                    </div>
+                                    <div class="skill-item" typeof="DefinedTerm">
+                                        <span property="name">React</span>
+                                        <span class="skill-level" property="skillLevel">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3 class="skill-title">Languages</h3>
+                                <div class="skill-items" property="knowsLanguage">
+                                    <div class="skill-item" typeof="Language">
+                                        <span property="name">Ukrainian</span>
+                                        <span class="skill-level" property="proficiencyLevel">Native</span>
+                                    </div>
+                                    <div class="skill-item" typeof="Language">
+                                        <span property="name">Russian</span>
+                                        <span class="skill-level" property="proficiencyLevel">Native</span>
+                                    </div>
+                                    <div class="skill-item" typeof="Language">
+                                        <span property="name">English</span>
+                                        <span class="skill-level" property="proficiencyLevel">
+        Advanced</span>
+                                    </div>
+                                    <div class="skill-item" typeof="Language">
+                                        <span property="name">French</span>
+                                        <span class="skill-level" property="proficiencyLevel">
+        Intermediate</span>
+                                    </div>
+                                    <div class="skill-item" typeof="Language">
+                                        <span property="name">German</span>
+                                        <span class="skill-level" property="proficiencyLevel">
+        Beginner</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -28,6 +28,38 @@
 # Personal Information - ВАШИ РЕАЛЬНЫЕ ДАННЫЕ
 :me a schema:Person , foaf:Person ;
     rdfs:label "Dmytro Palahin"@en , "Дмитрий Палагин"@ru , "Дмитро Палагін"@uk ;
+    schema:name "Dmytro Palahin"@en , "Дмитрий Палагин"@ru , "Дмитро Палагін"@uk ;
+    schema:jobTitle "Full-Stack Developer & Data Engineer"@en ,
+                    "Développeur Full-Stack et Ingénieur de Données"@fr ,
+                    "Розробник Full-Stack і Інженер Даних"@uk ,
+                    "Разработчик Full-Stack и Инженер Данных"@ru ;
+    schema:description "Passionate about software development, web technologies, and system administration. Currently pursuing a Master's degree in Computer Engineering at Sup Galilée."@en ,
+                       "Passionné par le développement logiciel, les technologies web et l'administration système. Actuellement en Master d'Ingénierie Informatique à Sup Galilée."@fr ,
+                       "Захоплений розробкою програмного забезпечення, веб-технологіями та адмініструванням систем. Зараз навчаюся на магістратурі з комп'ютерної інженерії в Sup Galilée."@uk ,
+                       "Увлечен разработкой программного обеспечения, веб-технологиями и системным администрированием. В настоящее время изучаю магистратуру по компьютерной инженерии в Sup Galilée."@ru ;
+    schema:email "dmytro.palahin@gmail.com" ;
+    schema:telephone "+33 7 87 32 58 78" ;
+    schema:nationality "Ukrainian" ;
+    schema:address :address-paris ;
+    schema:image "assets/img/memoji.png" ;
+    schema:sameAs "https://github.com/DmytroPalahin" ,
+                  "https://linkedin.com/in/dmytropalahin" ,
+                  "https://t.me/dmytropalahin" ;
+    schema:knowsAbout :skill-python, :skill-javascript, :skill-sql, :skill-spark, 
+                     :skill-kedro, :skill-mlflow, :skill-docker, :skill-mlops, 
+                     :skill-ml, :skill-data-engineering, :skill-superset, :skill-kibana ;
+    schema:knowsLanguage :skill-ukrainian, :skill-russian, :skill-english, :skill-french, :skill-german ;
+    schema:alumniOf :org-sup-galilee ;
+    schema:worksFor :org-sg-insurance ;
+    schema:award :award-besse ;
+    schema:creator :project-ml-pipeline, :project-dashboard ;
+    foaf:name "Dmytro Palahin" ;
+    foaf:nick "DmytroPalahin" ;
+    foaf:mbox <mailto:dmytro.palahin@gmail.com> ;
+    foaf:homepage <https://dmytro.example> ;
+    foaf:img <assets/img/memoji.png> ;
+    geo:lat "48.8566"^^xsd:decimal ;
+    geo:long "2.3522"^^xsd:decimal .
     schema:name "Dmytro Palahin"@en , "Dmytro Palahin"@fr , 
                 "Дмитрий Палагин"@ru , "Дмитро Палагін"@uk ;
     foaf:name "Dmytro Palahin" ;
@@ -52,6 +84,13 @@
 
 # Address Information
 :address-paris a schema:PostalAddress ;
+    schema:addressLocality "Paris"@en , "Paris"@fr , "Париж"@ru , "Париж"@uk ;
+    schema:addressCountry "France"@en , "France"@fr , "Франція"@uk , "Франция"@ru ;
+    schema:postalCode "75000" ;
+    vcard:locality "Paris" ;
+    vcard:country-name "France" ;
+    geo:lat "48.8566"^^xsd:decimal ;
+    geo:long "2.3522"^^xsd:decimal .
     schema:addressLocality "Paris" ;
     schema:addressCountry "France" ;
     schema:addressRegion "Île-de-France" .
@@ -62,38 +101,95 @@
 
 # Programming Languages - из ваших knowsAbout
 :skill-python a ex:ProgrammingLanguage ;
-    rdfs:label "Python"@en ;
+    rdfs:label "Python"@en , "Python"@fr , "Python"@uk , "Python"@ru ;
+    schema:name "Python" ;
     ex:hasSkillLevel "Expert" ;
     ex:yearsOfExperience 5 ;
     ex:skillCategory "Programming Language" ;
-    ex:skillAcquiredDate "2019-01-01"^^xsd:date .
+    ex:skillAcquiredDate "2019-01-01"^^xsd:date ;
+    dcterms:description "Advanced knowledge in Python for data engineering, machine learning, web development, and automation"@en ,
+                        "Connaissances avancées en Python pour l'ingénierie des données, l'apprentissage automatique, le développement web et l'automatisation"@fr ,
+                        "Розширені знання Python для інженерії даних, машинного навчання, веб-розробки та автоматизації"@uk ,
+                        "Продвинутые знания Python для инженерии данных, машинного обучения, веб-разработки и автоматизации"@ru .
 
 :skill-javascript a ex:ProgrammingLanguage ;
-    rdfs:label "JavaScript"@en ;
+    rdfs:label "JavaScript"@en , "JavaScript"@fr , "JavaScript"@uk , "JavaScript"@ru ;
+    schema:name "JavaScript" ;
     ex:hasSkillLevel "Advanced" ;
     ex:yearsOfExperience 4 ;
-    ex:skillCategory "Programming Language" .
+    ex:skillCategory "Programming Language" ;
+    dcterms:description "Proficient in modern JavaScript (ES6+), Node.js, React, Vue.js, and frontend development"@en ,
+                        "Compétent en JavaScript moderne (ES6+), Node.js, React, Vue.js et développement frontend"@fr ,
+                        "Досвідчений у сучасному JavaScript (ES6+), Node.js, React, Vue.js та frontend розробці"@uk ,
+                        "Опытный в современном JavaScript (ES6+), Node.js, React, Vue.js и frontend разработке"@ru .
 
 :skill-sql a ex:ProgrammingLanguage ;
-    rdfs:label "SQL"@en ;
+    rdfs:label "SQL"@en , "SQL"@fr , "SQL"@uk , "SQL"@ru ;
+    schema:name "SQL" ;
     ex:hasSkillLevel "Advanced" ;
     ex:yearsOfExperience 4 ;
-    ex:skillCategory "Database Language" .
+    ex:skillCategory "Database Language" ;
+    dcterms:description "Expert in complex SQL queries, database optimization, data modeling, and working with PostgreSQL, MySQL, Oracle"@en ,
+                        "Expert en requêtes SQL complexes, optimisation de bases de données, modélisation de données, et travail avec PostgreSQL, MySQL, Oracle"@fr ,
+                        "Експерт у складних SQL запитах, оптимізації баз даних, моделюванні даних та роботі з PostgreSQL, MySQL, Oracle"@uk ,
+                        "Эксперт в сложных SQL запросах, оптимизации баз данных, моделировании данных и работе с PostgreSQL, MySQL, Oracle"@ru .
 
 # Frameworks and Technologies - из ваших данных
 :skill-spark a ex:TechnicalSkill ;
-    rdfs:label "Apache Spark"@en ;
+    rdfs:label "Apache Spark"@en , "Apache Spark"@fr , "Apache Spark"@uk , "Apache Spark"@ru ;
+    schema:name "Apache Spark" ;
     ex:hasSkillLevel "Advanced" ;
     ex:skillCategory "Big Data Processing" ;
-    ex:yearsOfExperience 2 .
+    ex:yearsOfExperience 2 ;
+    dcterms:description "Experience with large-scale data processing, ETL pipelines, and distributed computing using Spark"@en .
 
 :skill-kedro a ex:Framework ;
-    rdfs:label "Kedro"@en ;
+    rdfs:label "Kedro"@en , "Kedro"@fr , "Kedro"@uk , "Kedro"@ru ;
+    schema:name "Kedro" ;
     ex:hasSkillLevel "Advanced" ;
     ex:skillCategory "ML Pipeline Framework" ;
-    ex:yearsOfExperience 2 .
+    ex:yearsOfExperience 2 ;
+    dcterms:description "Building production-ready ML pipelines with Kedro framework for data science workflows"@en .
 
 :skill-mlflow a ex:TechnicalSkill ;
+    rdfs:label "MLflow"@en , "MLflow"@fr , "MLflow"@uk , "MLflow"@ru ;
+    schema:name "MLflow" ;
+    ex:hasSkillLevel "Intermediate" ;
+    ex:skillCategory "ML Operations" ;
+    ex:yearsOfExperience 1 ;
+    dcterms:description "ML experiment tracking, model registry, and deployment using MLflow platform"@en .
+
+:skill-docker a ex:DevOpsTool ;
+    rdfs:label "Docker"@en , "Docker"@fr , "Docker"@uk , "Docker"@ru ;
+    schema:name "Docker" ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "Containerization" ;
+    ex:yearsOfExperience 3 ;
+    dcterms:description "Containerization, orchestration, and deployment of applications using Docker and Docker Compose"@en .
+
+:skill-mlops a ex:TechnicalSkill ;
+    rdfs:label "MLOps"@en , "MLOps"@fr , "MLOps"@uk , "MLOps"@ru ;
+    schema:name "MLOps" ;
+    ex:hasSkillLevel "Intermediate" ;
+    ex:skillCategory "ML Operations" ;
+    ex:yearsOfExperience 1 ;
+    dcterms:description "ML model deployment, monitoring, and lifecycle management in production environments"@en .
+
+:skill-ml a ex:TechnicalSkill ;
+    rdfs:label "Machine Learning"@en , "Apprentissage Automatique"@fr , "Машинне Навчання"@uk , "Машинное Обучение"@ru ;
+    schema:name "Machine Learning" ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "Artificial Intelligence" ;
+    ex:yearsOfExperience 3 ;
+    dcterms:description "Experience with supervised/unsupervised learning, deep learning, NLP, and computer vision"@en .
+
+:skill-data-engineering a ex:TechnicalSkill ;
+    rdfs:label "Data Engineering"@en , "Ingénierie des Données"@fr , "Інженерія Даних"@uk , "Инженерия Данных"@ru ;
+    schema:name "Data Engineering" ;
+    ex:hasSkillLevel "Advanced" ;
+    ex:skillCategory "Data Science" ;
+    ex:yearsOfExperience 2 ;
+    dcterms:description "Building scalable data pipelines, ETL processes, and data infrastructure"@en .
     rdfs:label "MLFlow"@en ;
     ex:hasSkillLevel "Intermediate" ;
     ex:skillCategory "MLOps" ;
