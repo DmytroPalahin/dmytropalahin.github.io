@@ -40,6 +40,26 @@ final class RdfProvider
     private const DCTERMS_IDENTIFIER = 'dcterms:identifier';
     private const DCTERMS_RELATION = 'dcterms:relation';
     private const DCTERMS_PUBLISHER = 'dcterms:publisher';
+    private const DCTERMS_CREATED = 'dcterms:created';
+    private const DCTERMS_MODIFIED = 'dcterms:modified';
+    private const DCTERMS_ISSUED = 'dcterms:issued';
+    
+    // VCARD vocabulary constants
+    private const VCARD_FN = 'vcard:fn';
+    private const VCARD_EMAIL = 'vcard:email';
+    private const VCARD_TEL = 'vcard:tel';
+    private const VCARD_ADR = 'vcard:adr';
+    private const VCARD_ORG = 'vcard:org';
+    private const VCARD_TITLE = 'vcard:title';
+    private const VCARD_URL = 'vcard:url';
+    
+    // Additional semantic vocabularies
+    private const ORG_ORGANIZATION = 'org:Organization';
+    private const ORG_MEMBERSHIP = 'org:membership';
+    private const TIME_INTERVAL = 'time:Interval';
+    private const GEO_POINT = 'geo:Point';
+    private const SKOS_CONCEPT = 'skos:Concept';
+    private const PROV_ACTIVITY = 'prov:Activity';
     
     private array $rdfData = [];
     private array $skills = [];
@@ -289,203 +309,20 @@ final class RdfProvider
                 'id' => $id,
                 'title' => $this->getLocalizedName($work, 'en'),
                 'type' => $work['type'] ?? 'Work',
-                'company' => $work['company'] ?? ''
+                'company' => $work['company'] ?? '',
+                'period' => $work['period'] ?? '',
+                'description' => $work['description'] ?? ''
             ];
         }
         
         return $experience;
     }
     
-    /**
-     * Получить награды
-     */
-    public function getAwards(): array
-    {
-        $awards = [];
-        
-        foreach ($this->awards as $id => $award) {
-            $awards[] = [
-                'id' => $id,
-                'name' => $this->getLocalizedName($award, 'en'),
-                'type' => $award['type'] ?? 'Award',
-                'dateReceived' => $award['dateReceived'] ?? '',
-                'organization' => $award['awardingOrganization'] ?? ''
-            ];
-        }
-        
-        return $awards;
-    }
-    
-    /**
-     * Получить организации
-     */
-    public function getOrganizations(): array
-    {
-        $organizations = [];
-        
-        foreach ($this->organizations as $id => $org) {
-            $organizations[] = [
-                'id' => $id,
-                'name' => $this->getLocalizedName($org, 'en'),
-                'type' => $org['type'] ?? 'Organization',
-                'location' => $org['location'] ?? '',
-                'url' => $org['url'] ?? ''
-            ];
-        }
-        
-        return $organizations;
-    }
-    
-    /**
-     * Получить видео
-     */
-    public function getVideos(): array
-    {
-        $videos = [];
-        
-        foreach ($this->videos as $id => $video) {
-            $videos[] = [
-                'id' => $id,
-                'name' => $this->getLocalizedName($video, 'en'),
-                'type' => $video['type'] ?? 'VideoObject',
-                'url' => $video['contentUrl'] ?? '',
-                'description' => $video['description'] ?? ''
-            ];
-        }
-        
-        return $videos;
-    }
-    
-    /**
-     * Получить публикации
-     */
-    public function getPublications(): array
-    {
-        $publications = [];
-        
-        foreach ($this->publications as $id => $pub) {
-            $publications[] = [
-                'id' => $id,
-                'title' => $this->getLocalizedName($pub, 'en'),
-                'type' => $pub['type'] ?? 'ScholarlyArticle',
-                'journal' => $pub['isPartOf'] ?? '',
-                'datePublished' => $pub['datePublished'] ?? ''
-            ];
-        }
-        
-        return $publications;
-    }
-    
-    /**
-     * Получить адрес
-     */
-    public function getAddress(): array
-    {
-        $addressData = [];
-        
-        foreach ($this->address as $id => $addr) {
-            $addressData[] = [
-                'id' => $id,
-                'locality' => $addr['addressLocality'] ?? '',
-                'country' => $addr['addressCountry'] ?? '',
-                'postalCode' => $addr['postalCode'] ?? '',
-                'type' => $addr['type'] ?? 'PostalAddress'
-            ];
-        }
-        
-        return $addressData;
-    }
-    
-    /**
-     * Получить данные персоны
-     */
-    public function getPersonData(): array
-    {
-        $personData = [];
-        
-        foreach ($this->person as $id => $person) {
-            $personData[] = [
-                'id' => $id,
-                'name' => $this->getLocalizedName($person, 'en'),
-                'jobTitle' => $person['jobTitle'] ?? '',
-                'email' => $person['email'] ?? '',
-                'telephone' => $person['telephone'] ?? '',
-                'nationality' => $person['nationality'] ?? ''
-            ];
-        }
-        
-        return $personData;
-    }
     private function getLocalizedName(array $data, string $lang): string
     {
-        // Если есть прямое имя из schema:name
-        if (isset($data['names']['en'])) {
-            return $data['names']['en'];
-        }
-        
-        // Если есть label
-        if (isset($data['labels']['en'])) {
-            return $data['labels']['en'];
-        }
-        
-        // Попробуем извлечь из других полей
-        return $data['names'][$lang] ?? 
-               $data['labels'][$lang] ?? 
-               $data['names']['en'] ?? 
-               $data['labels']['en'] ?? 
-               'Unknown';
+        return $data['names'][$lang] ?? $data['labels'][$lang] ?? $data['name'] ?? '';
     }
-    
-    /**
-     * Получить JSON-LD для встраивания в HTML
-     */
-    public function getJsonLd(): string
-    {
-        $jsonLd = [
-            '@context' => 'http://schema.org',
-            '@type' => 'Person',
-            'name' => 'Dmytro Palahin',
-            'jobTitle' => 'Full-Stack Developer & Data Engineer',
-            'email' => 'dmytro.palahin@gmail.com',
-            'telephone' => '+33 7 87 32 58 78',
-            'nationality' => 'Ukrainian',
-            'address' => [
-                '@type' => 'PostalAddress',
-                'addressLocality' => 'Paris',
-                'addressCountry' => 'France'
-            ],
-            'sameAs' => [
-                'https://github.com/DmytroPalahin',
-                'https://linkedin.com/in/dmytropalahin',
-                'https://t.me/dmytropalahin'
-            ],
-            'knowsAbout' => [
-                'Python', 'JavaScript', 'SQL', 'Apache Spark', 
-                'Kedro', 'MLFlow', 'Docker', 'Machine Learning', 
-                'Data Engineering'
-            ],
-            'knowsLanguage' => [
-                ['@type' => 'Language', 'name' => 'Ukrainian', 'proficiencyLevel' => 'Native'],
-                ['@type' => 'Language', 'name' => 'Russian', 'proficiencyLevel' => 'Bilingual'],
-                ['@type' => 'Language', 'name' => 'English', 'proficiencyLevel' => 'Fluent'],
-                ['@type' => 'Language', 'name' => 'French', 'proficiencyLevel' => 'Fluent'],
-                ['@type' => 'Language', 'name' => 'German', 'proficiencyLevel' => 'Beginner']
-            ],
-            'worksFor' => [
-                '@type' => 'Organization',
-                'name' => 'Société Générale Insurance',
-                'location' => 'Paris, France'
-            ],
-            'award' => [
-                '@type' => 'Award',
-                'name' => 'Georges Besse Foundation Award',
-                'dateReceived' => '2022'
-            ]
-        ];
-        
-        return json_encode($jsonLd, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-    
+
     /**
      * Получить RDFa данные для интеграции с XSLT
      */
@@ -494,36 +331,66 @@ final class RdfProvider
         return [
             'person' => [
                 'vocab' => 'https://schema.org/',
-                'typeof' => 'Person foaf:Person', // Добавляем FOAF типы как у Ethan'а
-                'prefix' => 'foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ ex: https://dmytro.example/schema#',
+                'typeof' => 'Person foaf:Person vcard:Individual',
+                'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ vcard: http://www.w3.org/2006/vcard/ns# ex: https://dmytro.example/schema# org: http://www.w3.org/ns/org# time: http://www.w3.org/2006/time# geo: http://www.w3.org/2003/01/geo/wgs84_pos# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov#',
                 'properties' => [
-                    // Schema.org properties
-                    'name' => self::SCHEMA_NAME,
+                    // Schema.org properties - личные данные
+                    'name' => 'schema:name',
+                    'givenName' => 'schema:givenName',
+                    'familyName' => 'schema:familyName',
                     'jobTitle' => 'schema:jobTitle',
                     'email' => 'schema:email',
                     'telephone' => 'schema:telephone',
                     'address' => 'schema:address',
                     'nationality' => 'schema:nationality',
-                    'description' => self::SCHEMA_DESCRIPTION,
+                    'description' => 'schema:description',
                     'image' => 'schema:image',
-                    'url' => self::SCHEMA_URL,
+                    'url' => 'schema:url',
                     'sameAs' => 'schema:sameAs',
                     'knowsAbout' => 'schema:knowsAbout',
                     'knowsLanguage' => 'schema:knowsLanguage',
                     'alumniOf' => 'schema:alumniOf',
                     'worksFor' => 'schema:worksFor',
+                    'hasOccupation' => 'schema:hasOccupation',
+                    'award' => 'schema:award',
+                    'birthPlace' => 'schema:birthPlace',
+                    'homeLocation' => 'schema:homeLocation',
                     
-                    // FOAF properties - как у Ethan'а
-                    'foaf_name' => self::FOAF_NAME,
-                    'foaf_mbox' => self::FOAF_MBOX,
-                    'foaf_homepage' => self::FOAF_HOMEPAGE,
-                    'foaf_img' => self::FOAF_IMG,
-                    'foaf_nick' => self::FOAF_NICK,
+                    // FOAF properties - социальные связи
+                    'foaf_name' => 'foaf:name',
+                    'foaf_nick' => 'foaf:nick',
+                    'foaf_mbox' => 'foaf:mbox',
+                    'foaf_homepage' => 'foaf:homepage',
+                    'foaf_img' => 'foaf:img',
+                    'foaf_title' => 'foaf:title',
+                    'foaf_workInfoHomepage' => 'foaf:workInfoHomepage',
+                    'foaf_workplaceHomepage' => 'foaf:workplaceHomepage',
+                    'foaf_schoolHomepage' => 'foaf:schoolHomepage',
+                    'foaf_account' => 'foaf:account',
+                    'foaf_currentProject' => 'foaf:currentProject',
+                    'foaf_pastProject' => 'foaf:pastProject',
+                    'foaf_interest' => 'foaf:interest',
+                    'foaf_knows' => 'foaf:knows',
                     
-                    // DCterms properties - как у Ethan'а
-                    'dcterms_creator' => self::DCTERMS_CREATOR,
-                    'dcterms_description' => self::DCTERMS_DESCRIPTION,
-                    'dcterms_identifier' => self::DCTERMS_IDENTIFIER
+                    // VCARD properties - контактная информация
+                    'vcard_fn' => 'vcard:fn',
+                    'vcard_email' => 'vcard:email',
+                    'vcard_tel' => 'vcard:tel',
+                    'vcard_adr' => 'vcard:adr',
+                    'vcard_org' => 'vcard:org',
+                    'vcard_title' => 'vcard:title',
+                    'vcard_url' => 'vcard:url',
+                    'vcard_photo' => 'vcard:photo',
+                    'vcard_role' => 'vcard:role',
+                    
+                    // DCterms properties - метаданные
+                    'dcterms_creator' => 'dcterms:creator',
+                    'dcterms_description' => 'dcterms:description',
+                    'dcterms_identifier' => 'dcterms:identifier',
+                    'dcterms_subject' => 'dcterms:subject',
+                    'dcterms_created' => 'dcterms:created',
+                    'dcterms_modified' => 'dcterms:modified',
+                    'dcterms_spatial' => 'dcterms:spatial'
                 ]
             ],
             'skills' => $this->getSkillsRdfaData(),
@@ -538,160 +405,125 @@ final class RdfProvider
         ];
     }
 
-    private function getSkillsRdfaData(): array
+    /**
+     * Получить JSON-LD для улучшенной семантической разметки
+     */
+    public function getEnhancedJsonLd(): string
     {
-        $rdfaSkills = [];
-        foreach ($this->skills as $id => $skill) {
-            $rdfaSkills[$id] = [
-                'typeof' => 'schema:DefinedTerm',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'skillLevel' => 'ex:hasSkillLevel',
-                    'category' => 'schema:category'
-                ]
-            ];
-        }
-        return $rdfaSkills;
-    }
-
-    private function getProjectsRdfaData(): array
-    {
-        $rdfaProjects = [];
-        foreach ($this->projects as $id => $project) {
-            $rdfaProjects[$id] = [
-                'typeof' => 'schema:CreativeWork',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'description' => self::SCHEMA_DESCRIPTION,
-                    'dateCreated' => 'schema:dateCreated',
-                    'creator' => 'schema:creator',
-                    'programmingLanguage' => 'schema:programmingLanguage',
-                    'url' => self::SCHEMA_URL
-                ]
-            ];
-        }
-        return $rdfaProjects;
-    }
-
-    private function getEducationRdfaData(): array
-    {
-        $rdfaEducation = [];
-        foreach ($this->education as $id => $edu) {
-            $rdfaEducation[$id] = [
-                'typeof' => 'schema:EducationalOccupationalCredential',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'educationalCredentialAwarded' => 'schema:educationalCredentialAwarded',
-                    'sourceOrganization' => 'schema:sourceOrganization',
-                    'startDate' => self::SCHEMA_START_DATE,
-                    'endDate' => self::SCHEMA_END_DATE
-                ]
-            ];
-        }
-        return $rdfaEducation;
-    }
-
-    private function getWorkExperienceRdfaData(): array
-    {
-        $rdfaWork = [];
-        foreach ($this->workExperience as $id => $work) {
-            $rdfaWork[$id] = [
-                'typeof' => 'schema:WorkExperience',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'jobTitle' => 'schema:jobTitle',
-                    'worksFor' => 'schema:worksFor',
-                    'startDate' => self::SCHEMA_START_DATE,
-                    'endDate' => self::SCHEMA_END_DATE,
-                    'description' => self::SCHEMA_DESCRIPTION
-                ]
-            ];
-        }
-        return $rdfaWork;
-    }
-
-    private function getAwardsRdfaData(): array
-    {
-        return [
-            'typeof' => 'schema:Award',
-            'properties' => [
-                'name' => self::SCHEMA_NAME,
-                'awardingOrganization' => 'schema:awardingOrganization',
-                'dateReceived' => 'schema:dateReceived'
+        $context = [
+            "@context" => [
+                "schema" => "https://schema.org/",
+                "foaf" => "http://xmlns.com/foaf/0.1/",
+                "dcterms" => "http://purl.org/dc/terms/",
+                "vcard" => "http://www.w3.org/2006/vcard/ns#",
+                "org" => "http://www.w3.org/ns/org#",
+                "time" => "http://www.w3.org/2006/time#",
+                "geo" => "http://www.w3.org/2003/01/geo/wgs84_pos#",
+                "skos" => "http://www.w3.org/2004/02/skos/core#",
+                "prov" => "http://www.w3.org/ns/prov#",
+                "ex" => "https://dmytro.example/schema#"
             ]
         ];
-    }
-    
-    private function getOrganizationsRdfaData(): array
-    {
-        $rdfaOrganizations = [];
-        foreach ($this->organizations as $id => $org) {
-            $rdfaOrganizations[$id] = [
-                'typeof' => 'schema:Organization',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'location' => 'schema:location',
-                    'url' => self::SCHEMA_URL,
-                    'industry' => 'schema:industry'
+        
+        $jsonLd = [
+            // Основные данные о персоне
+            "@type" => ["schema:Person", "foaf:Person", "vcard:Individual"],
+            "@id" => "https://dmytro.example/#me",
+            "schema:name" => "Dmytro Palahin",
+            "foaf:name" => "Dmytro Palahin",
+            "vcard:fn" => "Dmytro Palahin",
+            "schema:givenName" => "Dmytro",
+            "schema:familyName" => "Palahin",
+            "schema:jobTitle" => "Data Engineer | Computer Science Student",
+            "foaf:title" => "Mr.",
+            "schema:description" => "Computer-science engineering student at Sup Galilée (Paris) and Data Engineer apprentice at Société Générale Insurance. Passionate about ML, optimization and clean code.",
+            "dcterms:description" => "Data Engineer and Computer Science student specializing in machine learning, data pipelines, and MLOps.",
+            
+            // Контактная информация
+            "schema:email" => "dmytro.palahin@gmail.com",
+            "foaf:mbox" => "mailto:dmytro.palahin@gmail.com",
+            "vcard:email" => "dmytro.palahin@gmail.com",
+            "schema:telephone" => "+33 7 87 32 58 78",
+            "vcard:tel" => "+33 7 87 32 58 78",
+            
+            // Социальные сети и профили
+            "schema:sameAs" => [
+                "https://github.com/DmytroPalahin",
+                "https://linkedin.com/in/dmytropalahin",
+                "https://t.me/dmytropalahin"
+            ],
+            "foaf:homepage" => "https://portfolio-dmytropalahin.vercel.app/",
+            "foaf:account" => [
+                [
+                    "@type" => "foaf:OnlineAccount",
+                    "foaf:accountServiceHomepage" => "https://github.com/",
+                    "foaf:accountName" => "DmytroPalahin"
+                ],
+                [
+                    "@type" => "foaf:OnlineAccount", 
+                    "foaf:accountServiceHomepage" => "https://linkedin.com/",
+                    "foaf:accountName" => "dmytropalahin"
                 ]
-            ];
-        }
-        return $rdfaOrganizations;
-    }
-    
-    private function getVideosRdfaData(): array
-    {
-        $rdfaVideos = [];
-        foreach ($this->videos as $id => $video) {
-            $rdfaVideos[$id] = [
-                'typeof' => 'schema:VideoObject',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'description' => self::SCHEMA_DESCRIPTION,
-                    'contentUrl' => 'schema:contentUrl',
-                    'encodingFormat' => 'schema:encodingFormat',
-                    'duration' => 'schema:duration'
+            ],
+            
+            // Национальность и адрес
+            "schema:nationality" => "Ukrainian",
+            "schema:homeLocation" => [
+                "@type" => ["schema:PostalAddress", "vcard:Address"],
+                "schema:addressLocality" => "Paris",
+                "schema:addressCountry" => "France",
+                "schema:postalCode" => "75000",
+                "schema:addressRegion" => "Île-de-France",
+                "vcard:locality" => "Paris",
+                "vcard:country-name" => "France",
+                "geo:lat" => "48.8566",
+                "geo:long" => "2.3522"
+            ],
+            
+            // Навыки и компетенции
+            "schema:knowsAbout" => [
+                [
+                    "@type" => ["schema:DefinedTerm", "skos:Concept"],
+                    "schema:name" => "Python",
+                    "skos:prefLabel" => "Python Programming",
+                    "schema:category" => "Programming Language",
+                    "ex:skillLevel" => "Expert",
+                    "ex:yearsOfExperience" => "5"
+                ],
+                [
+                    "@type" => ["schema:DefinedTerm", "skos:Concept"],
+                    "schema:name" => "Machine Learning",
+                    "skos:prefLabel" => "Machine Learning & MLOps",
+                    "schema:category" => "Technical Skill",
+                    "ex:skillLevel" => "Advanced",
+                    "ex:yearsOfExperience" => "3"
+                ],
+                [
+                    "@type" => ["schema:DefinedTerm", "skos:Concept"],
+                    "schema:name" => "Apache Spark",
+                    "skos:prefLabel" => "Big Data Processing with Apache Spark",
+                    "schema:category" => "Big Data Technology",
+                    "ex:skillLevel" => "Advanced",
+                    "ex:yearsOfExperience" => "2"
                 ]
-            ];
-        }
-        return $rdfaVideos;
-    }
-    
-    private function getPublicationsRdfaData(): array
-    {
-        $rdfaPublications = [];
-        foreach ($this->publications as $id => $pub) {
-            $rdfaPublications[$id] = [
-                'typeof' => 'schema:ScholarlyArticle',
-                'properties' => [
-                    'name' => self::SCHEMA_NAME,
-                    'description' => self::SCHEMA_DESCRIPTION,
-                    'datePublished' => 'schema:datePublished',
-                    'author' => 'schema:author',
-                    'isPartOf' => 'schema:isPartOf'
-                ]
-            ];
-        }
-        return $rdfaPublications;
-    }
-    
-    private function getAddressRdfaData(): array
-    {
-        return [
-            'typeof' => 'schema:PostalAddress',
-            'properties' => [
-                'addressLocality' => 'schema:addressLocality',
-                'addressCountry' => 'schema:addressCountry',
-                'postalCode' => 'schema:postalCode',
-                'addressRegion' => 'schema:addressRegion'
+            ],
+            
+            // Языки
+            "schema:knowsLanguage" => [
+                ["@type" => "schema:Language", "schema:name" => "Ukrainian", "ex:proficiencyLevel" => "Native"],
+                ["@type" => "schema:Language", "schema:name" => "Russian", "ex:proficiencyLevel" => "Native"],
+                ["@type" => "schema:Language", "schema:name" => "English", "ex:proficiencyLevel" => "Advanced"],
+                ["@type" => "schema:Language", "schema:name" => "French", "ex:proficiencyLevel" => "Intermediate"]
             ]
         ];
+        
+        return json_encode(array_merge($context, $jsonLd), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 
     /**
-     * Генерировать полные RDFa атрибуты для элемента
+     * Получить расширенные семантические атрибуты с несколькими словарями
      */
-    public function getElementRdfaAttributes(string $elementType, ?string $property = null): string
+    public function getEnhancedRdfaAttributes(string $elementType, array $properties = []): string
     {
         $rdfaData = $this->getRdfaData();
         
@@ -702,30 +534,515 @@ final class RdfProvider
         $element = $rdfaData[$elementType];
         $attrs = [];
         
-        if (isset($element['vocab'])) {
+        // Добавляем prefix для всех словарей
+        if (isset($element['prefix'])) {
+            $attrs[] = "prefix=\"{$element['prefix']}\"";
+        }
+        
+        // Добавляем vocab если нет prefix
+        if (!isset($element['prefix']) && isset($element['vocab'])) {
             $attrs[] = "vocab=\"{$element['vocab']}\"";
         }
         
+        // Добавляем typeof с несколькими типами
         if (isset($element['typeof'])) {
             $attrs[] = "typeof=\"{$element['typeof']}\"";
         }
         
-        if ($property && isset($element['properties'][$property])) {
-            $attrs[] = "property=\"{$element['properties'][$property]}\"";
+        // Добавляем свойства
+        if (!empty($properties)) {
+            $propertyAttrs = [];
+            foreach ($properties as $prop) {
+                if (isset($element['properties'][$prop])) {
+                    $propertyAttrs[] = $element['properties'][$prop];
+                }
+            }
+            if (!empty($propertyAttrs)) {
+                $attrs[] = "property=\"" . implode(' ', $propertyAttrs) . "\"";
+            }
         }
         
         return implode(' ', $attrs);
     }
 
     /**
-     * Генерировать RDFa атрибуты для HTML элементов (простой вариант)
+     * Получить семантические метаданные для конкретного элемента
      */
-    public function getRdfaAttributes(string $property, ?string $type = null): string
+    public function getElementMetadata(string $elementType, ?string $elementId = null): array
     {
-        $attrs = "property=\"{$property}\"";
-        if ($type) {
-            $attrs .= " typeof=\"{$type}\"";
+        $rdfaData = $this->getRdfaData();
+        
+        if (!isset($rdfaData[$elementType])) {
+            return [];
         }
-        return $attrs;
+        
+        $metadata = [
+            'vocab' => $rdfaData[$elementType]['vocab'] ?? '',
+            'prefix' => $rdfaData[$elementType]['prefix'] ?? '',
+            'typeof' => $rdfaData[$elementType]['typeof'] ?? '',
+            'properties' => $rdfaData[$elementType]['properties'] ?? []
+        ];
+        
+        // Добавляем специфические данные для элемента
+        if ($elementId) {
+            $metadata['id'] = $elementId;
+        }
+        
+        return $metadata;
+    }
+
+    private function getSkillsRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:DefinedTerm skos:Concept',
+            'prefix' => 'schema: https://schema.org/ skos: http://www.w3.org/2004/02/skos/core# dcterms: http://purl.org/dc/terms/ ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'category' => 'schema:category',
+                'skillLevel' => 'schema:skillLevel',
+                'proficiencyLevel' => 'schema:proficiencyLevel',
+                'educationalUse' => 'schema:educationalUse',
+                
+                // SKOS properties - концептуальная схема
+                'skos_prefLabel' => 'skos:prefLabel',
+                'skos_altLabel' => 'skos:altLabel',
+                'skos_definition' => 'skos:definition',
+                'skos_broader' => 'skos:broader',
+                'skos_narrower' => 'skos:narrower',
+                'skos_related' => 'skos:related',
+                'skos_inScheme' => 'skos:inScheme',
+                
+                // DCterms properties
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_created' => 'dcterms:created',
+                
+                // Custom properties
+                'ex_skillLevel' => 'ex:hasSkillLevel',
+                'ex_yearsOfExperience' => 'ex:yearsOfExperience',
+                'ex_skillCategory' => 'ex:skillCategory',
+                'ex_proficiencyLevel' => 'ex:proficiencyLevel'
+            ]
+        ];
+    }
+
+    private function getProjectsRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:CreativeWork foaf:Project prov:Activity',
+            'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ prov: http://www.w3.org/ns/prov# ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                'dateCreated' => 'schema:dateCreated',
+                'dateModified' => 'schema:dateModified',
+                'creator' => 'schema:creator',
+                'author' => 'schema:author',
+                'contributor' => 'schema:contributor',
+                'programmingLanguage' => 'schema:programmingLanguage',
+                'url' => 'schema:url',
+                'codeRepository' => 'schema:codeRepository',
+                'license' => 'schema:license',
+                'keywords' => 'schema:keywords',
+                'about' => 'schema:about',
+                'genre' => 'schema:genre',
+                'applicationCategory' => 'schema:applicationCategory',
+                
+                // FOAF properties - проектная информация
+                'foaf_homepage' => 'foaf:homepage',
+                'foaf_currentProject' => 'foaf:currentProject',
+                'foaf_pastProject' => 'foaf:pastProject',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_creator' => 'dcterms:creator',
+                'dcterms_created' => 'dcterms:created',
+                'dcterms_modified' => 'dcterms:modified',
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_type' => 'dcterms:type',
+                'dcterms_format' => 'dcterms:format',
+                'dcterms_language' => 'dcterms:language',
+                
+                // PROV properties - провенанс
+                'prov_startedAtTime' => 'prov:startedAtTime',
+                'prov_endedAtTime' => 'prov:endedAtTime',
+                'prov_wasAssociatedWith' => 'prov:wasAssociatedWith',
+                'prov_used' => 'prov:used',
+                'prov_generated' => 'prov:generated',
+                
+                // Custom properties
+                'ex_projectType' => 'ex:projectType',
+                'ex_projectStatus' => 'ex:projectStatus',
+                'ex_usedTechnology' => 'ex:usedTechnology',
+                'ex_repositoryUrl' => 'ex:repositoryUrl',
+                'ex_demoUrl' => 'ex:demoUrl'
+            ]
+        ];
+    }
+
+    private function getEducationRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:EducationalOccupationalCredential schema:Course foaf:Organization',
+            'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ time: http://www.w3.org/2006/time# ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                'educationalCredentialAwarded' => 'schema:educationalCredentialAwarded',
+                'credentialCategory' => 'schema:credentialCategory',
+                'educationalLevel' => 'schema:educationalLevel',
+                'competencyRequired' => 'schema:competencyRequired',
+                'recognizedBy' => 'schema:recognizedBy',
+                'sourceOrganization' => 'schema:sourceOrganization',
+                'startDate' => 'schema:startDate',
+                'endDate' => 'schema:endDate',
+                'validFrom' => 'schema:validFrom',
+                'validThrough' => 'schema:validThrough',
+                'about' => 'schema:about',
+                'teaches' => 'schema:teaches',
+                'courseCode' => 'schema:courseCode',
+                'numberOfCredits' => 'schema:numberOfCredits',
+                
+                // FOAF properties - образовательные связи
+                'foaf_schoolHomepage' => 'foaf:schoolHomepage',
+                'foaf_organization' => 'foaf:Organization',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_created' => 'dcterms:created',
+                'dcterms_issued' => 'dcterms:issued',
+                'dcterms_publisher' => 'dcterms:publisher',
+                'dcterms_type' => 'dcterms:type',
+                'dcterms_format' => 'dcterms:format',
+                
+                // Time ontology properties
+                'time_hasBeginning' => 'time:hasBeginning',
+                'time_hasEnd' => 'time:hasEnd',
+                'time_hasDuration' => 'time:hasDuration',
+                
+                // Custom properties
+                'ex_degreeType' => 'ex:degreeType',
+                'ex_fieldOfStudy' => 'ex:fieldOfStudy',
+                'ex_gpa' => 'ex:gpa',
+                'ex_academicHonors' => 'ex:academicHonors',
+                'ex_hasInstitution' => 'ex:hasInstitution'
+            ]
+        ];
+    }
+
+    private function getWorkExperienceRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:WorkExperience org:Membership prov:Activity',
+            'prefix' => 'schema: https://schema.org/ org: http://www.w3.org/ns/org# foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ time: http://www.w3.org/2006/time# prov: http://www.w3.org/ns/prov# ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                'jobTitle' => 'schema:jobTitle',
+                'worksFor' => 'schema:worksFor',
+                'employer' => 'schema:employer',
+                'occupationalCategory' => 'schema:occupationalCategory',
+                'startDate' => 'schema:startDate',
+                'endDate' => 'schema:endDate',
+                'workLocation' => 'schema:workLocation',
+                'employmentType' => 'schema:employmentType',
+                'skills' => 'schema:skills',
+                'responsibilities' => 'schema:responsibilities',
+                'qualifications' => 'schema:qualifications',
+                'baseSalary' => 'schema:baseSalary',
+                
+                // ORG ontology properties - организационная структура
+                'org_organization' => 'org:organization',
+                'org_role' => 'org:role',
+                'org_member' => 'org:member',
+                'org_memberDuring' => 'org:memberDuring',
+                'org_hasPost' => 'org:hasPost',
+                
+                // FOAF properties - профессиональные связи
+                'foaf_workInfoHomepage' => 'foaf:workInfoHomepage',
+                'foaf_workplaceHomepage' => 'foaf:workplaceHomepage',
+                'foaf_title' => 'foaf:title',
+                'foaf_currentProject' => 'foaf:currentProject',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_created' => 'dcterms:created',
+                'dcterms_type' => 'dcterms:type',
+                
+                // Time ontology properties
+                'time_hasBeginning' => 'time:hasBeginning',
+                'time_hasEnd' => 'time:hasEnd',
+                'time_hasDuration' => 'time:hasDuration',
+                
+                // PROV properties - провенанс деятельности
+                'prov_startedAtTime' => 'prov:startedAtTime',
+                'prov_endedAtTime' => 'prov:endedAtTime',
+                'prov_wasAssociatedWith' => 'prov:wasAssociatedWith',
+                
+                // Custom properties
+                'ex_hasEmployer' => 'ex:hasEmployer',
+                'ex_positionLevel' => 'ex:positionLevel',
+                'ex_isRemoteWork' => 'ex:isRemoteWork',
+                'ex_keyAchievement' => 'ex:keyAchievement'
+            ]
+        ];
+    }
+
+    private function getAwardsRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:Award foaf:Document',
+            'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                'awardingOrganization' => 'schema:awardingOrganization',
+                'dateReceived' => 'schema:dateReceived',
+                'award' => 'schema:award',
+                'category' => 'schema:category',
+                'recipient' => 'schema:recipient',
+                'recognizingAuthority' => 'schema:recognizingAuthority',
+                
+                // FOAF properties
+                'foaf_topic' => 'foaf:topic',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_issued' => 'dcterms:issued',
+                'dcterms_publisher' => 'dcterms:publisher',
+                'dcterms_type' => 'dcterms:type',
+                'dcterms_subject' => 'dcterms:subject',
+                
+                // Custom properties
+                'ex_awardValue' => 'ex:awardValue',
+                'ex_awardCriteria' => 'ex:awardCriteria',
+                'ex_awardCategory' => 'ex:awardCategory'
+            ]
+        ];
+    }
+
+    private function getOrganizationsRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:Organization foaf:Organization org:Organization',
+            'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ org: http://www.w3.org/ns/org# dcterms: http://purl.org/dc/terms/ geo: http://www.w3.org/2003/01/geo/wgs84_pos# ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                'location' => 'schema:location',
+                'url' => 'schema:url',
+                'sameAs' => 'schema:sameAs',
+                'industry' => 'schema:industry',
+                'address' => 'schema:address',
+                'telephone' => 'schema:telephone',
+                'email' => 'schema:email',
+                'logo' => 'schema:logo',
+                'foundingDate' => 'schema:foundingDate',
+                'numberOfEmployees' => 'schema:numberOfEmployees',
+                'parentOrganization' => 'schema:parentOrganization',
+                'subOrganization' => 'schema:subOrganization',
+                'department' => 'schema:department',
+                'legalName' => 'schema:legalName',
+                
+                // FOAF properties
+                'foaf_name' => 'foaf:name',
+                'foaf_homepage' => 'foaf:homepage',
+                'foaf_mbox' => 'foaf:mbox',
+                'foaf_phone' => 'foaf:phone',
+                'foaf_logo' => 'foaf:logo',
+                'foaf_member' => 'foaf:member',
+                
+                // ORG ontology properties
+                'org_classification' => 'org:classification',
+                'org_purpose' => 'org:purpose',
+                'org_hasPost' => 'org:hasPost',
+                'org_hasMember' => 'org:hasMember',
+                'org_hasPrimaryActivity' => 'org:hasPrimaryActivity',
+                'org_hasSubOrganization' => 'org:hasSubOrganization',
+                'org_subOrganizationOf' => 'org:subOrganizationOf',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_identifier' => 'dcterms:identifier',
+                'dcterms_type' => 'dcterms:type',
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_spatial' => 'dcterms:spatial',
+                
+                // Geo properties
+                'geo_lat' => 'geo:lat',
+                'geo_long' => 'geo:long',
+                'geo_location' => 'geo:location'
+            ]
+        ];
+    }
+
+    private function getVideosRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:VideoObject foaf:Document',
+            'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                'contentUrl' => 'schema:contentUrl',
+                'embedUrl' => 'schema:embedUrl',
+                'thumbnailUrl' => 'schema:thumbnailUrl',
+                'uploadDate' => 'schema:uploadDate',
+                'duration' => 'schema:duration',
+                'encodingFormat' => 'schema:encodingFormat',
+                'width' => 'schema:width',
+                'height' => 'schema:height',
+                'bitrate' => 'schema:bitrate',
+                'videoFrameSize' => 'schema:videoFrameSize',
+                'videoQuality' => 'schema:videoQuality',
+                'inLanguage' => 'schema:inLanguage',
+                'caption' => 'schema:caption',
+                'transcript' => 'schema:transcript',
+                'creator' => 'schema:creator',
+                'producer' => 'schema:producer',
+                'director' => 'schema:director',
+                'about' => 'schema:about',
+                'genre' => 'schema:genre',
+                'keywords' => 'schema:keywords',
+                
+                // FOAF properties
+                'foaf_topic' => 'foaf:topic',
+                'foaf_homepage' => 'foaf:homepage',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_creator' => 'dcterms:creator',
+                'dcterms_created' => 'dcterms:created',
+                'dcterms_modified' => 'dcterms:modified',
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_type' => 'dcterms:type',
+                'dcterms_format' => 'dcterms:format',
+                'dcterms_language' => 'dcterms:language',
+                'dcterms_identifier' => 'dcterms:identifier'
+            ]
+        ];
+    }
+
+    private function getPublicationsRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:ScholarlyArticle foaf:Document',
+            'prefix' => 'schema: https://schema.org/ foaf: http://xmlns.com/foaf/0.1/ dcterms: http://purl.org/dc/terms/ ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'name' => 'schema:name',
+                'headline' => 'schema:headline',
+                'description' => 'schema:description',
+                'abstract' => 'schema:abstract',
+                'author' => 'schema:author',
+                'creator' => 'schema:creator',
+                'editor' => 'schema:editor',
+                'contributor' => 'schema:contributor',
+                'datePublished' => 'schema:datePublished',
+                'dateCreated' => 'schema:dateCreated',
+                'dateModified' => 'schema:dateModified',
+                'isPartOf' => 'schema:isPartOf',
+                'publisher' => 'schema:publisher',
+                'publication' => 'schema:publication',
+                'pageStart' => 'schema:pageStart',
+                'pageEnd' => 'schema:pageEnd',
+                'pagination' => 'schema:pagination',
+                'volumeNumber' => 'schema:volumeNumber',
+                'issueNumber' => 'schema:issueNumber',
+                'doi' => 'schema:doi',
+                'issn' => 'schema:issn',
+                'isbn' => 'schema:isbn',
+                'url' => 'schema:url',
+                'sameAs' => 'schema:sameAs',
+                'about' => 'schema:about',
+                'keywords' => 'schema:keywords',
+                'genre' => 'schema:genre',
+                'inLanguage' => 'schema:inLanguage',
+                'citation' => 'schema:citation',
+                'license' => 'schema:license',
+                
+                // FOAF properties
+                'foaf_topic' => 'foaf:topic',
+                'foaf_homepage' => 'foaf:homepage',
+                
+                // DCterms properties
+                'dcterms_title' => 'dcterms:title',
+                'dcterms_description' => 'dcterms:description',
+                'dcterms_creator' => 'dcterms:creator',
+                'dcterms_publisher' => 'dcterms:publisher',
+                'dcterms_date' => 'dcterms:date',
+                'dcterms_created' => 'dcterms:created',
+                'dcterms_modified' => 'dcterms:modified',
+                'dcterms_issued' => 'dcterms:issued',
+                'dcterms_subject' => 'dcterms:subject',
+                'dcterms_type' => 'dcterms:type',
+                'dcterms_format' => 'dcterms:format',
+                'dcterms_language' => 'dcterms:language',
+                'dcterms_identifier' => 'dcterms:identifier',
+                'dcterms_relation' => 'dcterms:relation',
+                'dcterms_bibliographicCitation' => 'dcterms:bibliographicCitation',
+                
+                // Custom properties
+                'ex_doi' => 'ex:doi',
+                'ex_impactFactor' => 'ex:impactFactor',
+                'ex_citationCount' => 'ex:citationCount',
+                'ex_publicationType' => 'ex:publicationType'
+            ]
+        ];
+    }
+
+    private function getAddressRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:PostalAddress vcard:Address',
+            'prefix' => 'schema: https://schema.org/ vcard: http://www.w3.org/2006/vcard/ns# geo: http://www.w3.org/2003/01/geo/wgs84_pos# dcterms: http://purl.org/dc/terms# ex: https://dmytro.example/schema#',
+            'properties' => [
+                // Schema.org properties
+                'addressLocality' => 'schema:addressLocality',
+                'addressRegion' => 'schema:addressRegion',
+                'addressCountry' => 'schema:addressCountry',
+                'postalCode' => 'schema:postalCode',
+                'streetAddress' => 'schema:streetAddress',
+                'postOfficeBoxNumber' => 'schema:postOfficeBoxNumber',
+                'name' => 'schema:name',
+                'description' => 'schema:description',
+                
+                // VCARD properties
+                'vcard_locality' => 'vcard:locality',
+                'vcard_region' => 'vcard:region',
+                'vcard_country-name' => 'vcard:country-name',
+                'vcard_postal-code' => 'vcard:postal-code',
+                'vcard_street-address' => 'vcard:street-address',
+                'vcard_extended-address' => 'vcard:extended-address',
+                'vcard_post-office-box' => 'vcard:post-office-box',
+                
+                // Geographic properties
+                'geo_lat' => 'geo:lat',
+                'geo_long' => 'geo:long',
+                'geo_location' => 'geo:location',
+                
+                // DCterms properties
+                'dcterms_spatial' => 'dcterms:spatial',
+                'dcterms_identifier' => 'dcterms:identifier',
+                
+                // Custom properties  
+                'ex_addressType' => 'ex:addressType',
+                'ex_primaryAddress' => 'ex:primaryAddress'
+            ]
+        ];
     }
 }

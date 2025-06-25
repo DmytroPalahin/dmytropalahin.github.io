@@ -29,7 +29,7 @@ final class Controller
         // Добавляем JSON-LD для SEO и семантической разметки
         $jsonLdScript = $dom->createElement('script');
         $jsonLdScript->setAttribute('type', 'application/ld+json');
-        $jsonLdScript->textContent = $this->rdfProvider->getJsonLd();
+        $jsonLdScript->textContent = $this->rdfProvider->getEnhancedJsonLd();
         $head->appendChild($jsonLdScript);
 
         foreach (self::LANGS as $l) {
@@ -75,7 +75,7 @@ final class Controller
         
         switch ($format) {
             case 'jsonld':
-                return $this->rdfProvider->getJsonLd();
+                return $this->rdfProvider->getEnhancedJsonLd();
             case 'json':
             default:
                 return json_encode($semanticData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
