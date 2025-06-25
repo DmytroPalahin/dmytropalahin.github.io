@@ -373,20 +373,16 @@
                                 </h3>
                                 <div class="skill-items">
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">Python</span>
-                                        <span class="skill-level" property="skillLevel">Expert</span>
+                                        <span class="skill-name" property="name">Python</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">JavaScript</span>
-                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                        <span class="skill-name" property="name">JavaScript</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">SQL</span>
-                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                        <span class="skill-name" property="name">SQL</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">PHP</span>
-                                        <span class="skill-level" property="skillLevel">Intermediate</span>
+                                        <span class="skill-name" property="name">PHP</span>
                                     </div>
                                 </div>
                             </div>
@@ -397,24 +393,19 @@
                                 </h3>
                                 <div class="skill-items">
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">Apache Spark</span>
-                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                        <span class="skill-name" property="name">Apache Spark</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">Kedro</span>
-                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                        <span class="skill-name" property="name">Kedro</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">MLflow</span>
-                                        <span class="skill-level" property="skillLevel">Intermediate</span>
+                                        <span class="skill-name" property="name">MLflow</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">Docker</span>
-                                        <span class="skill-level" property="skillLevel">Advanced</span>
+                                        <span class="skill-name" property="name">Docker</span>
                                     </div>
                                     <div class="skill-item" typeof="DefinedTerm">
-                                        <span property="name">React</span>
-                                        <span class="skill-level" property="skillLevel">Intermediate</span>
+                                        <span class="skill-name" property="name">React</span>
                                     </div>
                                 </div>
                             </div>
@@ -422,27 +413,19 @@
                                 <h3 class="skill-title">Languages</h3>
                                 <div class="skill-items" property="knowsLanguage">
                                     <div class="skill-item" typeof="Language">
-                                        <span property="name">Ukrainian</span>
-                                        <span class="skill-level" property="proficiencyLevel">Native</span>
+                                        <span class="skill-name" property="name">Ukrainian</span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span property="name">Russian</span>
-                                        <span class="skill-level" property="proficiencyLevel">Native</span>
+                                        <span class="skill-name" property="name">Russian</span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span property="name">English</span>
-                                        <span class="skill-level" property="proficiencyLevel">
-        Advanced</span>
+                                        <span class="skill-name" property="name">English</span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span property="name">French</span>
-                                        <span class="skill-level" property="proficiencyLevel">
-        Intermediate</span>
+                                        <span class="skill-name" property="name">French</span>
                                     </div>
                                     <div class="skill-item" typeof="Language">
-                                        <span property="name">German</span>
-                                        <span class="skill-level" property="proficiencyLevel">
-        Beginner</span>
+                                        <span class="skill-name" property="name">German</span>
                                     </div>
                                 </div>
                             </div>

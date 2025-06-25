@@ -756,7 +756,6 @@ body.loading {
 }
 
 .skill-category:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
     border-color: var(--border-light);
 }
@@ -764,10 +763,39 @@ body.loading {
 .skill-title {
     font-size: var(--font-size-xl);
     font-weight: 600;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
     color: var(--primary-color);
 }
 
+.skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.skill-item:hover {
+    background: var(--surface-tertiary);
+    border-color: var(--border-light);
+}
+
+.skill-name {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+/* Убираем старые стили .skill-list для единообразия */
 .skill-list {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
@@ -821,6 +849,7 @@ body.loading {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
     line-height: 1.6;
+    margin: 0;
 }
 
 /* Contact Section */
@@ -946,14 +975,6 @@ body.loading {
 
 .experience-tech strong {
     color: var(--text-secondary);
-}
-
-/* Project Specific Styles */
-.project-description {
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-    color: var(--text-secondary);
-    margin: 0;
 }
 
 /* Mobile Responsive */
