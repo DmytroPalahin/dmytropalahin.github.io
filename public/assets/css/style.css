@@ -1383,7 +1383,7 @@ button:focus-visible {
     overflow: hidden;
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4); /* Немного уменьшили тень */
     background: var(--surface-secondary);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     max-width: 400px; /* Ещё более компактная ширина */
     margin-left: auto;
     margin-right: auto;
@@ -1408,8 +1408,7 @@ button:focus-visible {
 }
 
 .passions-video-container:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 35px 70px -12px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
 }
 
 .video-wrapper {
@@ -1427,13 +1426,13 @@ button:focus-visible {
     height: 100%;
     object-fit: contain; /* Показываем всё изображение без обрезки */
     display: block;
-    transition: transform 0.3s ease;
+    transition: filter 0.3s ease, opacity 0.3s ease;
     border-radius: var(--radius-lg);
     background: var(--surface-secondary); /* Фон для областей, которые не покрыты видео */
 }
 
 .passions-video:hover {
-    transform: scale(1.05);
+    filter: brightness(1.1) contrast(1.05);
 }
 
 .video-overlay {
@@ -1444,15 +1443,15 @@ button:focus-visible {
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(0, 122, 255, 0.2) 0%,
+        rgba(0, 122, 255, 0.15) 0%,
         transparent 30%,
         transparent 70%,
-        rgba(52, 199, 89, 0.2) 100%
+        rgba(52, 199, 89, 0.15) 100%
     );
     border-radius: var(--radius-lg);
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
 .passions-video-container:hover .video-overlay {
@@ -1488,7 +1487,7 @@ button:focus-visible {
     }
     
     .passions-video-container:hover {
-        transform: translateY(-4px) scale(1.01); /* Меньше эффекта на мобильных */
+        box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.5); /* Простая тень на мобильных */
     }
 }
 
