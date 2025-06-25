@@ -29,6 +29,17 @@ final class ContentProvider
         $proc->setParameter('', 'rdfaPersonVocab', $rdfaData['person']['vocab']);
         $proc->setParameter('', 'rdfaPersonType', $rdfaData['person']['typeof']);
         
+        // Передаем дополнительные RDFa типы для богатой семантической разметки
+        $proc->setParameter('', 'rdfaOrganizationType', $rdfaData['organizations']['typeof'] ?? 'Organization');
+        $proc->setParameter('', 'rdfaProjectType', $rdfaData['projects']['typeof'] ?? 'CreativeWork');
+        $proc->setParameter('', 'rdfaEducationType', $rdfaData['education']['typeof'] ?? 'EducationalOccupationalCredential');
+        $proc->setParameter('', 'rdfaAwardType', $rdfaData['awards']['typeof'] ?? 'Award');
+        $proc->setParameter('', 'rdfaVideoType', $rdfaData['videos']['typeof'] ?? 'VideoObject');
+        $proc->setParameter('', 'rdfaPublicationType', $rdfaData['publications']['typeof'] ?? 'ScholarlyArticle');
+        $proc->setParameter('', 'rdfaAddressType', $rdfaData['address']['typeof'] ?? 'PostalAddress');
+        $proc->setParameter('', 'rdfaWorkExperienceType', $rdfaData['workExperience']['typeof'] ?? 'WorkExperience');
+        $proc->setParameter('', 'rdfaSkillType', $rdfaData['skills']['typeof'] ?? 'DefinedTerm');
+        
         return $proc->transformToDoc($this->xml);
     }
 }

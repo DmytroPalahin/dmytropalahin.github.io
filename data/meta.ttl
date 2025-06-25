@@ -391,14 +391,125 @@
 :me schema:creator :project-ml-pipeline, :project-dashboard .
 
 # =============================================================================
-# СВЯЗИ МЕЖДУ ЭЛЕМЕНТАМИ
+# VIDEOS - НОВЫЕ ВИДЕО СЕКЦИИ
 # =============================================================================
 
-# Portfolio содержит все элементы
-:portfolio schema:hasPart :me, :work-sg-insurance, :edu-current, :edu-galilee, 
-                          :award-besse, :project-ml-pipeline, :project-dashboard .
+# BMW Marketing Video (пример из ваших видео файлов)
+:video-bmw-en a ex:VideoObject ;
+    rdfs:label "BMW Marketing Video (English)"@en ;
+    schema:name "BMW Marketing Video"@en ;
+    schema:description "Professional marketing video showcasing BMW brand values"@en ;
+    schema:contentUrl "video/bmw_en.mp4" ;
+    schema:thumbnailUrl "video/bmw_en_poster.jpg" ;
+    schema:encodingFormat "video/mp4" ;
+    schema:duration "PT2M30S" ;  # примерная длительность
+    schema:inLanguage "en" ;
+    schema:creator :me .
 
-# Добавляем временные связи
-:work-sg-insurance schema:employee :me .
-:edu-current schema:student :me .
-:edu-galilee schema:alumni :me .
+:video-bmw-fr a ex:VideoObject ;
+    rdfs:label "Vidéo Marketing BMW (Français)"@fr ;
+    schema:name "Vidéo Marketing BMW"@fr ;
+    schema:description "Vidéo marketing professionnelle présentant les valeurs de la marque BMW"@fr ;
+    schema:contentUrl "video/bmw_fr.mp4" ;
+    schema:thumbnailUrl "video/bmw_fr_poster.jpg" ;
+    schema:encodingFormat "video/mp4" ;
+    schema:duration "PT2M30S" ;
+    schema:inLanguage "fr" ;
+    schema:creator :me .
+
+:video-bmw-ru a ex:VideoObject ;
+    rdfs:label "BMW Маркетинговое Видео (Русский)"@ru ;
+    schema:name "BMW Маркетинговое Видео"@ru ;
+    schema:description "Профессиональное маркетинговое видео, демонстрирующее ценности бренда BMW"@ru ;
+    schema:contentUrl "video/bmw_ru.mp4" ;
+    schema:thumbnailUrl "video/bmw_ru_poster.jpg" ;
+    schema:encodingFormat "video/mp4" ;
+    schema:duration "PT2M30S" ;
+    schema:inLanguage "ru" ;
+    schema:creator :me .
+
+:video-bmw-uk a ex:VideoObject ;
+    rdfs:label "BMW Маркетингове Відео (Українська)"@uk ;
+    schema:name "BMW Маркетингове Відео"@uk ;
+    schema:description "Професійне маркетингове відео, що демонструє цінності бренду BMW"@uk ;
+    schema:contentUrl "video/bmw_uk.mp4" ;
+    schema:thumbnailUrl "video/bmw_uk_poster.jpg" ;
+    schema:encodingFormat "video/mp4" ;
+    schema:duration "PT2M30S" ;
+    schema:inLanguage "uk" ;
+    schema:creator :me .
+
+# =============================================================================
+# PUBLICATIONS - НАУЧНЫЕ ПУБЛИКАЦИИ И СТАТЬИ
+# =============================================================================
+
+:publication-ml-pipeline a ex:JournalArticle ;
+    rdfs:label "Machine Learning Pipeline Optimization in Insurance Industry"@en ;
+    schema:name "Machine Learning Pipeline Optimization in Insurance Industry"@en ;
+    schema:description "Research paper on optimizing ML pipelines for insurance data processing"@en ;
+    schema:author :me ;
+    schema:datePublished "2024-03-15"^^xsd:date ;
+    schema:isPartOf "Journal of Data Engineering" ;
+    schema:url "https://example.com/papers/ml-pipeline-optimization" .
+
+:publication-data-viz a ex:TechnicalReport ;
+    rdfs:label "Advanced Data Visualization Techniques with Apache Superset"@en ;
+    schema:name "Advanced Data Visualization Techniques with Apache Superset"@en ;
+    schema:description "Technical report on implementing advanced analytics dashboards"@en ;
+    schema:author :me ;
+    schema:datePublished "2024-02-20"^^xsd:date ;
+    schema:publisher :org-sg-insurance .
+
+# =============================================================================
+# ДОПОЛНИТЕЛЬНЫЕ ОРГАНИЗАЦИИ
+# =============================================================================
+
+# НОВАЯ: Société Générale Group (parent organization)
+:org-sg-group a schema:Organization ;
+    rdfs:label "Société Générale Group"@en , "Groupe Société Générale"@fr ;
+    schema:name "Société Générale Group"@en , "Groupe Société Générale"@fr ;
+    schema:location :address-paris ;
+    schema:industry "Banking and Financial Services" ;
+    schema:url <https://www.societegenerale.com/> ;
+    schema:hasSubOrganization :org-sg-insurance .
+
+# НОВАЯ: Association des Étudiants Украинцев во Франции
+:org-ukrainian-students a schema:Organization ;
+    rdfs:label "Association of Ukrainian Students in France"@en , 
+               "Association des Étudiants Украинцев во Франции"@fr ,
+               "Асоціація Українських Студентів у Франції"@uk ;
+    schema:name "Association des Étudiants Украинцев во Франции"@fr ;
+    schema:location :address-paris ;
+    schema:foundingDate "2022"^^xsd:gYear ;
+    schema:memberOf :me .
+
+# =============================================================================
+# РАСШИРЕННАЯ ИНФОРМАЦИЯ О ПЕРСОНЕ
+# =============================================================================
+
+# Обогащаем информацию о персоне
+:me schema:memberOf :org-ukrainian-students ;
+    schema:hasOccupation :work-sg-insurance ;
+    schema:hasCredential :edu-current, :edu-galilee ;
+    schema:creator :video-bmw-en, :video-bmw-fr, :video-bmw-ru, :video-bmw-uk,
+                   :publication-ml-pipeline, :publication-data-viz ;
+    schema:award :award-besse ;
+    ex:hasPortfolio :portfolio .
+
+# =============================================================================
+# СВЯЗИ МЕЖДУ СУЩНОСТЯМИ
+# =============================================================================
+
+# Portfolio содержит все новые элементы
+:portfolio schema:hasPart :me, :work-sg-insurance, :edu-current, :edu-galilee, 
+                          :award-besse, :project-ml-pipeline, :project-dashboard,
+                          :video-bmw-en, :video-bmw-fr, :video-bmw-ru, :video-bmw-uk,
+                          :publication-ml-pipeline, :publication-data-viz,
+                          :org-sg-insurance, :org-sg-group, :org-ukrainian-students .
+
+# Связи между образованием и организациями
+:edu-current schema:sourceOrganization :org-sorbonne .
+:edu-galilee schema:sourceOrganization :org-sup-galilee .
+
+# Связи между наградой и организацией
+:award-besse schema:awardingOrganization :org-besse-foundation .

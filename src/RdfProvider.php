@@ -23,6 +23,12 @@ final class RdfProvider
     private array $projects = [];
     private array $education = [];
     private array $workExperience = [];
+    private array $awards = [];
+    private array $organizations = [];
+    private array $videos = [];
+    private array $publications = [];
+    private array $address = [];
+    private array $person = [];
     
     public function __construct()
     {
@@ -135,6 +141,37 @@ final class RdfProvider
                 case 'FullTimePosition':
                     $this->workExperience[$id] = $data;
                     break;
+                    
+                case 'AcademicAward':
+                case 'ProfessionalAward':
+                    $this->awards[$id] = $data;
+                    break;
+                    
+                case 'Organization':
+                case 'EducationalOrganization':
+                    $this->organizations[$id] = $data;
+                    break;
+                    
+                case 'VideoObject':
+                    $this->videos[$id] = $data;
+                    break;
+                    
+                case 'JournalArticle':
+                case 'ScholarlyArticle':
+                    $this->publications[$id] = $data;
+                    break;
+                    
+                case 'PostalAddress':
+                    $this->address[$id] = $data;
+                    break;
+                    
+                case 'Person':
+                    $this->person[$id] = $data;
+                    break;
+                    
+                default:
+                    // Неизвестный тип - сохраняем в общем массиве
+                    break;
             }
         }
     }
@@ -237,8 +274,125 @@ final class RdfProvider
     }
     
     /**
-     * Получить локализованное имя
+     * Получить награды
      */
+    public function getAwards(): array
+    {
+        $awards = [];
+        
+        foreach ($this->awards as $id => $award) {
+            $awards[] = [
+                'id' => $id,
+                'name' => $this->getLocalizedName($award, 'en'),
+                'type' => $award['type'] ?? 'Award',
+                'dateReceived' => $award['dateReceived'] ?? '',
+                'organization' => $award['awardingOrganization'] ?? ''
+            ];
+        }
+        
+        return $awards;
+    }
+    
+    /**
+     * Получить организации
+     */
+    public function getOrganizations(): array
+    {
+        $organizations = [];
+        
+        foreach ($this->organizations as $id => $org) {
+            $organizations[] = [
+                'id' => $id,
+                'name' => $this->getLocalizedName($org, 'en'),
+                'type' => $org['type'] ?? 'Organization',
+                'location' => $org['location'] ?? '',
+                'url' => $org['url'] ?? ''
+            ];
+        }
+        
+        return $organizations;
+    }
+    
+    /**
+     * Получить видео
+     */
+    public function getVideos(): array
+    {
+        $videos = [];
+        
+        foreach ($this->videos as $id => $video) {
+            $videos[] = [
+                'id' => $id,
+                'name' => $this->getLocalizedName($video, 'en'),
+                'type' => $video['type'] ?? 'VideoObject',
+                'url' => $video['contentUrl'] ?? '',
+                'description' => $video['description'] ?? ''
+            ];
+        }
+        
+        return $videos;
+    }
+    
+    /**
+     * Получить публикации
+     */
+    public function getPublications(): array
+    {
+        $publications = [];
+        
+        foreach ($this->publications as $id => $pub) {
+            $publications[] = [
+                'id' => $id,
+                'title' => $this->getLocalizedName($pub, 'en'),
+                'type' => $pub['type'] ?? 'ScholarlyArticle',
+                'journal' => $pub['isPartOf'] ?? '',
+                'datePublished' => $pub['datePublished'] ?? ''
+            ];
+        }
+        
+        return $publications;
+    }
+    
+    /**
+     * Получить адрес
+     */
+    public function getAddress(): array
+    {
+        $addressData = [];
+        
+        foreach ($this->address as $id => $addr) {
+            $addressData[] = [
+                'id' => $id,
+                'locality' => $addr['addressLocality'] ?? '',
+                'country' => $addr['addressCountry'] ?? '',
+                'postalCode' => $addr['postalCode'] ?? '',
+                'type' => $addr['type'] ?? 'PostalAddress'
+            ];
+        }
+        
+        return $addressData;
+    }
+    
+    /**
+     * Получить данные персоны
+     */
+    public function getPersonData(): array
+    {
+        $personData = [];
+        
+        foreach ($this->person as $id => $person) {
+            $personData[] = [
+                'id' => $id,
+                'name' => $this->getLocalizedName($person, 'en'),
+                'jobTitle' => $person['jobTitle'] ?? '',
+                'email' => $person['email'] ?? '',
+                'telephone' => $person['telephone'] ?? '',
+                'nationality' => $person['nationality'] ?? ''
+            ];
+        }
+        
+        return $personData;
+    }
     private function getLocalizedName(array $data, string $lang): string
     {
         // Если есть прямое имя из schema:name
@@ -339,7 +493,11 @@ final class RdfProvider
             'projects' => $this->getProjectsRdfaData(),
             'education' => $this->getEducationRdfaData(),
             'workExperience' => $this->getWorkExperienceRdfaData(),
-            'awards' => $this->getAwardsRdfaData()
+            'awards' => $this->getAwardsRdfaData(),
+            'organizations' => $this->getOrganizationsRdfaData(),
+            'videos' => $this->getVideosRdfaData(),
+            'publications' => $this->getPublicationsRdfaData(),
+            'address' => $this->getAddressRdfaData()
         ];
     }
 
@@ -423,6 +581,72 @@ final class RdfProvider
                 'name' => self::SCHEMA_NAME,
                 'awardingOrganization' => 'schema:awardingOrganization',
                 'dateReceived' => 'schema:dateReceived'
+            ]
+        ];
+    }
+    
+    private function getOrganizationsRdfaData(): array
+    {
+        $rdfaOrganizations = [];
+        foreach ($this->organizations as $id => $org) {
+            $rdfaOrganizations[$id] = [
+                'typeof' => 'schema:Organization',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'location' => 'schema:location',
+                    'url' => self::SCHEMA_URL,
+                    'industry' => 'schema:industry'
+                ]
+            ];
+        }
+        return $rdfaOrganizations;
+    }
+    
+    private function getVideosRdfaData(): array
+    {
+        $rdfaVideos = [];
+        foreach ($this->videos as $id => $video) {
+            $rdfaVideos[$id] = [
+                'typeof' => 'schema:VideoObject',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'description' => self::SCHEMA_DESCRIPTION,
+                    'contentUrl' => 'schema:contentUrl',
+                    'encodingFormat' => 'schema:encodingFormat',
+                    'duration' => 'schema:duration'
+                ]
+            ];
+        }
+        return $rdfaVideos;
+    }
+    
+    private function getPublicationsRdfaData(): array
+    {
+        $rdfaPublications = [];
+        foreach ($this->publications as $id => $pub) {
+            $rdfaPublications[$id] = [
+                'typeof' => 'schema:ScholarlyArticle',
+                'properties' => [
+                    'name' => self::SCHEMA_NAME,
+                    'description' => self::SCHEMA_DESCRIPTION,
+                    'datePublished' => 'schema:datePublished',
+                    'author' => 'schema:author',
+                    'isPartOf' => 'schema:isPartOf'
+                ]
+            ];
+        }
+        return $rdfaPublications;
+    }
+    
+    private function getAddressRdfaData(): array
+    {
+        return [
+            'typeof' => 'schema:PostalAddress',
+            'properties' => [
+                'addressLocality' => 'schema:addressLocality',
+                'addressCountry' => 'schema:addressCountry',
+                'postalCode' => 'schema:postalCode',
+                'addressRegion' => 'schema:addressRegion'
             ]
         ];
     }

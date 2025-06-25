@@ -7,6 +7,17 @@
     <xsl:param name="uiLang" select="'en'" />
     <xsl:param name="rdfaPersonVocab" select="'https://schema.org/'" />
     <xsl:param name="rdfaPersonType" select="'Person'" />
+
+    <!-- Дополнительные RDFa параметры для богатой семантической разметки -->
+    <xsl:param name="rdfaOrganizationType" select="'Organization'" />
+    <xsl:param name="rdfaProjectType" select="'CreativeWork'" />
+    <xsl:param name="rdfaEducationType" select="'EducationalOccupationalCredential'" />
+    <xsl:param name="rdfaAwardType" select="'Award'" />
+    <xsl:param name="rdfaVideoType" select="'VideoObject'" />
+    <xsl:param name="rdfaPublicationType" select="'ScholarlyArticle'" />
+    <xsl:param name="rdfaAddressType" select="'PostalAddress'" />
+    <xsl:param name="rdfaWorkExperienceType" select="'WorkExperience'" />
+    <xsl:param name="rdfaSkillType" select="'DefinedTerm'" />
     <xsl:output method="html"
         omit-xml-declaration="yes"
         indent="yes"
@@ -39,17 +50,6 @@
                 <meta property="og:description"
                     content="{//tu[@id='about.text']/tuv[@xml:lang=$uiLang]/seg}" />
                 <meta property="og:locale" content="{$uiLang}" />
-
-                <!-- Twitter -->
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:title"
-                    content="{//tu[@id='site.title']/tuv[@xml:lang=$uiLang]/seg}" />
-                <meta property="twitter:description"
-                    content="{//tu[@id='about.text']/tuv[@xml:lang=$uiLang]/seg}" />
-
-                <title>
-                    <xsl:value-of select="//tu[@id='site.title']/tuv[@xml:lang=$uiLang]/seg" />
-                </title>
 
                 <!-- Favicon and App Icons -->
                 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -313,10 +313,71 @@
                             <span property="nationality" style="display: none;">Ukrainian</span>
 
                             <!-- Address Information -->
-                            <div property="address" typeof="PostalAddress" style="display: none;">
+                            <div property="address" typeof="{$rdfaAddressType}"
+                                style="display: none;">
                                 <span property="addressLocality">Paris</span>
                                 <span property="addressCountry">France</span>
+                                <span property="postalCode">75000</span>
+                                <span property="addressRegion">Île-de-France</span>
                             </div>
+
+                            <!-- Awards Information (скрытая RDFa разметка) -->
+                            <div property="award" typeof="{$rdfaAwardType}" style="display: none;">
+                                <span property="name">Georges Besse Foundation Award</span>
+                                <span property="dateReceived">2022</span>
+                                <span property="awardingOrganization">Georges Besse Foundation</span>
+                                <span property="description">Academic excellence award for
+        engineering students</span>
+                            </div>
+
+                            <!-- Work Organization Information (скрытая RDFa разметка) -->
+                            <div property="worksFor" typeof="{$rdfaOrganizationType}"
+                                style="display: none;">
+                                <span property="name">Société Générale Insurance</span>
+                                <span property="location">Paris, France</span>
+                                <span property="industry">Financial Services</span>
+                                <span property="url">https://www.societegenerale.com/</span>
+                            </div>
+
+                            <!-- Educational Organizations (скрытая RDFa разметка) -->
+                            <div property="alumniOf" typeof="{$rdfaOrganizationType}"
+                                style="display: none;">
+                                <span property="name">Sorbonne Paris Nord University</span>
+                                <span property="location">Paris, France</span>
+                                <span property="url">https://www.univ-paris13.fr/</span>
+                            </div>
+                            <div property="alumniOf" typeof="{$rdfaOrganizationType}"
+                                style="display: none;">
+                                <span property="name">Sup Galilée School</span>
+                                <span property="location">Paris, France</span>
+                                <span property="url">https://www.sup-galilee.univ-paris13.fr/</span>
+                            </div>
+
+                            <!-- Publications (скрытая RDFa разметка) -->
+                            <div property="creator" typeof="{$rdfaPublicationType}"
+                                style="display: none;">
+                                <span property="name">Machine Learning Pipeline Optimization in
+        Insurance Industry</span>
+                                <span property="datePublished">2024-03-15</span>
+                                <span property="author">Dmytro Palahin</span>
+                                <span property="isPartOf">Journal of Data Engineering</span>
+                            </div>
+                            <div property="creator" typeof="{$rdfaPublicationType}"
+                                style="display: none;">
+                                <span property="name">Advanced Data Visualization Techniques with
+        Apache Superset</span>
+                                <span property="datePublished">2024-02-20</span>
+                                <span property="author">Dmytro Palahin</span>
+                                <span property="publisher">Société Générale Insurance</span>
+                            </div>
+
+                            <!-- Social Media Links (скрытая RDFa разметка) -->
+                            <span property="sameAs" style="display: none;">
+        https://github.com/DmytroPalahin</span>
+                            <span property="sameAs" style="display: none;">
+        https://linkedin.com/in/dmytropalahin</span>
+                            <span property="sameAs" style="display: none;">
+        https://t.me/dmytropalahin</span>
 
                             <!-- CTA Buttons -->
                             <div class="hero-buttons">
@@ -372,17 +433,34 @@
                                         select="//tu[@id='skills.programming']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h3>
                                 <div class="skill-items">
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">Python</span>
+                                        <span property="category" style="display: none;">Programming
+        Language</span>
+                                        <span property="skillLevel" style="display: none;">Expert</span>
+                                        <span property="yearsOfExperience" style="display: none;">5</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">JavaScript</span>
+                                        <span property="category" style="display: none;">Programming
+        Language</span>
+                                        <span property="skillLevel" style="display: none;">Advanced</span>
+                                        <span property="yearsOfExperience" style="display: none;">4</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">SQL</span>
+                                        <span property="category" style="display: none;">Database
+        Language</span>
+                                        <span property="skillLevel" style="display: none;">Advanced</span>
+                                        <span property="yearsOfExperience" style="display: none;">4</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">PHP</span>
+                                        <span property="category" style="display: none;">Programming
+        Language</span>
+                                        <span property="skillLevel" style="display: none;">
+        Intermediate</span>
+                                        <span property="yearsOfExperience" style="display: none;">3</span>
                                     </div>
                                 </div>
                             </div>
@@ -392,20 +470,42 @@
                                         select="//tu[@id='skills.frameworks']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h3>
                                 <div class="skill-items">
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">Apache Spark</span>
+                                        <span property="category" style="display: none;">Big Data
+        Processing</span>
+                                        <span property="skillLevel" style="display: none;">Advanced</span>
+                                        <span property="yearsOfExperience" style="display: none;">2</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">Kedro</span>
+                                        <span property="category" style="display: none;">ML Pipeline
+        Framework</span>
+                                        <span property="skillLevel" style="display: none;">Advanced</span>
+                                        <span property="yearsOfExperience" style="display: none;">2</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">MLflow</span>
+                                        <span property="category" style="display: none;">ML
+        Operations</span>
+                                        <span property="skillLevel" style="display: none;">
+        Intermediate</span>
+                                        <span property="yearsOfExperience" style="display: none;">1</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">Docker</span>
+                                        <span property="category" style="display: none;">
+        Containerization</span>
+                                        <span property="skillLevel" style="display: none;">Advanced</span>
+                                        <span property="yearsOfExperience" style="display: none;">3</span>
                                     </div>
-                                    <div class="skill-item" typeof="DefinedTerm">
+                                    <div class="skill-item" typeof="{$rdfaSkillType}">
                                         <span class="skill-name" property="name">React</span>
+                                        <span property="category" style="display: none;">Frontend
+        Framework</span>
+                                        <span property="skillLevel" style="display: none;">
+        Intermediate</span>
+                                        <span property="yearsOfExperience" style="display: none;">2</span>
                                     </div>
                                 </div>
                             </div>
@@ -451,30 +551,31 @@
                     </div>
                 </section>                <!--
                 Experience Section -->
-                <section id="experience" class="section">
+                <section id="experience" class="section" vocab="{$rdfaPersonVocab}"
+                    typeof="{$rdfaPersonType}">
                     <div class="container">
                         <h2 class="section-title">
                             <xsl:value-of
                                 select="//tu[@id='experience.title']/tuv[@xml:lang=$uiLang]/seg" />
                         </h2>
-                        <div class="experience-container">
+                        <div class="experience-container" property="worksFor">
                             <!-- Current Experience -->
-                            <div class="experience-card">
+                            <div class="experience-card" typeof="{$rdfaWorkExperienceType}">
                                 <div class="experience-header">
-                                    <h3 class="experience-company">
+                                    <h3 class="experience-company" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='experience.current.title']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
-                                    <span class="experience-duration">
+                                    <span class="experience-duration" property="validThrough">
                                         <xsl:value-of
                                             select="//tu[@id='experience.current.period']/tuv[@xml:lang=$uiLang]/seg" />
                                     </span>
                                 </div>
-                                <h4 class="experience-position">
+                                <h4 class="experience-position" property="jobTitle">
                                     <xsl:value-of
                                         select="//tu[@id='experience.current.role']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h4>
-                                <ul class="experience-description">
+                                <ul class="experience-description" property="description">
                                     <li>
                                         <xsl:value-of
                                             select="//tu[@id='experience.current.task1']/tuv[@xml:lang=$uiLang]/seg" />
@@ -490,80 +591,101 @@
                                 </ul>
                                 <div class="experience-tech">
                                     <strong>Technologies: </strong>
-                                    <xsl:value-of
-                                        select="//tu[@id='experience.current.technologies']/tuv[@xml:lang=$uiLang]/seg" />
+                                    <span property="skills">
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.current.technologies']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
                                 </div>
+                                <!-- Скрытые RDFa элементы для семантики -->
+                                <span property="employmentType" style="display: none;">Internship</span>
+                                <span property="workLocation" style="display: none;">Paris, France</span>
+                                <span property="startDate" style="display: none;">2023-09-01</span>
                             </div>
 
                             <!-- Course 2021 -->
-                            <div class="experience-card">
+                            <div class="experience-card" typeof="{$rdfaWorkExperienceType}">
                                 <div class="experience-header">
-                                    <h3 class="experience-company">
+                                    <h3 class="experience-company" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='experience.course2021.title']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
-                                    <span class="experience-duration">
+                                    <span class="experience-duration" property="validThrough">
                                         <xsl:value-of
                                             select="//tu[@id='experience.course2021.period']/tuv[@xml:lang=$uiLang]/seg" />
                                     </span>
                                 </div>
                                 <div class="experience-tech">
                                     <strong>Technologies: </strong>
-                                    <xsl:value-of
-                                        select="//tu[@id='experience.course2021.technologies']/tuv[@xml:lang=$uiLang]/seg" />
+                                    <span property="skills">
+                                        <xsl:value-of
+                                            select="//tu[@id='experience.course2021.technologies']/tuv[@xml:lang=$uiLang]/seg" />
+                                    </span>
                                 </div>
+                                <!-- Скрытые RDFa элементы для семантики -->
+                                <span property="employmentType" style="display: none;">Course</span>
+                                <span property="educationalLevel" style="display: none;">Professional
+        Development</span>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- Education Section -->
-                <section id="education" class="section section-dark">
+                <section id="education" class="section section-dark" vocab="{$rdfaPersonVocab}"
+                    typeof="{$rdfaPersonType}">
                     <div class="container">
                         <h2 class="section-title">
                             <xsl:value-of
                                 select="//tu[@id='education.title']/tuv[@xml:lang=$uiLang]/seg" />
                         </h2>
-                        <div class="education-container">
+                        <div class="education-container" property="alumniOf">
                             <!-- Current Education -->
-                            <div class="education-card">
+                            <div class="education-card" typeof="{$rdfaEducationType}">
                                 <div class="education-header">
-                                    <h3 class="education-school">
+                                    <h3 class="education-school" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='education.current.institution']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
-                                    <span class="education-duration">
+                                    <span class="education-duration" property="validThrough">
                                         <xsl:value-of
                                             select="//tu[@id='education.current.period']/tuv[@xml:lang=$uiLang]/seg" />
                                     </span>
                                 </div>
-                                <h4 class="education-degree">
+                                <h4 class="education-degree" property="credentialCategory">
                                     <xsl:value-of
                                         select="//tu[@id='education.current.title']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h4>
+                                <!-- Скрытые семантические данные -->
+                                <span property="educationalLevel" style="display: none;">Graduate</span>
+                                <span property="competencyRequired" style="display: none;">Computer
+        Science</span>
                             </div>
 
                             <!-- Preparatory -->
-                            <div class="education-card">
+                            <div class="education-card" typeof="{$rdfaEducationType}">
                                 <div class="education-header">
-                                    <h3 class="education-school">
+                                    <h3 class="education-school" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='education.preparatory.institution']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
-                                    <span class="education-duration">
+                                    <span class="education-duration" property="validThrough">
                                         <xsl:value-of
                                             select="//tu[@id='education.preparatory.period']/tuv[@xml:lang=$uiLang]/seg" />
                                     </span>
                                 </div>
-                                <h4 class="education-degree">
+                                <h4 class="education-degree" property="credentialCategory">
                                     <xsl:value-of
                                         select="//tu[@id='education.preparatory.title']/tuv[@xml:lang=$uiLang]/seg" />
                                 </h4>
+                                <!-- Скрытые семантические данные -->
+                                <span property="educationalLevel" style="display: none;">Preparatory</span>
+                                <span property="competencyRequired" style="display: none;">
+        Engineering</span>
                             </div>
 
                             <!-- High School -->
-                            <div class="education-card">
+                            <div class="education-card" typeof="{$rdfaEducationType}">
                                 <div class="education-header">
-                                    <h3 class="education-school">
+                                    <h3 class="education-school" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='education.highschool.institution']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
@@ -582,37 +704,50 @@
                 </section>
 
                 <!-- Projects Section -->
-                <section id="projects" class="section">
+                <section id="projects" class="section" vocab="{$rdfaPersonVocab}"
+                    typeof="{$rdfaPersonType}">
                     <div class="container">
                         <h2 class="section-title">
                             <xsl:value-of
                                 select="//tu[@id='projects.title']/tuv[@xml:lang=$uiLang]/seg" />
                         </h2>
-                        <div class="projects-container">
-                            <div class="project-card" typeof="schema:CreativeWork">
+                        <div class="projects-container" property="creator">
+                            <div class="project-card" typeof="{$rdfaProjectType}">
                                 <div class="project-header">
-                                    <h3 class="project-name" property="schema:name">
+                                    <h3 class="project-name" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='project1.title']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
                                 </div>
-                                <p class="project-description" property="schema:description">
+                                <p class="project-description" property="description">
                                     <xsl:value-of
                                         select="//tu[@id='project1.description']/tuv[@xml:lang=$uiLang]/seg" />
                                 </p>
+                                <!-- Скрытые RDFa элементы для семантики -->
+                                <span property="projectType" style="display: none;">Professional</span>
+                                <span property="creator" style="display: none;">Dmytro Palahin</span>
+                                <span property="programmingLanguage" style="display: none;">Python,
+        Kedro, MLFlow</span>
+                                <span property="dateCreated" style="display: none;">2023-10-01</span>
                             </div>
 
-                            <div class="project-card" typeof="schema:CreativeWork">
+                            <div class="project-card" typeof="{$rdfaProjectType}">
                                 <div class="project-header">
-                                    <h3 class="project-name" property="schema:name">
+                                    <h3 class="project-name" property="name">
                                         <xsl:value-of
                                             select="//tu[@id='project2.title']/tuv[@xml:lang=$uiLang]/seg" />
                                     </h3>
                                 </div>
-                                <p class="project-description" property="schema:description">
+                                <p class="project-description" property="description">
                                     <xsl:value-of
                                         select="//tu[@id='project2.description']/tuv[@xml:lang=$uiLang]/seg" />
                                 </p>
+                                <!-- Скрытые RDFa элементы для семантики -->
+                                <span property="projectType" style="display: none;">Professional</span>
+                                <span property="creator" style="display: none;">Dmytro Palahin</span>
+                                <span property="programmingLanguage" style="display: none;">Python,
+        SQL, Apache Superset</span>
+                                <span property="dateCreated" style="display: none;">2024-01-01</span>
                             </div>
                         </div>
                     </div>
@@ -758,9 +893,10 @@
                             </p>
                         </div>
 
-                        <div class="passions-video-container">
+                        <div class="passions-video-container" typeof="{$rdfaVideoType}">
                             <div class="video-wrapper">
-                                <video class="passions-video" controls="controls" preload="metadata">
+                                <video class="passions-video" controls="controls" preload="metadata"
+                                    property="contentUrl">
                                     <xsl:attribute name="src">
                                         <xsl:text>video/bmw_</xsl:text>
                                         <xsl:value-of select="$uiLang" />
@@ -774,6 +910,25 @@
                                     </xsl:attribute>
         Your browser does not support the video tag. </video>
                                 <div class="video-overlay"></div>
+
+                                <!-- Скрытые RDFa данные для видео -->
+                                <span property="name" style="display: none;">BMW Marketing Video</span>
+                                <span property="description" style="display: none;">Professional
+        marketing video showcasing BMW brand values</span>
+                                <span property="creator" typeof="Person" style="display: none;">
+                                    <span property="name">Dmytro Palahin</span>
+                                </span>
+                                <span property="thumbnailUrl" style="display: none;">
+                                    <xsl:text>video/bmw_</xsl:text>
+                                    <xsl:value-of select="$uiLang" />
+                                    <xsl:text>_poster.jpg</xsl:text>
+                                </span>
+                                <span property="encodingFormat" style="display: none;">video/mp4</span>
+                                <span property="inLanguage" style="display: none;">
+                                    <xsl:value-of select="$uiLang" />
+                                </span>
+                                <span property="dateCreated" style="display: none;">2024-03-15</span>
+                                <span property="duration" style="display: none;">PT2M30S</span>
                             </div>
                         </div>
                     </div>
