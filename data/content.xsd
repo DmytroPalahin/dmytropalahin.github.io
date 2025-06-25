@@ -20,7 +20,7 @@
     <xs:simpleType name="PortfolioIdType">
         <xs:restriction base="xs:string">
             <xs:pattern
-                value="(site|person|nav|about|contact|skills|projects|education|experience|publications|awards|certifications|soft\.skills|languages|interests|video)\.[a-zA-Z0-9._-]+" />
+                value="(site|person|nav|about|contact|skills|projects|education|experience|publications|awards|certifications|soft\.skills|languages|interests|video|passions)\.[a-zA-Z0-9._-]+" />
             <xs:pattern
                 value="(project|education|experience|awards|certifications|publications)[0-9]+\.[a-zA-Z0-9._-]+" />
         </xs:restriction>

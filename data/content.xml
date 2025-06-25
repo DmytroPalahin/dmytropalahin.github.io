@@ -1356,5 +1356,55 @@
                 <seg>dmytro.palahin@gmail.com</seg>
             </tuv>
         </tu>
+        <!-- —— секция Passions —— -->
+        <tu id="passions.title">
+            <tuv xml:lang="en">
+                <seg>My Passions</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Mes Passions</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Мои Увлечения</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Мої Захоплення</seg>
+            </tuv>
+        </tu>
+        <tu id="passions.subtitle">
+            <tuv xml:lang="en">
+                <seg>What drives me beyond code</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Ce qui me motive au-delà du code</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Что меня вдохновляет помимо кода</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Що мене надихає окрім коду</seg>
+            </tuv>
+        </tu>
+        <tu id="passions.description">
+            <tuv xml:lang="en">
+                <seg>Beyond programming, I have a deep passion for automotive engineering and
+                    design. Here's a glimpse into my love for cars and the beauty of mechanical
+                    innovation.</seg>
+            </tuv>
+            <tuv xml:lang="fr">
+                <seg>Au-delà de la programmation, j'ai une passion profonde pour l'ingénierie et le
+                    design automobile. Voici un aperçu de mon amour pour les voitures et la beauté
+                    de l'innovation mécanique.</seg>
+            </tuv>
+            <tuv xml:lang="ru">
+                <seg>Помимо программирования, у меня есть глубокая страсть к автомобильной инженерии
+                    и дизайну. Вот взгляд на мою любовь к автомобилям и красоте механических
+                    инноваций.</seg>
+            </tuv>
+            <tuv xml:lang="uk">
+                <seg>Окрім програмування, у мене є глибока пристрасть до автомобільної інженерії та
+                    дизайну. Ось погляд на мою любов до автомобілів та красу механічних інновацій.</seg>
+            </tuv>
+        </tu>
     </body>
 </tmx>

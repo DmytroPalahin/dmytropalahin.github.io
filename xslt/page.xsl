@@ -192,6 +192,12 @@
                                         select="//tu[@id='contact.title']/tuv[@xml:lang=$uiLang]/seg" />
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="#passions" class="nav-link">
+                                    <xsl:value-of
+                                        select="//tu[@id='passions.title']/tuv[@xml:lang=$uiLang]/seg" />
+                                </a>
+                            </li>
                         </ul>
 
                         <!-- Modern Language Switch -->
@@ -719,6 +725,45 @@
                                             select="//tu[@id='contact.social.phone']/tuv[@xml:lang=$uiLang]/seg" />
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Passions Section -->
+                <section id="passions" class="passions-section">
+                    <div class="passions-container">
+                        <div class="passions-header">
+                            <h2 class="passions-title">
+                                <xsl:value-of
+                                    select="//tu[@id='passions.title']/tuv[@xml:lang=$uiLang]/seg" />
+                            </h2>
+                            <p class="passions-subtitle">
+                                <xsl:value-of
+                                    select="//tu[@id='passions.subtitle']/tuv[@xml:lang=$uiLang]/seg" />
+                            </p>
+                            <p class="passions-description">
+                                <xsl:value-of
+                                    select="//tu[@id='passions.description']/tuv[@xml:lang=$uiLang]/seg" />
+                            </p>
+                        </div>
+
+                        <div class="passions-video-container">
+                            <div class="video-wrapper">
+                                <video class="passions-video" controls="controls" preload="metadata">
+                                    <xsl:attribute name="src">
+                                        <xsl:text>video/bmw_</xsl:text>
+                                        <xsl:value-of select="$uiLang" />
+                                        <xsl:text>.mp4</xsl:text>
+                                    </xsl:attribute>
+                                    <xsl:attribute
+                                        name="poster">
+                                        <xsl:text>video/bmw_</xsl:text>
+                                        <xsl:value-of select="$uiLang" />
+                                        <xsl:text>_poster.jpg</xsl:text>
+                                    </xsl:attribute>
+        Your browser does not support the video tag. </video>
+                                <div class="video-overlay"></div>
                             </div>
                         </div>
                     </div>
